@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowers and Trees</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #87CEEB 0%, #98FB98 100%);
+            overflow-x: hidden;
+        }
+        .scene {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+        }
+        h1 {
+            color: #2d5016;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(180deg, #228B22 0%, #006400 100%);
+            border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+        }
+        .tree {
+            position: absolute;
+            bottom: 120px;
+        }
+        .tree-trunk {
+            width: 30px;
+            height: 80px;
+            background: linear-gradient(90deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .tree-leaves {
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid #228B22;
+            position: relative;
+        }
+        .tree-leaves::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: -50px;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 80px solid #2E8B2E;
+        }
+        .tree-leaves::after {
+            content: '';
+            position: absolute;
+            top: 55px;
+            left: -40px;
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 60px solid #32CD32;
+        }
+        .tree:nth-child(2) { left: 10%; }
+        .tree:nth-child(3) { left: 25%; transform: scale(0.8); }
+        .tree:nth-child(4) { right: 10%; }
+        .tree:nth-child(5) { right: 25%; transform: scale(0.9); }
+        .flower {
+            position: absolute;
+            bottom: 130px;
+        }
+        .flower-stem {
+            width: 4px;
+            height: 40px;
+            background: #228B22;
+            margin: 0 auto;
+        }
+        .flower-head {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+        }
+        .petal:nth-child(1) { transform: translate(-50%, -150%); }
+        .petal:nth-child(2) { transform: translate(50%, -50%) rotate(72deg); }
+        .petal:nth-child(3) { transform: translate(20%, 50%) rotate(144deg); }
+        .petal:nth-child(4) { transform: translate(-120%, 50%) rotate(216deg); }
+        .petal:nth-child(5) { transform: translate(-150%, -50%) rotate(288deg); }
+        .flower-center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FFD700;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .flower:nth-child(6) { left: 15%; }
+        .flower:nth-child(6) .petal { background: #FF69B4; }
+        .flower:nth-child(7) { left: 35%; }
+        .flower:nth-child(7) .petal { background: #FF6347; }
+        .flower:nth-child(8) { left: 50%; }
+        .flower:nth-child(8) .petal { background: #9370DB; }
+        .flower:nth-child(9) { left: 65%; }
+        .flower:nth-child(9) .petal { background: #FFB6C1; }
+        .flower:nth-child(10) { left: 80%; }
+        .flower:nth-child(10) .petal { background: #FFA500; }
+        .sun {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            width: 80px;
+            height: 80px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 50px #FFD700, 0 0 100px #FFA500;
+        }
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.9;
+        }
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+        .cloud-1 {
+            top: 60px;
+            left: 10%;
+            width: 100px;
+            height: 40px;
+        }
+        .cloud-1::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 15px;
+        }
+        .cloud-1::after {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 50px;
+        }
+        .cloud-2 {
+            top: 100px;
+            left: 40%;
+            width: 80px;
+            height: 30px;
+        }
+        .cloud-2::before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 10px;
+        }
+        .cloud-2::after {
+            width: 30px;
+            height: 30px;
+            top: -15px;
+            left: 40px;
+        }
+        .message {
+            position: relative;
+            z-index: 10;
+            background: rgba(255,255,255,0.9);
+            padding: 20px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 20px;
+        }
+        .message p {
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="sun"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+
+        <div class="message">
+            <h1>Flowers and Trees</h1>
+            <p>A beautiful garden scene created with CSS</p>
+        </div>
+
+        <!-- Trees -->
+        <div class="tree">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        <div class="tree">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        <div class="tree">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        <div class="tree">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+
+        <!-- Flowers -->
+        <div class="flower">
+            <div class="flower-head">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower-stem"></div>
+        </div>
+        <div class="flower">
+            <div class="flower-head">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower-stem"></div>
+        </div>
+        <div class="flower">
+            <div class="flower-head">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower-stem"></div>
+        </div>
+        <div class="flower">
+            <div class="flower-head">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower-stem"></div>
+        </div>
+        <div class="flower">
+            <div class="flower-head">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower-stem"></div>
+        </div>
+
+        <div class="ground"></div>
+    </div>
+</body>
+</html>
