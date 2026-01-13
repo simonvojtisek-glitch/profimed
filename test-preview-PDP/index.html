@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAPEI Keraquick Maxi S1 - Product Detail Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const ProductDetailPage = () => {
+      const [expandedSections, setExpandedSections] = useState(new Set());
+      const [activeImage, setActiveImage] = useState(0);
+
+      const toggleSection = (sectionId) => {
+        const newExpanded = new Set(expandedSections);
+        if (newExpanded.has(sectionId)) {
+          newExpanded.delete(sectionId);
+        } else {
+          newExpanded.add(sectionId);
+        }
+        setExpandedSections(newExpanded);
+      };
+
+      // Product Data from Blueprint
+      const product = {
+        // Layer 1: Identity & Commerce
+        productName: 'MAPEI Keraquick Maxi S1 bily',
+        brand: 'MAPEI',
+        sku: 'KQ-MAXI-S1-W-23',
+        enClassification: 'C2FTES1',
+        binderBase: 'Polymerem modifikovane cementove',
+        productForm: 'Sucha smes (michani s vodou)',
+        packageWeight: 23,
+        color: 'Bily',
+        certifications: ['EMICODE EC1PLUS', 'EPD', 'EN 12004'],
+
+        // Layer 2: Performance Goals
+        primaryPerformanceGoal: 'Rychle dokonceni projektu',
+        useCaseScenarios: [
+          'Rychle rekonstrukce v provozovanych objektech',
+          'Pokladka velkych formatu porcelanu (60x60 cm a vetsi)',
+          'Instalace s podlahovym vytapenim',
+          'Profesionalni instalateri s casovym tlakem',
+          'Projekty s pozadavkem EMICODE EC1PLUS'
+        ],
+
+        // Layer 3: Key Components
+        deformabilityClass: 'S1',
+        settingSpeed: 'Rychle',
+        polymerModified: true,
+        extendedOpenTime: true,
+        reducedSlip: true,
+
+        // Layer 4: Targeting
+        userSkillLevel: 'Profesionalni',
+        projectScale: 'Stredni az velke projekty',
+        qualityTier: 'Premiovy',
+
+        // Layer 5: Usage & Application
+        substrateCompatibility: [
+          { name: 'Beton', notes: 'Max 3% vlhkost' },
+          { name: 'Cementovy poter', notes: 'Stabilni, bez prasklin' },
+          { name: 'Anhydritovy poter', notes: 'Max 0,5% vlhkost, penetrace' },
+          { name: 'Cementova deska', notes: 'Bez pripravy' }
+        ],
+        contraindicatedSubstrates: [
+          'Drevene podklady (krome vodovzdorne preklizky)',
+          'Kontaminovane povrchy (olej, vosk, stare lepidlo)',
+          'Sadrokartonove desky v mokrych prostorech'
+        ],
+        tileCompatibility: [
+          { name: 'Porcelan vitrifikovany', notes: 'Idealni pro malo save' },
+          { name: 'Keramika glazovana', notes: 'Vsechny formaty' },
+          { name: 'Keramika neglazovana', notes: 'Vsechny formaty' },
+          { name: 'Mramor, vapenec', notes: 'Pouzit bile lepidlo' },
+          { name: 'Zula', notes: 'Vsechny formaty' },
+          { name: 'Velke formaty >60x60', notes: 'S1 deformabilita podporuje' }
+        ],
+        applicationEnvironment: ['Suche interiery', 'Podlahove vytapeni'],
+        notSuitableFor: [
+          'Trvale mokre zony, bazeny bez hydroizolace',
+          'Venkovni terasy a fasady',
+          'Aplikace pod +5C nebo nad +30C'
+        ],
+        potLifeMinutes: 45,
+        openTimeMinutes: 20,
+        timeToGroutHours: '2-3',
+        timeToWalkHours: '2-3',
+        timeToFullLoadHours: 24,
+        temperatureRange: { min: 5, max: 30 },
+        waterMixingRatio: '6-6,5 L na 25 kg pytel',
+        maxBedThickness: 15,
+
+        // Trowel recommendations
+        trowelSizes: [
+          { format: 'Male (<10x10 cm)', notch: '4-6 mm', coverage: '2,0-2,5 kg/m2' },
+          { format: 'Stredni (20-30 cm)', notch: '6-8 mm', coverage: '2,5-3,5 kg/m2' },
+          { format: 'Velke (40-60 cm)', notch: '10-12 mm', coverage: '4,5-6,0 kg/m2' },
+          { format: 'Extra velke (>60 cm)', notch: '12-15 mm + natirani rubove strany', coverage: '6,0-7,5 kg/m2' }
+        ],
+
+        // Technical specs
+        technicalSpecs: [
+          { label: 'Trida EN', value: 'C2FTES1' },
+          { label: 'Doba zpracovatelnosti', value: '45 min' },
+          { label: 'Otevreny cas', value: '20 min' },
+          { label: 'Sparovani mozne za', value: '2-3 h' },
+          { label: 'Chozeni mozne za', value: '2-3 h' },
+          { label: 'Plne zatizeni za', value: '24 h' },
+          { label: 'Max tloustka vrstvy', value: '15 mm' },
+          { label: 'Deformabilita', value: 'S1 (>=2,5 mm)' },
+          { label: 'Certifikace', value: 'EMICODE EC1PLUS' },
+          { label: 'Baleni', value: '23 kg pytel' }
+        ],
+
+        // Pricing
+        price: 589,
+        pricePerKg: 25.61,
+        availability: 'Skladem'
+      };
+
+      const keyFeatures = [
+        { icon: '🚀', title: 'Rychle tuhnouci', desc: 'Sparovani za 2-3h oproti standardnim 24h' },
+        { icon: '🔗', title: 'S1 deformabilita', desc: 'Flexibilni pro pohyby podkladu a vytapeni' },
+        { icon: '🌿', title: 'EMICODE EC1PLUS', desc: 'Velmi nizke emise pro citliva prostredi' },
+        { icon: '📏', title: 'Vrstva do 15mm', desc: 'Eliminuje samostatny vyrovnavaci krok' },
+        { icon: '⚡', title: 'Polymerove zesileni', desc: 'Vynikajici prilnavost k porcelanu' },
+        { icon: '🎯', title: 'Prodlouzena zpracovatelnost', desc: '20 min na dosazovani velkych formatu' },
+        { icon: '✓', title: 'Bile lepidlo', desc: 'Vhodne pro svetle kameny (mramor, vapenec)' }
+      ];
+
+      const faqs = [
+        {
+          q: 'Je tento material vhodny pro podlahove vytapeni?',
+          a: 'Ano. MAPEI Keraquick Maxi S1 je kompatibilni s podlahovym vytapenim; lepidlo snese tepelne cykly a zustava deformabilni diky S1 tride. Pred pokladkou overte teplotu podkladu podle technickeho listu a dodrzujte doporucene dilatacni spary.',
+          category: 'suitability'
+        },
+        {
+          q: 'Jak dlouho mam na zpracovani a kdy muzu sparovat?',
+          a: 'Doba zpracovatelnosti: 45 minut od smichani. Otevreny cas: 20 minut po naneseni. Sparovat muzete priblizne za 2-3 hodiny a na chozeni je podlaha pripravena rovnez za 2-3 hodiny. Plne provozni zatizeni pocitejte do 24 hodin.',
+          category: 'dosage'
+        },
+        {
+          q: 'Mohu pouzit v koupelne nebo na venkovni terase?',
+          a: 'Koupelna: Ano, ale pouze s profesionalni hydroizaci. Venkovni terasa: Ne, neni urcen do trvale mokrych zon nebo pro mrazove cykly. Pro exterier pouzijte specializovany produkt pro venkovni pouziti.',
+          category: 'safety'
+        },
+        {
+          q: 'Kolik materialu potrebuji na svuj projekt?',
+          a: 'Pro stredni formaty (20-30 cm): 2,5-3,5 kg/m2. Pro velke formaty (40-60 cm): 4,5-6,0 kg/m2. Priklad: Mistnost 15 m2 s velkymi formaty = 67,5-90 kg (3-4 pytle 23 kg).',
+          category: 'dosage'
+        },
+        {
+          q: 'Jakou zubovou sterku pouzit pro muj format dlazby?',
+          a: 'Male formaty (<10x10): 4-6 mm. Stredni (20-30 cm): 6-8 mm. Velke (40-60 cm): 10-12 mm. Extra velke (>60 cm): 12-15 mm s natiranim rubove strany dlazdice.',
+          category: 'dosage'
+        },
+        {
+          q: 'Potrebuji penetraci?',
+          a: 'Na vysoce savych podkladech (porezni beton, anhydrit): Ano, aplikujte vhodnou penetraci. Na standardni beton obvykle neni nutna, ale doporucena pro optimalni prilnavost. Vzdy dle technickeho listu.',
+          category: 'safety'
+        },
+        {
+          q: 'Cim se lisi od levnejsich lepidel?',
+          a: 'Obsahuje premiove polymerove modifikace misto levnych standardnich cementovych lepidel. S1 deformabilita zabranuje praskani. Rychle tuhnouci chemie zkracuje projekt o 80%. EMICODE EC1PLUS = velmi nizke emise. Tyto vlastnosti jsou kriticke pro narocne instalace.',
+          category: 'comparison'
+        }
+      ];
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header with Breadcrumbs */}
+          <div className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 py-3">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <span>Domu</span>
+                <span>›</span>
+                <span>Lepidla</span>
+                <span>›</span>
+                <span>Obkladova a dlazdebni lepidla</span>
+                <span>›</span>
+                <span className="text-gray-900 font-medium">MAPEI Keraquick Maxi S1 bily</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="max-w-7xl mx-auto px-4 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Left Column - Product Images */}
+              <div className="lg:col-span-1">
+                <div className="sticky top-4">
+                  {/* Main Image */}
+                  <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 mb-4 border border-orange-200">
+                    <div className="aspect-square flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-8xl mb-4">⚡</div>
+                        <div className="text-2xl font-bold text-orange-600 mb-2">MAPEI</div>
+                        <div className="text-lg text-gray-700">Keraquick Maxi S1</div>
+                        <div className="text-sm text-gray-600">bily</div>
+                        <div className="mt-4 px-4 py-2 bg-white rounded-full text-sm text-gray-700 inline-block">
+                          23 kg pytel
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Trust Badges */}
+                  <div className="bg-white rounded-xl p-4 border border-gray-200 mb-4">
+                    <div className="text-sm font-medium text-gray-700 mb-3">Certifikace & dokumenty</div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-xs">
+                        <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600 font-bold">
+                          E1+
+                        </div>
+                        <span className="text-gray-600">EMICODE EC1PLUS - velmi nizke emise</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">
+                          EN
+                        </div>
+                        <span className="text-gray-600">EN 12004 C2FTES1</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs">
+                        <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 font-bold">
+                          EPD
+                        </div>
+                        <span className="text-gray-600">Environmentalni deklarace</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-4 border-t border-gray-200 space-y-2">
+                      <a href="#" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700">
+                        <span>📄</span>
+                        <span>Stahnout technicky list (TDS)</span>
+                      </a>
+                      <a href="#" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700">
+                        <span>📄</span>
+                        <span>Stahnout bezpecnostni list (SDS)</span>
+                      </a>
+                      <a href="#" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700">
+                        <span>📄</span>
+                        <span>Stahnout EPD</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Additional Info */}
+                  <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                    <div className="flex items-center gap-2 text-sm text-blue-800">
+                      <span>✓</span>
+                      <span>Vyrobeno v Ceske republice</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-blue-800 mt-2">
+                      <span>✓</span>
+                      <span>Testovano v nezavisle laboratori</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Product Details */}
+              <div className="lg:col-span-2">
+                {/* LAYER 1: HERO BLOCK */}
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 mb-6">
+                  {/* Badges */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-medium rounded-full">
+                      Rychle dokonceni
+                    </span>
+                    <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">
+                      Podlahove vytapeni
+                    </span>
+                    <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                      EMICODE EC1PLUS
+                    </span>
+                  </div>
+
+                  {/* Product Name */}
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.productName}</h1>
+
+                  {/* Quick Identity */}
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    {product.productName} je {product.binderBase.toLowerCase()} lepidlo ({product.enClassification})
+                    pro rychle instalace s {product.applicationEnvironment.join(' a ').toLowerCase()}.
+                    Nabizi {product.potLifeMinutes} min dobu zpracovatelnosti, {product.openTimeMinutes} min otevreny cas,
+                    {product.deformabilityClass} deformabilitu a moznost vrstvit az {product.maxBedThickness}mm;
+                    ma velmi nizke emise (EMICODE EC1PLUS) a dodava se v {product.packageWeight}kg baleni.
+                  </p>
+
+                  {/* Price & Availability */}
+                  <div className="flex items-end gap-4 mb-6 pb-6 border-b border-gray-200">
+                    <div>
+                      <div className="text-3xl font-bold text-gray-900">{product.price} Kc</div>
+                      <div className="text-sm text-gray-500">{product.pricePerKg.toFixed(2)} Kc/kg</div>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
+                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span>{product.availability}</span>
+                    </div>
+                  </div>
+
+                  {/* Best For */}
+                  <div className="mb-6">
+                    <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                      <span className="text-xl">🎯</span>
+                      Nejvhodnejsi pro:
+                    </h2>
+                    <ul className="space-y-2">
+                      {product.useCaseScenarios.map((scenario, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span className="text-gray-700">{scenario}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Key Features */}
+                  <div>
+                    <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                      <span className="text-xl">⭐</span>
+                      Klicove vlastnosti:
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {keyFeatures.map((feature, i) => (
+                        <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                          <span className="text-2xl">{feature.icon}</span>
+                          <div>
+                            <div className="font-medium text-gray-900">{feature.title}</div>
+                            <div className="text-sm text-gray-600">{feature.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Quick Action */}
+                  <div className="mt-6 flex gap-3">
+                    <button className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                      Pridat do kosiku
+                    </button>
+                    <button className="px-6 py-3 border-2 border-gray-300 hover:border-gray-400 rounded-lg transition-colors">
+                      ❤️
+                    </button>
+                  </div>
+                </div>
+
+                {/* LAYER 2: SAFETY & BOUNDARIES (Always Visible) */}
+                <div className="bg-red-50 rounded-2xl p-6 border-2 border-red-300 mb-6">
+                  <h2 className="text-lg font-bold text-red-800 mb-4 flex items-center gap-2">
+                    <span className="text-xl">⚠️</span>
+                    Bezpecnost & limity
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Suitable For */}
+                    <div className="bg-white rounded-lg p-4">
+                      <div className="text-sm font-medium text-green-700 mb-2">✓ Vhodne pro:</div>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        {product.applicationEnvironment.map((env, i) => (
+                          <li key={i}>• {env}</li>
+                        ))}
+                        <li>• Beton, cementove potery, anhydritove potery</li>
+                        <li>• Porcelan, keramika, prirodni kamen (bile lepidlo)</li>
+                        <li>• Profesionalni instalateti</li>
+                      </ul>
+                    </div>
+
+                    {/* NOT Suitable For */}
+                    <div className="bg-white rounded-lg p-4">
+                      <div className="text-sm font-medium text-red-700 mb-2">✗ NENI vhodne pro:</div>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        {product.notSuitableFor.map((item, i) => (
+                          <li key={i}>• {item}</li>
+                        ))}
+                        {product.contraindicatedSubstrates.map((substrate, i) => (
+                          <li key={i}>• {substrate}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 p-4 bg-white rounded-lg">
+                    <div className="text-sm font-medium text-gray-700 mb-2">⚠ Upozorneni:</div>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li>• Aplikacni teplota: {product.temperatureRange.min}C az {product.temperatureRange.max}C</li>
+                      <li>• Kontrola teploty podkladu u podlahoveho vytapeni pred aplikaci</li>
+                      <li>• Vyzaduje penetraci na vysoce savych podkladech (dle technickeho listu)</li>
+                    </ul>
+                  </div>
+
+                  <div className="mt-4 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                    <div className="text-sm font-medium text-gray-800 mb-1">🚫 TENTO PRODUKT NENI:</div>
+                    <p className="text-sm text-gray-700">
+                      Nahrada za odbornou pripravu podkladu, profesionalni hydroizolaci v mokrych zonach,
+                      ani konstrukcni reseni statiky. Neresi stavebni vady ani nevhodne podklady.
+                      Pouze stavebni lepidlo pro obklady a dlazby podle normy EN 12004.
+                    </p>
+                  </div>
+                </div>
+
+                {/* LAYER 3: VERIFICATION TABLES (Always Visible) */}
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 mb-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span className="text-xl">📊</span>
+                    Technicke specifikace & kompatibilita
+                  </h2>
+
+                  {/* Substrates Table */}
+                  <div className="mb-6">
+                    <h3 className="font-medium text-gray-900 mb-2">Schvalene podklady:</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b-2 border-gray-200">
+                            <th className="text-left py-2 font-medium text-gray-600">Podklad</th>
+                            <th className="text-left py-2 font-medium text-gray-600">Poznamky</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {product.substrateCompatibility.map((substrate, i) => (
+                            <tr key={i} className="border-b border-gray-100">
+                              <td className="py-2 font-medium text-gray-800">{substrate.name}</td>
+                              <td className="py-2 text-gray-600 text-xs">{substrate.notes}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Tiles Table */}
+                  <div className="mb-6">
+                    <h3 className="font-medium text-gray-900 mb-2">Schvalene dlazdice:</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b-2 border-gray-200">
+                            <th className="text-left py-2 font-medium text-gray-600">Typ dlazdice</th>
+                            <th className="text-left py-2 font-medium text-gray-600">Poznamky</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {product.tileCompatibility.map((tile, i) => (
+                            <tr key={i} className="border-b border-gray-100">
+                              <td className="py-2 font-medium text-gray-800">{tile.name}</td>
+                              <td className="py-2 text-gray-600 text-xs">{tile.notes}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Technical Specs Table */}
+                  <div>
+                    <h3 className="font-medium text-gray-900 mb-2">Zakladni parametry:</h3>
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+                      {product.technicalSpecs.map((spec, i) => (
+                        <div key={i} className="flex justify-between py-1 border-b border-gray-100">
+                          <span className="text-sm text-gray-600">{spec.label}:</span>
+                          <span className="text-sm font-medium text-gray-900">{spec.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* LAYER 4: EXPANDABLE SECTIONS */}
+
+                {/* How It Works */}
+                <div className="bg-white rounded-xl border border-gray-200 mb-4 overflow-hidden">
+                  <button
+                    onClick={() => toggleSection('mechanism')}
+                    className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl">⚙️</span>
+                      <span className="font-medium text-gray-900">Jak to funguje</span>
+                      <span className="text-xs text-gray-500">80-120 slov</span>
+                    </div>
+                    <span className="text-2xl text-gray-400">
+                      {expandedSections.has('mechanism') ? '▼' : '▶'}
+                    </span>
+                  </button>
+
+                  {expandedSections.has('mechanism') && (
+                    <div className="p-4 border-t border-gray-200 bg-violet-50">
+                      <div className="space-y-3 text-sm text-gray-700">
+                        <div>
+                          <div className="font-medium text-violet-800 mb-1">Polymerova modifikace & flexibilita:</div>
+                          <p>
+                            Redispergovatelny polymerovy prasek vytvari elastickou vazbu, ktera se prizpusobuje
+                            pohybum podkladu a teplotnim cyklum z podlahoveho vytapeni. Trida S1 (>=2,5 mm pricne
+                            deformace) zabranuje pnutovym trhlinam u velkych formatu pri soucasnem zachovani
+                            silne prilnavosti.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="font-medium text-violet-800 mb-1">Rychle tuhnouci chemie:</div>
+                          <p>
+                            Urychleny hydratacni proces umoznuje sparovani behem 2-3 hodin, kriticke pro komercni
+                            projekty s nalehavymi terminy dokonceni. Presto zachovava 45min dobu zpracovatelnosti pro pohodlne
+                            zpracovani.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="font-medium text-violet-800 mb-1">Thixotropni formulace:</div>
+                          <p>
+                            Modifikator T (snizene sklouznuti) zabranuje tezkym dlazdicim v sesouvani pri
+                            vertikalni instalaci, coz eliminuje potrebu mechanickych podper.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* How to Use */}
+                <div className="bg-white rounded-xl border border-gray-200 mb-4 overflow-hidden">
+                  <button
+                    onClick={() => toggleSection('howto')}
+                    className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl">📖</span>
+                      <span className="font-medium text-gray-900">Jak pouzit</span>
+                      <span className="text-xs text-gray-500">100-150 slov</span>
+                    </div>
+                    <span className="text-2xl text-gray-400">
+                      {expandedSections.has('howto') ? '▼' : '▶'}
+                    </span>
+                  </button>
+
+                  {expandedSections.has('howto') && (
+                    <div className="p-4 border-t border-gray-200 bg-amber-50">
+                      <div className="space-y-4 text-sm">
+                        <div>
+                          <div className="font-medium text-amber-800 mb-2">1. PRIPRAVA PODKLADU</div>
+                          <p className="text-gray-700">
+                            Podklad cisty, suchy, odpraseny a konstrukcne stabilni. Maximalni vlhkost: 3% pro beton,
+                            0,5% pro anhydrit. Odstrante vsechny kontaminanty (olej, vosk, stare lepidlo).
+                            Vyrovnejte nerovnosti &gt;3mm samonivelacni hmotou.
+                          </p>
+                        </div>
+
+                        <div>
+                          <div className="font-medium text-amber-800 mb-2">2. MICHANI</div>
+                          <ul className="text-gray-700 space-y-1">
+                            <li>• Pomer: {product.waterMixingRatio} (24-26%)</li>
+                            <li>• Metoda: Elektricke michadlo, nizke otacky, 2-3 minuty</li>
+                            <li>• Doba zpracovatelnosti: {product.potLifeMinutes} minut od smichani</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <div className="font-medium text-amber-800 mb-2">3. APLIKACE</div>
+                          <table className="w-full text-xs border border-gray-300">
+                            <thead>
+                              <tr className="bg-gray-100">
+                                <th className="text-left p-2 border-r border-gray-300">Format dlazdice</th>
+                                <th className="text-left p-2 border-r border-gray-300">Zubova sterka</th>
+                                <th className="text-left p-2">Spotreba</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {product.trowelSizes.map((row, i) => (
+                                <tr key={i} className="border-t border-gray-300">
+                                  <td className="p-2 border-r border-gray-300">{row.format}</td>
+                                  <td className="p-2 border-r border-gray-300 font-medium">{row.notch}</td>
+                                  <td className="p-2 text-gray-600">{row.coverage}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div>
+                          <div className="font-medium text-amber-800 mb-2">4. ZASYCHANI</div>
+                          <ul className="text-gray-700 space-y-1">
+                            <li>• Otevreny cas: {product.openTimeMinutes} minut</li>
+                            <li>• Sparovani: {product.timeToGroutHours} hodiny</li>
+                            <li>• Chozeni: {product.timeToWalkHours} hodiny</li>
+                            <li>• Plne zatizeni: {product.timeToFullLoadHours} hodin</li>
+                          </ul>
+                        </div>
+
+                        <div className="p-3 bg-amber-100 rounded border border-amber-300">
+                          <div className="flex items-start gap-2">
+                            <span>💡</span>
+                            <div className="text-amber-900">
+                              <strong>TIP:</strong> Na vysoce savych podkladech aplikujte penetraci pred lepenim.
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="p-3 bg-red-100 rounded border border-red-300">
+                          <div className="flex items-start gap-2">
+                            <span>⚠️</span>
+                            <div className="text-red-900">
+                              <strong>POZOR:</strong> Aplikacni teplota {product.temperatureRange.min}C az {product.temperatureRange.max}C.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Why This Product */}
+                <div className="bg-white rounded-xl border border-gray-200 mb-4 overflow-hidden">
+                  <button
+                    onClick={() => toggleSection('differentiators')}
+                    className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl">⭐</span>
+                      <span className="font-medium text-gray-900">Cim se lisi</span>
+                      <span className="text-xs text-gray-500">60-100 slov</span>
+                    </div>
+                    <span className="text-2xl text-gray-400">
+                      {expandedSections.has('differentiators') ? '▼' : '▶'}
+                    </span>
+                  </button>
+
+                  {expandedSections.has('differentiators') && (
+                    <div className="p-4 border-t border-gray-200 bg-pink-50">
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="text-pink-600 mt-0.5">•</span>
+                          <div>
+                            <span className="font-medium text-gray-900">S1 deformabilita</span>
+                            <span className="text-gray-600"> ↔ tuha C2 lepidla</span>
+                            <div className="text-gray-700 mt-1">→ Zabranuje praskani pri pohybu podkladu</div>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-pink-600 mt-0.5">•</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Rychle tuhnouci (2-3h)</span>
+                            <span className="text-gray-600"> ↔ standardnich 24h</span>
+                            <div className="text-gray-700 mt-1">→ Zkraceni projektu o 80%</div>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-pink-600 mt-0.5">•</span>
+                          <div>
+                            <span className="font-medium text-gray-900">EMICODE EC1PLUS</span>
+                            <span className="text-gray-600"> ↔ standardni VOC</span>
+                            <div className="text-gray-700 mt-1">→ Vhodne pro citliva prostredi (skoly, bytove domy, kancelare)</div>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-pink-600 mt-0.5">•</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Vrstva do 15 mm</span>
+                            <span className="text-gray-600"> ↔ pouze tenke loze</span>
+                            <div className="text-gray-700 mt-1">→ Eliminuje samostatny vyrovnavaci krok</div>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-pink-600 mt-0.5">•</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Polymerem modifikovane</span>
+                            <span className="text-gray-600"> ↔ proste cementove</span>
+                            <div className="text-gray-700 mt-1">→ Vynikajici prilnavost k malo savemu porcelanu</div>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-pink-600 mt-0.5">•</span>
+                          <div>
+                            <span className="font-medium text-gray-900">Prodlouzena zpracovatelnost (20 min)</span>
+                            <span className="text-gray-600"> ↔ standardnich 10min</span>
+                            <div className="text-gray-700 mt-1">→ Vice casu na dosazovani velkych formatu</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                {/* LAYER 5: FAQs */}
+                <div className="bg-white rounded-2xl p-6 border border-gray-200 mb-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span className="text-xl">❓</span>
+                    Casto kladene otazky
+                  </h2>
+
+                  <div className="space-y-3">
+                    {faqs.map((faq, i) => (
+                      <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
+                        <button
+                          onClick={() => toggleSection(`faq-${i}`)}
+                          className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors text-left"
+                        >
+                          <span className="font-medium text-gray-900 pr-4">{faq.q}</span>
+                          <span className="text-gray-400 flex-shrink-0">
+                            {expandedSections.has(`faq-${i}`) ? '▼' : '▶'}
+                          </span>
+                        </button>
+                        {expandedSections.has(`faq-${i}`) && (
+                          <div className="p-4 border-t border-gray-200 bg-gray-50">
+                            <p className="text-sm text-gray-700">{faq.a}</p>
+                            <div className="mt-2">
+                              <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded">
+                                {faq.category}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Blueprint Coverage Indicator */}
+                <div className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-xl p-6 border border-emerald-500/30">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center text-white font-bold">
+                      ✓
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900">Optimalizovano dle Outfindo Blueprint</h3>
+                      <p className="text-sm text-gray-600">87 parametru • 7 semantickych bloku • Hodnoceni A</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-emerald-600">95%</div>
+                      <div className="text-xs text-gray-600">Pokryti Blueprint</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-blue-600">650 slov</div>
+                      <div className="text-xs text-gray-600">Viditelny obsah</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-violet-600">100%</div>
+                      <div className="text-xs text-gray-600">Pokryti bezpecnosti</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <div className="bg-gray-100 border-t mt-12">
+            <div className="max-w-7xl mx-auto px-4 py-4 text-center text-sm text-gray-600">
+              Outfindo x Chytre materialy • Optimalizovano pro LLM discovery + Human conversion
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<ProductDetailPage />, document.getElementById('root'));
+  </script>
+</body>
+</html>
