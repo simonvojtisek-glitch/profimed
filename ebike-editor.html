@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Bike Questions Editor</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+    .dropzone { transition: all 0.2s; }
+    .dropzone.dragover { background: #dbeafe; border-color: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useRef } = React;
+
+    // Icons as SVG
+    const ChevronDown = () => (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    );
+
+    const ChevronUp = () => (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    );
+
+    const Edit2 = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+      </svg>
+    );
+
+    const Check = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    );
+
+    const X = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    );
+
+    const Download = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+    );
+
+    const Upload = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    );
+
+    const FileText = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+    );
+
+    const EditableField = ({ value, onSave, placeholder, multiline = false }) => {
+      const [isEditing, setIsEditing] = useState(false);
+      const [editValue, setEditValue] = useState(value);
+
+      const handleSave = () => {
+        onSave(editValue);
+        setIsEditing(false);
+      };
+
+      const handleCancel = () => {
+        setEditValue(value);
+        setIsEditing(false);
+      };
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && !multiline) handleSave();
+        if (e.key === 'Escape') handleCancel();
+      };
+
+      // Update local state when prop changes (after file upload)
+      React.useEffect(() => {
+        setEditValue(value);
+      }, [value]);
+
+      if (isEditing) {
+        return (
+          <div className="flex items-start gap-2 w-full">
+            {multiline ? (
+              <textarea
+                value={editValue}
+                onChange={(e) => setEditValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 p-2 border-2 border-blue-400 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+                rows={3}
+                autoFocus
+              />
+            ) : (
+              <input
+                type="text"
+                value={editValue}
+                onChange={(e) => setEditValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 p-2 border-2 border-blue-400 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+                autoFocus
+              />
+            )}
+            <button onClick={handleSave} className="p-2 text-green-600 hover:bg-green-100 rounded"><Check size={18} /></button>
+            <button onClick={handleCancel} className="p-2 text-red-600 hover:bg-red-100 rounded"><X size={18} /></button>
+          </div>
+        );
+      }
+
+      return (
+        <div className="group flex items-center gap-2 cursor-pointer hover:bg-black/5 rounded p-1 -m-1" onClick={() => setIsEditing(true)}>
+          <span className={value ? "" : "text-gray-400 italic"}>{value || placeholder}</span>
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity"><Edit2 size={14} /></span>
+        </div>
+      );
+    };
+
+    const AnswerCard = ({ answer, onUpdate }) => {
+      return (
+        <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs text-gray-400 font-mono bg-gray-100 px-2 py-0.5 rounded">{answer.code}</span>
+            </div>
+            <div className="font-medium text-gray-800">
+              <EditableField
+                value={answer.name}
+                onSave={(val) => onUpdate({ ...answer, name: val })}
+                placeholder="Answer name..."
+              />
+            </div>
+          </div>
+
+          <div className="mt-3 pt-3 border-t border-gray-100">
+            <div className="text-sm text-gray-600">
+              <EditableField
+                value={answer.bucketDefinition}
+                onSave={(val) => onUpdate({ ...answer, bucketDefinition: val })}
+                placeholder="Bucket definition..."
+                multiline
+              />
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const QuestionCard = ({ question, onUpdate }) => {
+      const [isExpanded, setIsExpanded] = useState(true);
+
+      const updateAnswer = (index, updatedAnswer) => {
+        const newAnswers = [...question.answers];
+        newAnswers[index] = updatedAnswer;
+        onUpdate({ ...question, answers: newAnswers });
+      };
+
+      // Shorten the code for display
+      const shortCode = question.code.replace(/^.*-(\d{4}-\d{2}-\d{2}-\d{6})-/, '');
+
+      return (
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+          <div className="bg-blue-600 text-white p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs bg-white/20 px-2 py-0.5 rounded font-mono" title={question.code}>{shortCode}</span>
+                </div>
+                <div className="text-lg font-semibold">
+                  <EditableField
+                    value={question.title}
+                    onSave={(val) => onUpdate({ ...question, title: val })}
+                    placeholder="Question title..."
+                  />
+                </div>
+              </div>
+              <button onClick={() => setIsExpanded(!isExpanded)} className="p-2 hover:bg-white/10 rounded-lg ml-4">
+                {isExpanded ? <ChevronUp /> : <ChevronDown />}
+              </button>
+            </div>
+          </div>
+
+          {isExpanded && (
+            <div className="p-4 bg-gray-50">
+              {question.answers.length === 0 ? (
+                <div className="text-center text-gray-500 py-6 italic bg-white rounded-lg border border-dashed border-gray-300">
+                  Slider question - no text answers
+                </div>
+              ) : (
+                <div className="grid gap-3">
+                  {question.answers.map((answer, idx) => (
+                    <AnswerCard
+                      key={answer.code}
+                      answer={answer}
+                      onUpdate={(updated) => updateAnswer(idx, updated)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    // Upload screen component
+    const UploadScreen = ({ onFileLoaded }) => {
+      const [isDragOver, setIsDragOver] = useState(false);
+      const [error, setError] = useState(null);
+      const fileInputRef = useRef(null);
+
+      const handleFile = (file) => {
+        if (!file) return;
+
+        if (!file.name.endsWith('.json')) {
+          setError('Please upload a JSON file');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const json = JSON.parse(e.target.result);
+
+            // Validate structure
+            if (!json.questions || !Array.isArray(json.questions)) {
+              setError('Invalid JSON: must contain a "questions" array');
+              return;
+            }
+
+            // Validate questions have required fields
+            for (const q of json.questions) {
+              if (!q.code || !q.title) {
+                setError('Invalid JSON: each question must have "code" and "title" fields');
+                return;
+              }
+            }
+
+            setError(null);
+            onFileLoaded(json, file.name);
+          } catch (err) {
+            setError('Invalid JSON file: ' + err.message);
+          }
+        };
+        reader.readAsText(file);
+      };
+
+      const handleDrop = (e) => {
+        e.preventDefault();
+        setIsDragOver(false);
+        const file = e.dataTransfer.files[0];
+        handleFile(file);
+      };
+
+      const handleDragOver = (e) => {
+        e.preventDefault();
+        setIsDragOver(true);
+      };
+
+      const handleDragLeave = () => {
+        setIsDragOver(false);
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+          <div className="max-w-xl w-full">
+            <div className="text-center mb-8">
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">Questions Editor</h1>
+              <p className="text-gray-600">Upload your JSON file to edit questions and answers</p>
+            </div>
+
+            <div
+              className={`dropzone bg-white rounded-xl border-2 border-dashed p-12 text-center cursor-pointer transition-all ${
+                isDragOver ? 'dragover border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-gray-400'
+              }`}
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".json"
+                className="hidden"
+                onChange={(e) => handleFile(e.target.files[0])}
+              />
+
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Upload size={32} className="text-blue-600" />
+                </div>
+              </div>
+
+              <p className="text-lg font-medium text-gray-700 mb-2">
+                Drop your JSON file here
+              </p>
+              <p className="text-sm text-gray-500 mb-4">
+                or click to browse
+              </p>
+
+              <div className="inline-flex items-center gap-2 text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full">
+                <FileText size={14} />
+                Accepts .json files with parameters and questions
+              </div>
+            </div>
+
+            {error && (
+              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+
+            <div className="mt-8 p-4 bg-white rounded-lg border border-gray-200">
+              <h3 className="font-medium text-gray-700 mb-2">Expected JSON structure:</h3>
+              <pre className="text-xs text-gray-600 bg-gray-50 p-3 rounded overflow-x-auto">
+{`{
+  "parameters": [...],  // optional, preserved
+  "questions": [
+    {
+      "code": "question-code",
+      "name": "Question Name",
+      "title": "Question title?",
+      "answers": [
+        {
+          "code": "answer-code",
+          "name": "Answer text",
+          "bucketDefinition": "..."
+        }
+      ]
+    }
+  ]
+}`}
+              </pre>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // Main Editor component
+    const EditorScreen = ({ data, fileName, onReset, onUpdate }) => {
+      const [searchTerm, setSearchTerm] = useState('');
+
+      const updateQuestion = (index, updatedQuestion) => {
+        const newQuestions = [...data.questions];
+        newQuestions[index] = updatedQuestion;
+        onUpdate({ ...data, questions: newQuestions });
+      };
+
+      const exportJSON = () => {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const exportName = fileName.replace('.json', '-edited.json');
+        a.download = exportName;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+
+      const filteredQuestions = data.questions.filter(q =>
+        q.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        q.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        q.answers?.some(a => a.name?.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+
+      return (
+        <div className="min-h-screen bg-gray-100">
+          <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+            <div className="max-w-5xl mx-auto px-4 py-4">
+              <div className="flex items-center justify-between mb-4 flex-wrap gap-4">
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-800">Questions Editor</h1>
+                  <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+                    <FileText size={14} />
+                    {fileName}
+                    {data.parameters && (
+                      <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">
+                        {data.parameters.length} parameters preserved
+                      </span>
+                    )}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <button
+                    onClick={onReset}
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 font-medium"
+                  >
+                    <Upload size={18} />
+                    Load New File
+                  </button>
+                  <button
+                    onClick={exportJSON}
+                    className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium"
+                  >
+                    <Download size={18} />
+                    Export JSON
+                  </button>
+                </div>
+              </div>
+
+              <input
+                type="text"
+                placeholder="Search questions or answers..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          <div className="max-w-5xl mx-auto px-4 py-6">
+            <div className="text-sm text-gray-500 mb-4">
+              {filteredQuestions.length} questions - Click any text to edit
+            </div>
+
+            {filteredQuestions.map((question, idx) => (
+              <QuestionCard
+                key={question.code}
+                question={question}
+                onUpdate={(updated) => updateQuestion(data.questions.findIndex(q => q.code === question.code), updated)}
+              />
+            ))}
+
+            {filteredQuestions.length === 0 && (
+              <div className="text-center py-12 text-gray-500">
+                No questions found matching "{searchTerm}"
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    // Main App
+    function App() {
+      const [data, setData] = useState(null);
+      const [fileName, setFileName] = useState('');
+
+      const handleFileLoaded = (json, name) => {
+        setData(json);
+        setFileName(name);
+      };
+
+      const handleReset = () => {
+        setData(null);
+        setFileName('');
+      };
+
+      if (!data) {
+        return <UploadScreen onFileLoaded={handleFileLoaded} />;
+      }
+
+      return (
+        <EditorScreen
+          data={data}
+          fileName={fileName}
+          onReset={handleReset}
+          onUpdate={setData}
+        />
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
