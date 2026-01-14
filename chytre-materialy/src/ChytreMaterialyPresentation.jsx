@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronDown, Package, AlertTriangle, CheckCircle, TrendingUp, Layers, Search, Filter, ArrowRight, Building2, Droplets, Hammer, Gem, Paintbrush, Wrench, Home, Sparkles, Box } from 'lucide-react';
 
+// Category data based on validated structure
 const categories = [
   { id: 1, name: "Lepidla na obklady a dlažby", skus: 65, percent: 9, icon: Layers, color: "#3B82F6",
     subcategories: ["Standardní C1T", "Flexibilní C2TE", "Vysoce flexibilní S1/S2", "Rychletuhnoucí", "Disperzní a speciální"],
@@ -60,20 +61,30 @@ const categories = [
 ];
 
 const structuralGaps = [
-  { title: "Industrial Floor Coatings Invisible", description: "Sikafloor and Mapecoat (35 SKUs, 5%) had no category", solution: "New 'Průmyslové podlahy' category created" },
-  { title: "Grouts Poorly Organized", description: "180 SKUs (24%) mixed by brand, cement/epoxy combined", solution: "Chemistry-based subcategories" },
-  { title: "Silicones Mixed with Sealants", description: "75 silicone SKUs combined with PU/MS sealants", solution: "Separated into own category (#3)" },
-  { title: "Natural Stone Niche Scattered", description: "Bellinzoni + Tenax (55 SKUs) had no unified presence", solution: "Dedicated 'Přírodní kámen' category (#8)" },
-  { title: "Flexibility Classes Not Visible", description: "S1/S2 adhesives buried in product specs", solution: "Subcategories by flexibility class" },
-  { title: "Hardware Mixed with Chemicals", description: "75 profile/hardware SKUs (10%) don't belong here", solution: "Identified for relocation" }
+  { title: "Industrial Floor Coatings Invisible", fixed: true, description: "Sikafloor and Mapecoat (35 SKUs, 5%) had no category", solution: "New 'Průmyslové podlahy' category created" },
+  { title: "Grouts Poorly Organized", fixed: true, description: "180 SKUs (24%) mixed by brand, cement/epoxy combined", solution: "Chemistry-based subcategories (cement flex/epoxy/standard)" },
+  { title: "Silicones Mixed with Sealants", fixed: true, description: "75 silicone SKUs combined with PU/MS sealants", solution: "Separated into own category (#3)" },
+  { title: "Natural Stone Niche Scattered", fixed: true, description: "Bellinzoni + Tenax (55 SKUs) had no unified presence", solution: "Dedicated 'Přírodní kámen' category (#8)" },
+  { title: "Flexibility Classes Not Visible", fixed: true, description: "S1/S2 adhesives buried in product specs", solution: "Subcategories by flexibility class" },
+  { title: "Hardware Mixed with Chemicals", fixed: true, description: "75 profile/hardware SKUs (10%) don't belong here", solution: "Identified for relocation to 'Stavební nářadí'" }
 ];
 
 const productGaps = [
-  { title: "Underfloor Heating Products", priority: "critical", description: "UFH compatibility mentioned but no dedicated line", action: "Badge existing UFH-compatible products" },
-  { title: "DIY-Friendly Small Packaging", priority: "critical", description: "Primarily professional bulk sizes (5-25kg)", action: "Negotiate 1-3kg retail packs" },
-  { title: "Low-VOC / Eco-Labeled Range", priority: "critical", description: "Limited visibility of eco-labeled products", action: "Badge existing Eco products" },
-  { title: "Complete System Bundles", priority: "important", description: "All components sold separately", action: "Create renovation kits" },
-  { title: "Digital Application Guides", priority: "important", description: "Technical datasheets only", action: "Develop video tutorials" }
+  { title: "Underfloor Heating Products", priority: "critical", description: "UFH compatibility mentioned but no dedicated line", action: "Badge existing UFH-compatible products; source dedicated kits" },
+  { title: "DIY-Friendly Small Packaging", priority: "critical", description: "Primarily professional bulk sizes (5-25kg)", action: "Negotiate 1-3kg retail packs with suppliers" },
+  { title: "Low-VOC / Eco-Labeled Range", priority: "critical", description: "Limited visibility of eco-labeled products", action: "Badge existing Eco products; source additional options" },
+  { title: "Complete System Bundles", priority: "important", description: "All components sold separately", action: "Create bathroom/terrace renovation kits" },
+  { title: "Antimicrobial Certified Products", priority: "important", description: "Basic anti-mold mentioned, no certifications visible", action: "Highlight antimicrobial properties; source certified products" },
+  { title: "Digital Application Guides", priority: "important", description: "Technical datasheets only", action: "Develop video tutorials, QR guides, calculators" }
+];
+
+const filters = [
+  { name: "Třída flexibility", options: ["C1T Standardní", "C2TE Flexibilní", "S1 Vysoce flexibilní", "S2 Nejvyšší"] },
+  { name: "Typ aplikace", options: ["Interiér", "Exteriér", "Mokré prostory", "Podlahové topení"] },
+  { name: "Doba zpracování", options: ["Standardní", "Prodloužená", "Rychletuhnoucí"] },
+  { name: "Typ materiálu", options: ["Keramika", "Porcelán", "Přírodní kámen", "Velkoformát"] },
+  { name: "Barevné provedení", options: ["Základní", "Designové barvy (50+)", "Transparentní"] },
+  { name: "Chemické složení", options: ["Cementové", "Epoxidové", "Polyuretanové", "Disperzní"] }
 ];
 
 export default function ChytreMaterialyPresentation() {
@@ -82,310 +93,920 @@ export default function ChytreMaterialyPresentation() {
   const [expandedGap, setExpandedGap] = useState(null);
 
   const sections = [
-    { id: 'overview', label: 'Přehled' },
-    { id: 'current', label: 'Současný stav' },
-    { id: 'structure', label: 'Nová struktura' },
-    { id: 'gaps', label: 'Gap analýza' },
-    { id: 'impact', label: 'Business Impact' }
+    { id: 'overview', label: 'Přehled', icon: Package },
+    { id: 'current', label: 'Současný stav', icon: AlertTriangle },
+    { id: 'structure', label: 'Nová struktura', icon: Layers },
+    { id: 'categories', label: 'Kategorie detailně', icon: Search },
+    { id: 'filters', label: 'Filtry', icon: Filter },
+    { id: 'gaps', label: 'Gap analýza', icon: CheckCircle },
+    { id: 'benchmark', label: 'Benchmark', icon: TrendingUp },
+    { id: 'impact', label: 'Business Impact', icon: TrendingUp }
   ];
 
   const totalSKUs = categories.reduce((sum, cat) => sum + cat.skus, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-200 font-sans">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+      fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+      color: '#e2e8f0'
+    }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+        * { box-sizing: border-box; }
+
+        .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 14px 20px;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border: 1px solid transparent;
+          font-weight: 500;
+        }
+        .nav-item:hover {
+          background: rgba(255,255,255,0.05);
+          border-color: rgba(255,255,255,0.1);
+        }
+        .nav-item.active {
+          background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2));
+          border-color: rgba(59,130,246,0.4);
+          color: #fff;
+        }
+
+        .category-card {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 16px;
+          padding: 24px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .category-card:hover {
+          background: rgba(255,255,255,0.06);
+          border-color: rgba(255,255,255,0.15);
+          transform: translateY(-2px);
+        }
+
+        .stat-card {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 20px;
+          padding: 32px;
+          text-align: center;
+        }
+
+        .badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 14px;
+          border-radius: 100px;
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .progress-bar {
+          height: 8px;
+          background: rgba(255,255,255,0.1);
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        .progress-fill {
+          height: 100%;
+          border-radius: 4px;
+          transition: width 0.5s ease;
+        }
+
+        .gap-card {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 12px;
+          overflow: hidden;
+          transition: all 0.2s ease;
+        }
+        .gap-card:hover {
+          border-color: rgba(255,255,255,0.15);
+        }
+
+        .section-title {
+          font-family: 'Space Mono', monospace;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: #64748b;
+          margin-bottom: 8px;
+        }
+
+        .highlight-box {
+          background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(59,130,246,0.15));
+          border: 1px solid rgba(139,92,246,0.3);
+          border-radius: 16px;
+          padding: 24px;
+        }
+
+        .filter-tag {
+          display: inline-block;
+          padding: 8px 16px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 8px;
+          font-size: 13px;
+          margin: 4px;
+          transition: all 0.2s ease;
+        }
+        .filter-tag:hover {
+          background: rgba(255,255,255,0.1);
+          border-color: rgba(255,255,255,0.2);
+        }
+      `}</style>
+
       {/* Header */}
-      <header className="px-6 py-4 border-b border-slate-700/50 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-        <div className="flex items-center justify-between max-w-6xl mx-auto">
-          <div>
-            <div className="text-[10px] tracking-widest text-slate-500 font-mono mb-1">OUTFINDO × CHYTRÉ MATERIÁLY</div>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-              Category Tree Reorganization
-            </h1>
+      <header style={{
+        padding: '24px 48px',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        background: 'rgba(15,23,42,0.8)',
+        backdropFilter: 'blur(20px)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100
+      }}>
+        <div>
+          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: '#64748b', letterSpacing: 2, marginBottom: 4 }}>
+            OUTFINDO × CHYTRÉ MATERIÁLY
           </div>
-          <div className="flex gap-3">
-            <div className="px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/30">
-              <span className="font-mono text-lg font-bold text-blue-400">{totalSKUs}</span>
-              <span className="text-xs text-slate-500 ml-2">SKUs</span>
-            </div>
-            <div className="px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
-              <span className="font-mono text-lg font-bold text-emerald-400">11</span>
-              <span className="text-xs text-slate-500 ml-2">categories</span>
-            </div>
+          <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0, background: 'linear-gradient(135deg, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            Category Tree Reorganization
+          </h1>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div className="stat-card" style={{ padding: '12px 24px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)' }}>
+            <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 20, fontWeight: 700, color: '#3b82f6' }}>{totalSKUs}</span>
+            <span style={{ fontSize: 12, color: '#64748b', marginLeft: 8 }}>SKUs analyzed</span>
+          </div>
+          <div className="stat-card" style={{ padding: '12px 24px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)' }}>
+            <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 20, fontWeight: 700, color: '#10b981' }}>11</span>
+            <span style={{ fontSize: 12, color: '#64748b', marginLeft: 8 }}>new categories</span>
           </div>
         </div>
       </header>
 
-      {/* Navigation */}
-      <nav className="px-6 py-3 border-b border-slate-700/30 bg-slate-900/50 sticky top-[73px] z-40">
-        <div className="flex gap-2 max-w-6xl mx-auto overflow-x-auto">
-          {sections.map(section => (
-            <button
-              key={section.id}
-              onClick={() => setActiveSection(section.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                activeSection === section.id
-                  ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/40 text-white'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              {section.label}
-            </button>
-          ))}
-        </div>
-      </nav>
+      <div style={{ display: 'flex' }}>
+        {/* Sidebar Navigation */}
+        <nav style={{
+          width: 280,
+          padding: '32px 16px',
+          borderRight: '1px solid rgba(255,255,255,0.08)',
+          position: 'sticky',
+          top: 89,
+          height: 'calc(100vh - 89px)',
+          overflowY: 'auto'
+        }}>
+          <div className="section-title">Navigace</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            {sections.map(section => (
+              <div
+                key={section.id}
+                className={`nav-item ${activeSection === section.id ? 'active' : ''}`}
+                onClick={() => setActiveSection(section.id)}
+              >
+                <section.icon size={18} />
+                <span>{section.label}</span>
+              </div>
+            ))}
+          </div>
+        </nav>
 
-      {/* Main Content */}
-      <main className="p-6 max-w-6xl mx-auto">
+        {/* Main Content */}
+        <main style={{ flex: 1, padding: '48px', maxWidth: 1200 }}>
 
-        {/* Overview */}
-        {activeSection === 'overview' && (
-          <div className="space-y-8">
+          {/* Overview Section */}
+          {activeSection === 'overview' && (
             <div>
-              <h2 className="text-3xl font-bold mb-4">Přehled projektu</h2>
-              <p className="text-lg text-slate-400 leading-relaxed">
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16, background: 'linear-gradient(135deg, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                Přehled projektu
+              </h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48, lineHeight: 1.7 }}>
                 Komplexní analýza a reorganizace kategorizace produktů stavební chemie na základě výzkumu zákaznických cílů a validace skutečného inventáře.
               </p>
-            </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { value: '742', label: 'SKUs analyzováno', color: 'blue' },
-                { value: '25', label: 'zákaznických cílů', color: 'purple' },
-                { value: '11', label: 'nových kategorií', color: 'emerald' }
-              ].map((stat, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 text-center">
-                  <div className={`font-mono text-4xl font-bold text-${stat.color}-400`}>{stat.value}</div>
-                  <div className="text-slate-500 mt-2">{stat.label}</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 48 }}>
+                <div className="stat-card">
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 48, fontWeight: 700, color: '#3b82f6' }}>742</div>
+                  <div style={{ color: '#64748b', marginTop: 8 }}>SKUs analyzováno</div>
                 </div>
-              ))}
-            </div>
+                <div className="stat-card">
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 48, fontWeight: 700, color: '#8b5cf6' }}>25</div>
+                  <div style={{ color: '#64748b', marginTop: 8 }}>zákaznických cílů</div>
+                </div>
+                <div className="stat-card">
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 48, fontWeight: 700, color: '#10b981' }}>11</div>
+                  <div style={{ color: '#64748b', marginTop: 8 }}>nových kategorií</div>
+                </div>
+              </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30">
-              <div className="text-[10px] tracking-widest text-slate-500 font-mono mb-2">KLÍČOVÝ ZÁVĚR</div>
-              <h3 className="text-xl font-semibold mb-3">Reorganizace řeší strukturální problémy bez nutnosti nových produktů</h3>
-              <p className="text-slate-400">
-                Lepší organizace stávajících 742 produktů přinese okamžité zlepšení zákaznické zkušenosti.
+              <div className="highlight-box">
+                <div className="section-title">Klíčový závěr</div>
+                <h3 style={{ fontSize: 24, fontWeight: 600, marginBottom: 16 }}>
+                  Reorganizace řeší strukturální problémy bez nutnosti nových produktů
+                </h3>
+                <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+                  Lepší organizace stávajících 742 produktů přinese okamžité zlepšení zákaznické zkušenosti. Produktové mezery představují dlouhodobé příležitosti k expanzi.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Current State Section */}
+          {activeSection === 'current' && (
+            <div>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Současný stav</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                Produktová organizace založená na značkách místo zákaznických potřeb
               </p>
-            </div>
-          </div>
-        )}
 
-        {/* Current State */}
-        {activeSection === 'current' && (
-          <div className="space-y-8">
-            <h2 className="text-3xl font-bold">Současný stav</h2>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <div className="text-[10px] tracking-widest text-slate-500 font-mono">PROBLÉMY</div>
-                {[
-                  { issue: "Průmyslové podlahy neviditelné", detail: "35 SKUs bez kategorie" },
-                  { issue: "Spárovací hmoty špatně organizované", detail: "180 SKUs dle značky" },
-                  { issue: "Silikony smíchané s tmely", detail: "75 SKUs v jedné kategorii" },
-                  { issue: "Přírodní kámen rozptýlen", detail: "55 SKUs rozházeno" },
-                  { issue: "Třídy flexibility neviditelné", detail: "S1/S2 skryté v popisech" }
-                ].map((item, i) => (
-                  <div key={i} className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
-                    <div className="font-medium text-red-300">{item.issue}</div>
-                    <div className="text-sm text-slate-500">{item.detail}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-6 bg-slate-800/50 border border-slate-700/50 rounded-2xl">
-                <div className="text-[10px] tracking-widest text-slate-500 font-mono mb-4">NAVIGACE</div>
-                <div className="mb-6">
-                  <div className="text-xs text-red-400 font-semibold mb-2">❌ SOUČASNÁ</div>
-                  <div className="font-mono text-xs text-slate-500">
-                    Stavební chemie → Spárovací hmoty → Brand X → Produkt
-                  </div>
-                </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
                 <div>
-                  <div className="text-xs text-emerald-400 font-semibold mb-2">✅ NOVÁ</div>
-                  <div className="font-mono text-xs text-slate-300">
-                    Stavební chemie → Spárovací hmoty → Epoxidové → Produkt
+                  <div className="section-title">Problémy současné struktury</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    {[
+                      { issue: "Průmyslové podlahy neviditelné", detail: "35 SKUs (5%) bez kategorie" },
+                      { issue: "Spárovací hmoty špatně organizované", detail: "180 SKUs smíchané dle značky" },
+                      { issue: "Silikony smíchané s tmely", detail: "75 SKUs v jedné kategorii" },
+                      { issue: "Přírodní kámen rozptýlen", detail: "55 specializovaných SKUs rozházeno" },
+                      { issue: "Třídy flexibility neviditelné", detail: "S1/S2 skryté v popisech" },
+                      { issue: "Hardware smíchaný s chemií", detail: "75 SKUs profilů nepatří sem" }
+                    ].map((item, i) => (
+                      <div key={i} style={{ padding: 20, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 12 }}>
+                        <div style={{ fontWeight: 600, marginBottom: 4, color: '#fca5a5' }}>{item.issue}</div>
+                        <div style={{ fontSize: 14, color: '#94a3b8' }}>{item.detail}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="section-title">Matoucí navigace</div>
+                  <div style={{ padding: 24, background: 'rgba(255,255,255,0.03)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div style={{ marginBottom: 24 }}>
+                      <div style={{ fontSize: 12, color: '#ef4444', marginBottom: 8, fontWeight: 600 }}>SOUČASNÁ STRUKTURA</div>
+                      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: '#64748b', lineHeight: 2 }}>
+                        Stavební chemie → Spárovací hmoty → Brand X → Kerapoxy Easy Design
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 12, color: '#10b981', marginBottom: 8, fontWeight: 600 }}>NOVÁ STRUKTURA</div>
+                      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: '#94a3b8', lineHeight: 2 }}>
+                        Stavební chemie → Spárovací hmoty → Epoxidové → Kerapoxy Easy Design
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: 32 }}>
+                    <div className="section-title">Co zákazníci hledají vs. co najdou</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 16 }}>
+                      {[
+                        { search: "flexibilní lepidlo na velkoformát", finds: "Musí procházet značky" },
+                        { search: "epoxidová spára šedá", finds: "45 barev schovaných" },
+                        { search: "hydroizolace do sprchy", finds: "Příslušenství jinde" }
+                      ].map((item, i) => (
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: 12, background: 'rgba(255,255,255,0.02)', borderRadius: 8 }}>
+                          <span style={{ color: '#94a3b8' }}>"{item.search}"</span>
+                          <span style={{ fontSize: 13 }}>{item.finds}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* New Structure */}
-        {activeSection === 'structure' && (
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold">Nová struktura kategorií</h2>
-            <p className="text-slate-400">11 kategorií validovaných proti inventáři a zákaznickému výzkumu</p>
+          {/* New Structure Section */}
+          {activeSection === 'structure' && (
+            <div>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Nová struktura kategorií</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                11 kategorií validovaných proti inventáři a zákaznickému výzkumu
+              </p>
 
-            <div className="space-y-3">
-              {categories.map((cat) => {
-                const Icon = cat.icon;
-                return (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {categories.map((cat) => (
                   <div
                     key={cat.id}
+                    className="category-card"
+                    style={{
+                      borderLeft: `4px solid ${cat.color}`,
+                      ...(cat.highlight ? { background: 'rgba(139,92,246,0.1)', borderColor: 'rgba(139,92,246,0.3)' } : {}),
+                      ...(cat.isNew ? { background: 'rgba(249,115,22,0.1)', borderColor: 'rgba(249,115,22,0.3)' } : {})
+                    }}
                     onClick={() => setExpandedCategory(expandedCategory === cat.id ? null : cat.id)}
-                    className={`p-4 rounded-xl border cursor-pointer transition-all ${
-                      cat.highlight ? 'bg-purple-500/10 border-purple-500/30' :
-                      cat.isNew ? 'bg-orange-500/10 border-orange-500/30' :
-                      'bg-slate-800/30 border-slate-700/50 hover:border-slate-600'
-                    }`}
-                    style={{ borderLeftWidth: 4, borderLeftColor: cat.color }}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${cat.color}20` }}>
-                          <Icon size={20} color={cat.color} />
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                        <div style={{
+                          width: 44, height: 44, borderRadius: 12,
+                          background: `${cat.color}20`,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center'
+                        }}>
+                          <cat.icon size={22} color={cat.color} />
                         </div>
                         <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-semibold">{cat.id}. {cat.name}</span>
-                            {cat.highlight && <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">⭐ Největší</span>}
-                            {cat.isNew && <span className="text-xs px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300">🆕 Nová</span>}
-                            {cat.rightSized && <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">✓ Optim.</span>}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <span style={{ fontWeight: 600, fontSize: 17 }}>{cat.id}. {cat.name}</span>
+                            {cat.highlight && <span className="badge" style={{ background: 'rgba(139,92,246,0.2)', color: '#a78bfa' }}>Největší</span>}
+                            {cat.isNew && <span className="badge" style={{ background: 'rgba(249,115,22,0.2)', color: '#fb923c' }}>Nová</span>}
+                            {cat.rightSized && <span className="badge" style={{ background: 'rgba(16,185,129,0.2)', color: '#34d399' }}>Optimalizováno</span>}
                           </div>
-                          <div className="text-sm text-slate-500">{cat.skus} SKUs • {cat.percent}%</div>
+                          <div style={{ fontSize: 14, color: '#64748b', marginTop: 4 }}>
+                            {cat.skus} SKUs • {cat.percent}% inventáře
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                          <div className="h-full rounded-full" style={{ width: `${cat.percent * 4}%`, background: cat.color }} />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+                        <div style={{ width: 120 }}>
+                          <div className="progress-bar">
+                            <div className="progress-fill" style={{ width: `${cat.percent * 4}%`, background: cat.color }} />
+                          </div>
                         </div>
-                        {expandedCategory === cat.id ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
+                        {expandedCategory === cat.id ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
                       </div>
                     </div>
 
                     {expandedCategory === cat.id && (
-                      <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-2 gap-6">
-                        <div>
-                          <div className="text-[10px] tracking-widest text-slate-500 font-mono mb-2">PODKATEGORIE</div>
-                          {cat.subcategories.map((sub, i) => (
-                            <div key={i} className="flex items-center gap-2 text-sm text-slate-400 mb-1">
-                              <ArrowRight size={12} color={cat.color} /> {sub}
+                      <div style={{ marginTop: 24, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                          <div>
+                            <div className="section-title">Podkategorie</div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                              {cat.subcategories.map((sub, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#94a3b8' }}>
+                                  <ArrowRight size={14} color={cat.color} />
+                                  {sub}
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                        <div>
-                          <div className="text-[10px] tracking-widest text-slate-500 font-mono mb-2">ZNAČKY & VÝZKUM</div>
-                          <div className="flex flex-wrap gap-1 mb-3">
-                            {cat.brands.map((b, i) => (
-                              <span key={i} className="text-xs px-2 py-1 bg-slate-700/50 rounded">{b}</span>
-                            ))}
                           </div>
-                          <p className="text-xs text-slate-500">{cat.research}</p>
+                          <div>
+                            <div className="section-title">Klíčové značky</div>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                              {cat.brands.map((brand, i) => (
+                                <span key={i} className="filter-tag">{brand}</span>
+                              ))}
+                            </div>
+                            <div className="section-title" style={{ marginTop: 20 }}>Zákaznický výzkum</div>
+                            <p style={{ fontSize: 14, color: '#94a3b8', lineHeight: 1.6 }}>{cat.research}</p>
+                          </div>
                         </div>
                       </div>
                     )}
                   </div>
-                );
-              })}
-            </div>
-
-            <div className="p-4 bg-slate-700/30 border border-slate-600/50 rounded-xl">
-              <div className="flex items-center gap-2 text-slate-400">
-                <ArrowRight size={16} />
-                <span className="font-medium">K přesunu: Profily a lišty</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-600">75 SKUs • 10%</span>
+                ))}
               </div>
-              <p className="text-sm text-slate-500 mt-2 ml-6">Hardware → "Stavební nářadí"</p>
+
+              {/* Relocation note */}
+              <div style={{ marginTop: 32, padding: 24, background: 'rgba(100,116,139,0.1)', border: '1px solid rgba(100,116,139,0.3)', borderRadius: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                  <ArrowRight size={20} color="#94a3b8" />
+                  <span style={{ fontWeight: 600 }}>K přesunu: Profily a lišty</span>
+                  <span className="badge" style={{ background: 'rgba(100,116,139,0.2)', color: '#94a3b8' }}>75 SKUs • 10%</span>
+                </div>
+                <p style={{ color: '#64748b', fontSize: 14 }}>
+                  Hardware položky (Marcons, Balconi profily) doporučujeme přesunout do kategorie "Stavební nářadí"
+                </p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Gap Analysis */}
-        {activeSection === 'gaps' && (
-          <div className="space-y-8">
-            <h2 className="text-3xl font-bold">Gap analýza</h2>
-
+          {/* Categories Detail Section */}
+          {activeSection === 'categories' && (
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <CheckCircle size={20} className="text-emerald-400" />
-                <h3 className="text-xl font-semibold">Strukturální mezery – OPRAVENO</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {structuralGaps.map((gap, i) => (
-                  <div key={i} className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle size={14} className="text-emerald-400" />
-                      <span className="font-medium text-sm">{gap.title}</span>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Kategorie detailně</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                Klikněte na kategorii pro zobrazení kompletní struktury
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+                {categories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="category-card"
+                    onClick={() => setExpandedCategory(expandedCategory === cat.id ? null : cat.id)}
+                    style={{
+                      cursor: 'pointer',
+                      ...(expandedCategory === cat.id ? { gridColumn: 'span 2' } : {})
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                      <div style={{
+                        width: 56, height: 56, borderRadius: 14,
+                        background: `linear-gradient(135deg, ${cat.color}30, ${cat.color}10)`,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        border: `1px solid ${cat.color}40`
+                      }}>
+                        <cat.icon size={26} color={cat.color} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: cat.color }}>#{cat.id}</span>
+                          {cat.highlight && <span style={{ fontSize: 16 }}>*</span>}
+                          {cat.isNew && <span style={{ fontSize: 16 }}>NEW</span>}
+                        </div>
+                        <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>{cat.name}</h3>
+                        <div style={{ display: 'flex', gap: 16, fontSize: 14, color: '#64748b' }}>
+                          <span><strong style={{ color: '#fff' }}>{cat.skus}</strong> SKUs</span>
+                          <span><strong style={{ color: '#fff' }}>{cat.percent}%</strong> inventáře</span>
+                        </div>
+                      </div>
+                      <div style={{ color: '#64748b' }}>
+                        {expandedCategory === cat.id ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                      </div>
                     </div>
-                    <p className="text-xs text-slate-500 mb-2">{gap.description}</p>
-                    <p className="text-xs text-emerald-400">→ {gap.solution}</p>
+
+                    {expandedCategory === cat.id && (
+                      <div style={{ marginTop: 24, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+                          <div>
+                            <div className="section-title">Podkategorie</div>
+                            {cat.subcategories.map((sub, i) => (
+                              <div key={i} style={{
+                                padding: '10px 14px',
+                                background: 'rgba(255,255,255,0.03)',
+                                borderRadius: 8,
+                                marginBottom: 8,
+                                fontSize: 14,
+                                borderLeft: `3px solid ${cat.color}`
+                              }}>
+                                {sub}
+                              </div>
+                            ))}
+                          </div>
+                          <div>
+                            <div className="section-title">Hlavní značky</div>
+                            {cat.brands.map((brand, i) => (
+                              <div key={i} style={{
+                                padding: '10px 14px',
+                                background: 'rgba(255,255,255,0.03)',
+                                borderRadius: 8,
+                                marginBottom: 8,
+                                fontSize: 14
+                              }}>
+                                {brand}
+                              </div>
+                            ))}
+                          </div>
+                          <div>
+                            <div className="section-title">Zákaznický výzkum</div>
+                            <div style={{
+                              padding: 16,
+                              background: `${cat.color}10`,
+                              border: `1px solid ${cat.color}30`,
+                              borderRadius: 12,
+                              fontSize: 14,
+                              lineHeight: 1.7,
+                              color: '#94a3b8'
+                            }}>
+                              {cat.research}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
+          )}
 
+          {/* Filters Section */}
+          {activeSection === 'filters' && (
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <AlertTriangle size={20} className="text-amber-400" />
-                <h3 className="text-xl font-semibold">Produktové mezery – VYŽADUJÍ AKCI</h3>
-              </div>
-              <div className="space-y-3">
-                {productGaps.map((gap, i) => (
-                  <div key={i} className={`p-4 rounded-xl border ${
-                    gap.priority === 'critical' ? 'bg-red-500/5 border-red-500/20' : 'bg-amber-500/5 border-amber-500/20'
-                  }`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${
-                        gap.priority === 'critical' ? 'bg-red-500/20 text-red-300' : 'bg-amber-500/20 text-amber-300'
-                      }`}>
-                        {gap.priority === 'critical' ? '🚨 Kritické' : '⚠️ Důležité'}
-                      </span>
-                      <span className="font-medium">{gap.title}</span>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Sekundární filtry</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                Po výběru hlavní kategorie zobrazit relevantní filtry
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+                {filters.map((filter, i) => (
+                  <div key={i} className="category-card">
+                    <div className="section-title">{filter.name}</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 12 }}>
+                      {filter.options.map((opt, j) => (
+                        <span key={j} className="filter-tag">{opt}</span>
+                      ))}
                     </div>
-                    <p className="text-sm text-slate-500 mb-1">{gap.description}</p>
-                    <p className="text-sm text-blue-400">→ {gap.action}</p>
                   </div>
                 ))}
               </div>
+
+              <div style={{ marginTop: 48 }}>
+                <div className="section-title">Příklad použití filtrů</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginTop: 16 }}>
+                  <div className="stat-card" style={{ textAlign: 'left', padding: 24 }}>
+                    <div style={{ fontSize: 14, color: '#64748b', marginBottom: 8 }}>Zákazník hledá:</div>
+                    <div style={{ fontWeight: 600, marginBottom: 16 }}>"Lepidlo na velkoformát do koupelny"</div>
+                    <div style={{ fontSize: 13 }}>
+                      <div style={{ marginBottom: 4 }}>→ Kategorie: <span style={{ color: '#3b82f6' }}>Lepidla na obklady</span></div>
+                      <div style={{ marginBottom: 4 }}>→ Flexibilita: <span style={{ color: '#10b981' }}>S1/S2</span></div>
+                      <div>→ Aplikace: <span style={{ color: '#8b5cf6' }}>Mokré prostory</span></div>
+                    </div>
+                  </div>
+                  <div className="stat-card" style={{ textAlign: 'left', padding: 24 }}>
+                    <div style={{ fontSize: 14, color: '#64748b', marginBottom: 8 }}>Zákazník hledá:</div>
+                    <div style={{ fontWeight: 600, marginBottom: 16 }}>"Barevná spára pro designovou koupelnu"</div>
+                    <div style={{ fontSize: 13 }}>
+                      <div style={{ marginBottom: 4 }}>→ Kategorie: <span style={{ color: '#8b5cf6' }}>Spárovací hmoty</span></div>
+                      <div style={{ marginBottom: 4 }}>→ Chemie: <span style={{ color: '#f59e0b' }}>Epoxidové</span></div>
+                      <div>→ Barvy: <span style={{ color: '#ec4899' }}>Designové (45+)</span></div>
+                    </div>
+                  </div>
+                  <div className="stat-card" style={{ textAlign: 'left', padding: 24 }}>
+                    <div style={{ fontSize: 14, color: '#64748b', marginBottom: 8 }}>Zákazník hledá:</div>
+                    <div style={{ fontWeight: 600, marginBottom: 16 }}>"Rychlá oprava podlahy v garáži"</div>
+                    <div style={{ fontSize: 13 }}>
+                      <div style={{ marginBottom: 4 }}>→ Kategorie: <span style={{ color: '#f97316' }}>Průmyslové podlahy</span></div>
+                      <div style={{ marginBottom: 4 }}>→ Typ: <span style={{ color: '#06b6d4' }}>Garážové systémy</span></div>
+                      <div>→ Zpracování: <span style={{ color: '#ef4444' }}>Rychletuhnoucí</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Business Impact */}
-        {activeSection === 'impact' && (
-          <div className="space-y-8">
-            <h2 className="text-3xl font-bold">Business Impact</h2>
+          {/* Gap Analysis Section */}
+          {activeSection === 'gaps' && (
+            <div>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Gap analýza</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                Strukturální mezery (opraveny reorganizací) vs. produktové mezery (vyžadují akci)
+              </p>
 
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { title: "Zákaznická zkušenost", items: ["Rychlejší nalezení", "Lepší cross-selling", "140+ barev viditelných"] },
-                { title: "Business přínosy", items: ["Vyšší konverze", "Vyšší AOV", "Lepší retence"] },
-                { title: "SEO & Marketing", items: ["Lepší vyhledávání", "Cílenější reklamy", "Content příležitosti"] }
-              ].map((section, i) => (
-                <div key={i} className="p-5 bg-slate-800/50 border border-slate-700/50 rounded-2xl">
-                  <div className="text-[10px] tracking-widest text-slate-500 font-mono mb-3">{section.title}</div>
-                  {section.items.map((item, j) => (
-                    <div key={j} className="flex items-center gap-2 text-sm mb-2">
-                      <CheckCircle size={14} className="text-emerald-400" />
-                      {item}
+              <div style={{ marginBottom: 48 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                  <CheckCircle size={24} color="#10b981" />
+                  <h3 style={{ fontSize: 24, fontWeight: 600 }}>Strukturální mezery – OPRAVENO</h3>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+                  {structuralGaps.map((gap, i) => (
+                    <div key={i} className="gap-card">
+                      <div
+                        style={{ padding: 20, cursor: 'pointer' }}
+                        onClick={() => setExpandedGap(expandedGap === `s${i}` ? null : `s${i}`)}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <CheckCircle size={18} color="#10b981" />
+                            <span style={{ fontWeight: 600 }}>{gap.title}</span>
+                          </div>
+                          {expandedGap === `s${i}` ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
+                        </div>
+                      </div>
+                      {expandedGap === `s${i}` && (
+                        <div style={{ padding: '0 20px 20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                          <div style={{ paddingTop: 16 }}>
+                            <div style={{ fontSize: 14, color: '#ef4444', marginBottom: 8 }}>Problém:</div>
+                            <p style={{ fontSize: 14, color: '#94a3b8', marginBottom: 16 }}>{gap.description}</p>
+                            <div style={{ fontSize: 14, color: '#10b981', marginBottom: 8 }}>Řešení:</div>
+                            <p style={{ fontSize: 14, color: '#94a3b8' }}>{gap.solution}</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-5 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-                <div className="flex items-center gap-2 mb-3 text-emerald-400">
-                  <CheckCircle size={18} /> <span className="font-semibold">Okamžitě</span>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                  <AlertTriangle size={24} color="#f59e0b" />
+                  <h3 style={{ fontSize: 24, fontWeight: 600 }}>Produktové mezery – VYŽADUJÍ AKCI</h3>
                 </div>
-                {["Průmyslové podlahy (35)", "Spárovací hmoty (180)", "Silikony (75)", "Přírodní kámen (55)"].map((item, i) => (
-                  <div key={i} className="text-sm text-slate-400 mb-1">• {item}</div>
-                ))}
-              </div>
-              <div className="p-5 bg-amber-500/10 border border-amber-500/30 rounded-2xl">
-                <div className="flex items-center gap-2 mb-3 text-amber-400">
-                  <AlertTriangle size={18} /> <span className="font-semibold">Vyžaduje akci</span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  {productGaps.map((gap, i) => (
+                    <div key={i} className="gap-card">
+                      <div
+                        style={{ padding: 20, cursor: 'pointer' }}
+                        onClick={() => setExpandedGap(expandedGap === `p${i}` ? null : `p${i}`)}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <span className="badge" style={{
+                              background: gap.priority === 'critical' ? 'rgba(239,68,68,0.2)' : 'rgba(245,158,11,0.2)',
+                              color: gap.priority === 'critical' ? '#fca5a5' : '#fcd34d'
+                            }}>
+                              {gap.priority === 'critical' ? 'Kritické' : 'Důležité'}
+                            </span>
+                            <span style={{ fontWeight: 600 }}>{gap.title}</span>
+                          </div>
+                          {expandedGap === `p${i}` ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
+                        </div>
+                      </div>
+                      {expandedGap === `p${i}` && (
+                        <div style={{ padding: '0 20px 20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                          <div style={{ paddingTop: 16 }}>
+                            <div style={{ fontSize: 14, color: '#64748b', marginBottom: 8 }}>Současný stav:</div>
+                            <p style={{ fontSize: 14, color: '#94a3b8', marginBottom: 16 }}>{gap.description}</p>
+                            <div style={{ fontSize: 14, color: '#3b82f6', marginBottom: 8 }}>Doporučená akce:</div>
+                            <p style={{ fontSize: 14, color: '#94a3b8' }}>{gap.action}</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
-                {["UFH badging", "Malá balení", "Low-VOC", "Bundle kity", "Digitální průvodci"].map((item, i) => (
-                  <div key={i} className="text-sm text-slate-400 mb-1">• {item}</div>
-                ))}
               </div>
             </div>
-          </div>
-        )}
-      </main>
+          )}
+
+          {/* Benchmark Section */}
+          {activeSection === 'benchmark' && (
+            <div>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Benchmark: Konkurenční návrh</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                Srovnání konkurenčního návrhu s naší strukturou validovanou výzkumem
+              </p>
+
+              {/* Summary Box */}
+              <div style={{ padding: 24, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 16, marginBottom: 32 }}>
+                <div className="section-title" style={{ color: '#fca5a5' }}>SHRNUTÍ</div>
+                <h3 style={{ fontSize: 20, fontWeight: 600, marginBottom: 12, color: '#fca5a5' }}>
+                  56% inventáře špatně organizováno v konkurenčním návrhu
+                </h3>
+                <p style={{ color: '#94a3b8' }}>
+                  Konkurenční struktura zachovává produktově-centrický přístup, který neřeší klíčové problémy zákaznického objevování produktů identifikované ve výzkumu.
+                </p>
+              </div>
+
+              {/* Critical Flaws */}
+              <div className="section-title" style={{ marginBottom: 16 }}>KRITICKÉ NEDOSTATKY KONKURENČNÍHO NÁVRHU</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 32 }}>
+                {[
+                  {
+                    title: "Průmyslové podlahy CHYBÍ",
+                    detail: "35 SKUs (5%) Sikafloor, Mapecoat kompletně neviditelné",
+                    research: "95% zákazníků hledá 'vysokou pevnost pro intenzivní provoz'",
+                    severity: "critical"
+                  },
+                  {
+                    title: "Silikony smíchané s tmely",
+                    detail: "75 SKUs (10%) + 45 barevných variant schováno v 'Tmely'",
+                    research: "90% priorita: 'Vlhkoodolné sestavy v mokrých zónách'",
+                    severity: "critical"
+                  },
+                  {
+                    title: "Spárovací hmoty nevyzdviženy",
+                    detail: "180 SKUs (24%) = NEJVĚTŠÍ kategorie uprostřed seznamu",
+                    research: "80% priorita: 'Estetické povrchy bez skvrn'",
+                    severity: "critical"
+                  },
+                  {
+                    title: "Přírodní kámen rozptýlen",
+                    detail: "55 SKUs Bellinzoni/Tenax bez dedikované kategorie",
+                    research: "70% priorita: 'Ochrana před obarvením'",
+                    severity: "critical"
+                  },
+                  {
+                    title: "Hardware zahrnut",
+                    detail: "75 SKUs profilů (10%) znečišťuje kategorii chemie",
+                    research: "Nesouvisí s výzkumem stavební chemie",
+                    severity: "warning"
+                  },
+                  {
+                    title: "Třídy flexibility generické",
+                    detail: "'Vysoce flexibilní' místo profesionálního S1/S2",
+                    research: "100% priorita: 'Tolerance pohybu podkladu'",
+                    severity: "warning"
+                  }
+                ].map((flaw, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      padding: 20,
+                      background: flaw.severity === 'critical' ? 'rgba(239,68,68,0.1)' : 'rgba(245,158,11,0.1)',
+                      border: `1px solid ${flaw.severity === 'critical' ? 'rgba(239,68,68,0.3)' : 'rgba(245,158,11,0.3)'}`,
+                      borderRadius: 12
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                      <span style={{
+                        fontSize: 12,
+                        padding: '4px 8px',
+                        borderRadius: 4,
+                        background: flaw.severity === 'critical' ? 'rgba(239,68,68,0.2)' : 'rgba(245,158,11,0.2)',
+                        color: flaw.severity === 'critical' ? '#fca5a5' : '#fcd34d'
+                      }}>
+                        {flaw.severity === 'critical' ? 'KRITICKÉ' : 'PROBLÉM'}
+                      </span>
+                    </div>
+                    <div style={{ fontWeight: 600, marginBottom: 8 }}>{flaw.title}</div>
+                    <div style={{ fontSize: 14, color: '#94a3b8', marginBottom: 8 }}>{flaw.detail}</div>
+                    <div style={{ fontSize: 13, color: '#64748b', fontStyle: 'italic' }}>Výzkum: {flaw.research}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Side by Side Comparison */}
+              <div className="section-title" style={{ marginBottom: 16 }}>SROVNÁNÍ STRUKTUR</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
+                <div style={{ padding: 24, background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                    <AlertTriangle size={20} color="#ef4444" />
+                    <span style={{ fontWeight: 600, color: '#fca5a5' }}>Konkurenční návrh</span>
+                  </div>
+                  <div style={{ fontSize: 14, color: '#94a3b8' }}>
+                    {[
+                      "Lepidla",
+                      "Penetrace/Přísady",
+                      "Samonivelační hmoty",
+                      "Hydroizolace",
+                      "Tmely (silikony + PU + MS smíchané)",
+                      "Spárovací hmoty (uprostřed)",
+                      "Čištění/Impregnace",
+                      "Profily a příslušenství",
+                      "Průmyslové podlahy CHYBÍ",
+                      "Přírodní kámen CHYBÍ"
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        padding: '8px 0',
+                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                        color: item.includes('CHYBÍ') ? '#ef4444' : '#94a3b8'
+                      }}>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ padding: 24, background: 'rgba(16,185,129,0.05)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                    <CheckCircle size={20} color="#10b981" />
+                    <span style={{ fontWeight: 600, color: '#34d399' }}>Naše struktura (validovaná)</span>
+                  </div>
+                  <div style={{ fontSize: 14, color: '#94a3b8' }}>
+                    {[
+                      "1. Lepidla na obklady (65 SKUs)",
+                      "2. Spárovací hmoty * (180 SKUs, 24%)",
+                      "3. Sanitární silikony (75 SKUs)",
+                      "4. Pružné tmely (35 SKUs)",
+                      "5. Hydroizolace (90 SKUs)",
+                      "6. Příprava podkladu (100 SKUs)",
+                      "7. Průmyslové podlahy NEW (35 SKUs)",
+                      "8. Přírodní kámen (55 SKUs)",
+                      "9-11. Podlahoviny, Čističe, Doplňky",
+                      "→ Hardware → Stavební nářadí"
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        padding: '8px 0',
+                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                        color: item.includes('*') || item.includes('NEW') ? '#34d399' : '#94a3b8'
+                      }}>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Customer Journey Example */}
+              <div className="section-title" style={{ marginBottom: 16 }}>PŘÍKLAD: ZÁKAZNICKÁ CESTA</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <div style={{ padding: 20, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 12 }}>
+                  <div style={{ fontSize: 14, color: '#fca5a5', marginBottom: 8 }}>Konkurence: Zákazník hledá garážový nátěr</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: '#64748b' }}>
+                    Chytré Materiály → ??? → ??? → Nenalezeno
+                  </div>
+                  <div style={{ fontSize: 13, color: '#94a3b8', marginTop: 8 }}>
+                    Sikafloor Garage systém neviditelný
+                  </div>
+                </div>
+                <div style={{ padding: 20, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 12 }}>
+                  <div style={{ fontSize: 14, color: '#34d399', marginBottom: 8 }}>Naše struktura: Stejný zákazník</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: '#94a3b8' }}>
+                    → Průmyslové podlahy → Garážové systémy → Sikafloor
+                  </div>
+                  <div style={{ fontSize: 13, color: '#94a3b8', marginTop: 8 }}>
+                    Jasná cesta od potřeby k produktu
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Line */}
+              <div style={{ marginTop: 32, padding: 24, background: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(59,130,246,0.1))', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 16 }}>
+                <div className="section-title">ZÁVĚR</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, marginTop: 16 }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 32, fontWeight: 700, color: '#ef4444' }}>56%</div>
+                    <div style={{ fontSize: 13, color: '#64748b' }}>inventáře špatně<br/>v konkurenčním návrhu</div>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 32, fontWeight: 700, color: '#10b981' }}>25</div>
+                    <div style={{ fontSize: 13, color: '#64748b' }}>zákaznických cílů<br/>v naší validaci</div>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 32, fontWeight: 700, color: '#3b82f6' }}>742</div>
+                    <div style={{ fontSize: 13, color: '#64748b' }}>SKUs analyzováno<br/>v inventáři</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Business Impact Section */}
+          {activeSection === 'impact' && (
+            <div>
+              <h2 style={{ fontSize: 36, fontWeight: 700, marginBottom: 16 }}>Business Impact</h2>
+              <p style={{ fontSize: 18, color: '#94a3b8', marginBottom: 48 }}>
+                Očekávané přínosy reorganizace
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 48 }}>
+                {[
+                  { title: "Zákaznická zkušenost", items: ["Rychlejší nalezení produktů", "Lepší cross-selling", "Méně rozhodovací paralýzy", "140+ barevných variant viditelných"] },
+                  { title: "Business přínosy", items: ["Vyšší konverzní poměr", "Vyšší průměrná objednávka", "Lepší retence zákazníků", "Konkurenční diferenciace"] },
+                  { title: "SEO & Marketing", items: ["Lepší vyhledávací výkon", "Cílenější reklamy", "Content marketing příležitosti", "Kategorie = search queries"] }
+                ].map((section, i) => (
+                  <div key={i} className="stat-card" style={{ textAlign: 'left' }}>
+                    <div className="section-title">{section.title}</div>
+                    <div style={{ marginTop: 16 }}>
+                      {section.items.map((item, j) => (
+                        <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                          <CheckCircle size={16} color="#10b981" />
+                          <span style={{ fontSize: 14 }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="highlight-box" style={{ marginBottom: 48 }}>
+                <div className="section-title">Klíčové metriky inventáře</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, marginTop: 24 }}>
+                  {[
+                    { label: "Spárovací hmoty", value: "24%", detail: "Největší kategorie – správně na pozici #2" },
+                    { label: "Barevné varianty", value: "140+", detail: "Grouts + silikony nyní viditelné" },
+                    { label: "Hardware k přesunu", value: "75 SKUs", detail: "10% inventáře do jiné kategorie" }
+                  ].map((metric, i) => (
+                    <div key={i} style={{ textAlign: 'center' }}>
+                      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 36, fontWeight: 700, color: '#8b5cf6' }}>{metric.value}</div>
+                      <div style={{ fontWeight: 600, marginTop: 8 }}>{metric.label}</div>
+                      <div style={{ fontSize: 13, color: '#64748b', marginTop: 4 }}>{metric.detail}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="section-title">Co se změní okamžitě vs. co vyžaduje další kroky</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 24 }}>
+                  <div style={{ padding: 24, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 16 }}>
+                    <h4 style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, color: '#34d399' }}>
+                      <CheckCircle size={20} /> Okamžitě (bez nových produktů)
+                    </h4>
+                    {[
+                      "Průmyslové podlahy viditelné (35 SKUs)",
+                      "Spárovací hmoty reorganizované (180 SKUs)",
+                      "Silikony oddělené (75 SKUs)",
+                      "Přírodní kámen dedikovaný (55 SKUs)",
+                      "Hardware identifikován k přesunu (75 SKUs)"
+                    ].map((item, i) => (
+                      <div key={i} style={{ fontSize: 14, marginBottom: 8, paddingLeft: 28 }}>• {item}</div>
+                    ))}
+                  </div>
+                  <div style={{ padding: 24, background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 16 }}>
+                    <h4 style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, color: '#fcd34d' }}>
+                      <AlertTriangle size={20} /> Vyžaduje akci
+                    </h4>
+                    {[
+                      { item: "UFH badging", effort: "Nízká náročnost" },
+                      { item: "Malá retail balení", effort: "Střední náročnost" },
+                      { item: "Low-VOC viditelnost", effort: "Nízká náročnost" },
+                      { item: "Bundle kity", effort: "Nízká náročnost" },
+                      { item: "Digitální průvodci", effort: "Střední náročnost" }
+                    ].map((item, i) => (
+                      <div key={i} style={{ fontSize: 14, marginBottom: 8, display: 'flex', justifyContent: 'space-between' }}>
+                        <span style={{ paddingLeft: 28 }}>• {item.item}</span>
+                        <span style={{ color: '#64748b', fontSize: 12 }}>{item.effort}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+        </main>
+      </div>
     </div>
   );
 }
