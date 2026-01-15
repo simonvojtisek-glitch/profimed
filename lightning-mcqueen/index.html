@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning McQueen - Ka-Chow!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #c41e3a 0%, #ff6b35 50%, #ffd700 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #c41e3a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .catchphrase {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .image-container {
+            margin: 2rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+        }
+
+        .info {
+            background: linear-gradient(135deg, #c41e3a, #ff6b35);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .info h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .stat {
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #c41e3a;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .racing-stripe {
+            height: 8px;
+            background: linear-gradient(90deg, #c41e3a 0%, #ffd700 50%, #c41e3a 100%);
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lightning McQueen</h1>
+        <p class="catchphrase">"Ka-Chow!"</p>
+
+        <div class="racing-stripe"></div>
+
+        <div class="image-container">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/LightningMcQueenCars3.png"
+                 alt="Lightning McQueen - the famous red race car from Disney Pixar's Cars">
+        </div>
+
+        <div class="info">
+            <h2>The World's Fastest Race Car</h2>
+            <p>Lightning McQueen is a anthropomorphic stock car in the animated Pixar film Cars,
+               its sequels Cars 2 and Cars 3. He is a red race car with the number 95 painted on his sides,
+               representing his birth year 1995.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">#95</div>
+                <div class="stat-label">Racing Number</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Top Speed (mph)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Piston Cups</div>
+            </div>
+        </div>
+
+        <div class="racing-stripe"></div>
+
+        <p class="footer">Speed. I am Speed.</p>
+    </div>
+</body>
+</html>
