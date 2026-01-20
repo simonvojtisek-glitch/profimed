@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profimed × Outfindo | PDP Content System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        profimed: {
+                            DEFAULT: '#0066CC',
+                            light: '#3399FF',
+                            dark: '#004C99',
+                            accent: '#00AEEF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .glow-profimed { box-shadow: 0 0 20px rgba(0, 102, 204, 0.3); }
+        .glow-outfindo { box-shadow: 0 0 20px rgba(0, 180, 161, 0.3); }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111118] to-[#0a1a1a] text-white">
+    <div class="max-w-5xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="flex items-center gap-2 px-4 py-2 bg-profimed/5 rounded-lg border border-profimed/20">
+                    <span class="text-profimed font-bold text-xl tracking-tight">Profimed</span>
+                </div>
+                <span class="text-slate-600 text-2xl font-light">×</span>
+                <div class="flex items-center gap-2 px-4 py-2 bg-outfindo/5 rounded-lg border border-outfindo/20">
+                    <span class="text-outfindo font-bold text-xl tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-2">PDP Content System</h1>
+            <p class="text-xl text-slate-400">Consumer Conversion & LLM Discovery</p>
+            <div class="flex gap-2 mt-4">
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Elektrické zubní kartáčky</span>
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Sonické & magnetické</span>
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Dětské kartáčky</span>
+            </div>
+        </div>
+
+        <!-- The Challenge -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-profimed/20 flex items-center justify-center text-profimed">!</span>
+                Výzva: Perplexity Paradox
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50">
+                <p class="text-slate-300 text-lg mb-4">
+                    LLM shopping agenti (ChatGPT Shopping, Google Gemini, Perplexity) potřebují <strong class="text-white">strukturovaná data</strong> pro filtrování a <strong class="text-white">sémantický kontext</strong> pro doporučování.
+                </p>
+                <div class="grid grid-cols-2 gap-6 mt-6">
+                    <div class="bg-profimed/5 rounded-xl p-5 border border-profimed/20">
+                        <h3 class="font-bold text-profimed mb-3">✗ Problém</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li>• Profimed má dobré technické parametry (35+ atributů)</li>
+                            <li>• Ale chybí <span class="text-profimed">sémantická vrstva</span> — pro koho je kartáček ideální?</li>
+                            <li>• Zákazník neví: "Je to pro citlivé dásně?" "Zvládne to mé dítě?"</li>
+                            <li>• LLM agenti nemohou produkty správně doporučit</li>
+                        </ul>
+                    </div>
+                    <div class="bg-outfindo/5 rounded-xl p-5 border border-outfindo/20">
+                        <h3 class="font-bold text-outfindo mb-3">✓ Řešení</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li>• <span class="text-outfindo">Blueprint</span>: 6-vrstvá strukturovaná data</li>
+                            <li>• <span class="text-outfindo">Description</span>: 7 sémantických bloků</li>
+                            <li>• <span class="text-outfindo">MCL</span>: Merchant trust layer</li>
+                            <li>• LLM agenti mohou najít, porovnat, doporučit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two-Part Architecture -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">⚡</span>
+                Architektura: Blueprint + Description + MCL
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <!-- Blueprint -->
+                <div class="bg-gradient-to-br from-outfindo/10 to-outfindo-dark/10 rounded-2xl p-6 border border-outfindo/30 hover:glow-outfindo transition-all">
+                    <div class="text-3xl mb-3">🗂️</div>
+                    <h3 class="font-bold text-outfindo mb-2">Blueprint</h3>
+                    <p class="text-slate-400 text-sm mb-4">Strukturovaná data pro strojové zpracování</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                            <span class="text-slate-500">L1: Identity</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-outfindo"></span>
+                            <span class="text-outfindo">L2: Customer Goals ⭐</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="text-emerald-400">L3: Core Specifications</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+                            <span class="text-violet-400">L4: Physical Parameters</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            <span class="text-amber-400">L5: Features & Technology</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                            <span class="text-rose-400">L6: Constraints & Boundaries</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-6 border border-slate-600/30 hover:border-slate-500/50 transition-all">
+                    <div class="text-3xl mb-3">📝</div>
+                    <h3 class="font-bold text-slate-200 mb-2">Description</h3>
+                    <p class="text-slate-400 text-sm mb-4">Sémantický obsah pro lidské pochopení</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D1</span>
+                            <span class="text-slate-400">Co přesně kupuji?</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D2</span>
+                            <span class="text-slate-400">Hodí se to na moji situaci?</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D3</span>
+                            <span class="text-slate-400">Proč je to lepší?</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D4</span>
+                            <span class="text-slate-400">Stačí mi ty parametry?</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D5</span>
+                            <span class="text-slate-400">Proč právě toto?</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D6</span>
+                            <span class="text-slate-400">Zvládnu to?</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-5 h-5 rounded bg-slate-700 flex items-center justify-center text-slate-400">D7</span>
+                            <span class="text-slate-400">Co by mě mohlo překvapit?</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MCL -->
+                <div class="bg-gradient-to-br from-amber-900/20 to-amber-950/20 rounded-2xl p-6 border border-amber-700/30 hover:border-amber-600/50 transition-all">
+                    <div class="text-3xl mb-3">🏪</div>
+                    <h3 class="font-bold text-amber-400 mb-2">MCL</h3>
+                    <p class="text-slate-400 text-sm mb-4">Merchant trust pro nákupní rozhodnutí</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="text-slate-400">🏷️ Identity & Trust</div>
+                        <div class="text-slate-400">🚚 Logistics & Delivery</div>
+                        <div class="text-slate-400">↩️ Returns & Warranty</div>
+                        <div class="text-slate-400">⭐ Consensus & Reviews</div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-amber-700/30">
+                        <div class="text-slate-400 text-xs">Profimed specifics:</div>
+                        <div class="text-slate-500 text-xs mt-1">• Osobní odběr zdarma</div>
+                        <div class="text-slate-500 text-xs">• Doprava nad 990 Kč zdarma</div>
+                        <div class="text-slate-500 text-xs">• Odborná péče</div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm mt-4 text-center">
+                LLM použije Blueprint k <strong class="text-white">nalezení</strong> produktu, Description k <strong class="text-white">ověření</strong> doporučení, MCL k <strong class="text-white">výběru</strong> prodejce.
+            </p>
+        </section>
+
+        <!-- Electric Toothbrush-Specific Considerations -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-profimed/20 flex items-center justify-center">🪥</span>
+                Specifika pro elektrické kartáčky
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-bold text-slate-300 mb-3">L2: Customer Goals — Klíčový diferenciátor</h3>
+                    <p class="text-slate-500 text-sm mb-3">Outfindo výzkum odhalil 26 zákaznických cílů. Top 5:</p>
+                    <ul class="space-y-1 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2">
+                            <span class="text-rose-400">10</span>
+                            <span>Bezpečnost pro děti (ochrana malých úst)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-orange-400">9</span>
+                            <span>Šetrné čištění pro citlivé zuby/dásně</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-orange-400">9</span>
+                            <span>Zábavné čištění pro děti (gamifikace)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-orange-400">9</span>
+                            <span>Klinicky ověřená účinnost</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-yellow-400">8</span>
+                            <span>Personalizace režimů pro rodinu</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-bold text-slate-300 mb-3">L6: Constraints & Boundaries</h3>
+                    <p class="text-slate-500 text-sm mb-3">Anti-halucinační vrstva — kritická pro LLM:</p>
+                    <ul class="space-y-1 text-slate-400 text-sm">
+                        <li>• <span class="font-mono text-xs bg-slate-800 px-1 rounded">suitable_for[]</span> — Vhodné pro: citlivé dásně, děti 3+</li>
+                        <li>• <span class="font-mono text-xs bg-slate-800 px-1 rounded">not_suitable_for[]</span> — Nevhodné pro: batolata, bez dohledu</li>
+                        <li>• <span class="font-mono text-xs bg-slate-800 px-1 rounded">this_is_not[]</span> — Toto NENÍ: náhrada za zubní nit</li>
+                        <li>• <span class="font-mono text-xs bg-slate-800 px-1 rounded">requires[]</span> — Vyžaduje: nabíjecí základnu, náhradní hlavice</li>
+                        <li>• <span class="font-mono text-xs bg-slate-800 px-1 rounded">incompatible_with[]</span> — Nekompatibilní s: hlavicemi jiných značek</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pain Points Alert -->
+            <div class="mt-4 bg-rose-950/30 rounded-xl p-5 border border-rose-700/30">
+                <h3 class="font-bold text-rose-400 mb-3 flex items-center gap-2">
+                    <span>⚠️</span> Top Pain Points z výzkumu (nutno adresovat v D7)
+                </h3>
+                <div class="grid grid-cols-3 gap-4 text-sm">
+                    <div>
+                        <div class="text-rose-300 font-medium">99% důležitost</div>
+                        <div class="text-slate-400">Štětinky příliš tvrdé pro dásně</div>
+                    </div>
+                    <div>
+                        <div class="text-rose-300 font-medium">85% důležitost</div>
+                        <div class="text-slate-400">Aplikace vyžaduje složité nastavení</div>
+                    </div>
+                    <div>
+                        <div class="text-rose-300 font-medium">76% důležitost</div>
+                        <div class="text-slate-400">Nejasné pokyny pro fluorid u dětí</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Research Foundation -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📊</span>
+                Základ: Outfindo Customer Research
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-outfindo/20">
+                <p class="text-slate-300 mb-4">Framework je postaven na výzkumu <strong class="text-white">26 zákaznických cílů</strong> a <strong class="text-white">8 profilů</strong> kupujících elektrických kartáčků:</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium text-slate-400 mb-3 text-sm">Top 5 zákaznických cílů</h4>
+                        <ol class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center">1</span>
+                                <span class="text-slate-300">Bezpečnost pro dětské ústa</span>
+                                <span class="text-xs text-rose-400 ml-auto">P10</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center">2</span>
+                                <span class="text-slate-300">Šetrné čištění citlivých zubů</span>
+                                <span class="text-xs text-orange-400 ml-auto">P9</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center">3</span>
+                                <span class="text-slate-300">Zábavné čištění pro děti</span>
+                                <span class="text-xs text-orange-400 ml-auto">P9</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center">4</span>
+                                <span class="text-slate-300">Klinicky ověřená účinnost</span>
+                                <span class="text-xs text-orange-400 ml-auto">P9</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center">5</span>
+                                <span class="text-slate-300">Personalizace pro rodinu</span>
+                                <span class="text-xs text-yellow-400 ml-auto">P8</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-slate-400 mb-3 text-sm">Zákaznické profily</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-rose-900/30 text-rose-300 rounded text-xs border border-rose-700/30">Pediatric Safety Parent (18-25%)</span>
+                            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 rounded text-xs border border-amber-700/30">Gamification-First Parent (8-12%)</span>
+                            <span class="px-2 py-1 bg-blue-900/30 text-blue-300 rounded text-xs border border-blue-700/30">Sensitive-Teeth Seeker (12-18%)</span>
+                            <span class="px-2 py-1 bg-emerald-900/30 text-emerald-300 rounded text-xs border border-emerald-700/30">Clinical Performance Seeker (10-15%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Practical Value Shopper (15-20%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Tech-Privacy Balanced User (6-10%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Traveler & On-the-Go (5-9%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Accessibility-First User (4-7%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current State Assessment -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400">📋</span>
+                Aktuální stav: Profimed Blueprint
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-amber-500/20">
+                <div class="grid grid-cols-4 gap-4 mb-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-outfindo">35+</div>
+                        <div class="text-xs text-slate-500">Technických parametrů</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-amber-400">~70%</div>
+                        <div class="text-xs text-slate-500">L3-L5 Coverage</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-rose-400">~10%</div>
+                        <div class="text-xs text-slate-500">L2 Goals Coverage</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-rose-400">0/7</div>
+                        <div class="text-xs text-slate-500">Description Blocks</div>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 rounded-xl p-4">
+                    <h4 class="font-medium text-slate-300 mb-3 text-sm">Existující silné stránky</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Technologie čištění</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Displej na zařízení</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Úroveň jemnosti</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Zábavnost pro děti</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Funguje bez telefonu</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Vhodnost pro cestování</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Péče o dásně</span>
+                        <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded text-xs font-mono">Jednoduchost používání</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📦</span>
+                Co Outfindo dodá
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-outfindo/50 transition-colors">
+                    <div class="text-2xl mb-3">1️⃣</div>
+                    <h3 class="font-bold mb-2">Blueprint Enhancement</h3>
+                    <p class="text-slate-500 text-sm">Rozšíření L2 (Customer Goals) a L6 (Constraints) vrstev pro LLM discovery</p>
+                    <div class="mt-3 pt-3 border-t border-slate-700">
+                        <div class="text-xs text-slate-600">Nové fieldy:</div>
+                        <div class="text-xs text-outfindo font-mono mt-1">target_user_types[], problems_solved[], suitable_contexts[]</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-outfindo/50 transition-colors">
+                    <div class="text-2xl mb-3">2️⃣</div>
+                    <h3 class="font-bold mb-2">Description Content</h3>
+                    <p class="text-slate-500 text-sm">7-blokové popisy pro každý produkt, optimalizované pro LLM i zákazníky</p>
+                    <div class="mt-3 pt-3 border-t border-slate-700">
+                        <div class="text-xs text-slate-600">Formát:</div>
+                        <div class="text-xs text-slate-400 mt-1">D1-D7 v češtině, research-grounded, pain-point addressed</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-amber-500/50 transition-colors">
+                    <div class="text-2xl mb-3">3️⃣</div>
+                    <h3 class="font-bold mb-2">MCL Data Pack</h3>
+                    <p class="text-slate-500 text-sm">Merchant trust signály, policy URLs, MCS skóre pro agent readiness</p>
+                    <div class="mt-3 pt-3 border-t border-slate-700">
+                        <div class="text-xs text-slate-600">Schema.org:</div>
+                        <div class="text-xs text-amber-400 font-mono mt-1">MerchantReturnPolicy, OfferShippingDetails</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expected Impact -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">📈</span>
+                Očekávaný dopad
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-gradient-to-br from-emerald-900/20 to-emerald-950/30 rounded-xl p-5 border border-emerald-700/30 text-center">
+                    <div class="text-3xl font-bold text-emerald-400">+40%</div>
+                    <div class="text-sm text-slate-400 mt-1">LLM Discoverability</div>
+                    <div class="text-xs text-slate-500 mt-2">Strukturovaná L2 vrstva umožní AI agentům přesně matchovat zákaznické dotazy</div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-900/20 to-blue-950/30 rounded-xl p-5 border border-blue-700/30 text-center">
+                    <div class="text-3xl font-bold text-blue-400">-25%</div>
+                    <div class="text-sm text-slate-400 mt-1">Bounce Rate</div>
+                    <div class="text-xs text-slate-500 mt-2">D2 blok "Hodí se to na moji situaci?" okamžitě validuje fit</div>
+                </div>
+                <div class="bg-gradient-to-br from-amber-900/20 to-amber-950/30 rounded-xl p-5 border border-amber-700/30 text-center">
+                    <div class="text-3xl font-bold text-amber-400">-15%</div>
+                    <div class="text-sm text-slate-400 mt-1">Returns</div>
+                    <div class="text-xs text-slate-500 mt-2">D7 "Co by mě mohlo překvapit?" nastaví správná očekávání před nákupem</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-profimed font-medium">Profimed</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Content System — Elektrické zubní kartáčky</p>
+            <p class="text-slate-600 text-xs mt-1">Document 1/3: Blueprint Introduction</p>
+        </footer>
+
+    </div>
+</body>
+</html>
