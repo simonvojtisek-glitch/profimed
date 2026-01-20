@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Beards × Outfindo | PDP Example: Pudr SIT & CHILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        angry: {
+                            DEFAULT: '#1a1a1a',
+                            accent: '#c9a227',
+                            gold: '#d4af37',
+                            light: '#333333'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .glow-gold { box-shadow: 0 0 20px rgba(201, 162, 39, 0.15); }
+        .glow-teal { box-shadow: 0 0 20px rgba(0, 180, 161, 0.15); }
+        details summary { cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#0d0d0d] text-white">
+    <div class="max-w-6xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-angry-accent/10 rounded-lg border border-angry-accent/30 glow-gold">
+                    <span class="text-angry-accent font-bold text-lg tracking-tight">Angry Beards</span>
+                </div>
+                <span class="text-slate-600 text-xl font-light">×</span>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-outfindo/5 rounded-lg border border-outfindo/20 glow-teal">
+                    <span class="text-outfindo font-bold text-lg tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold mb-1">PDP Example</h1>
+            <p class="text-slate-400">Kompletní Blueprint (L1-L6) + Description (D1-D7) | Brand Voice: Czech 🇨🇿</p>
+        </div>
+
+        <!-- Product Hero -->
+        <div class="bg-gradient-to-br from-angry-accent/10 via-slate-900/50 to-slate-900/50 rounded-2xl p-8 border border-angry-accent/30 mb-8 glow-gold">
+            <div class="flex items-start gap-8">
+                <div class="w-32 h-32 bg-gradient-to-br from-angry-accent/30 to-angry-light rounded-xl flex items-center justify-center text-6xl shrink-0">🎱</div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-0.5 bg-angry-accent/20 text-angry-accent rounded text-xs font-medium">KULE COLLECTION</span>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">LLM Ready ✓</span>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-2">Pudr na kule SIT & CHILL</h2>
+                    <p class="text-slate-400 text-lg mb-4">Jedno puff a pytel je v suchu</p>
+                    <div class="flex items-baseline gap-4">
+                        <span class="text-3xl font-bold text-angry-accent">299 Kč</span>
+                        <span class="text-outfindo">⭐ 4.9/5 (143 recenzí)</span>
+                        <span class="text-slate-500 text-sm">SKU: AB-BL003-004OG-057-2310</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blueprint Data Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">🗂</span>
+                Blueprint Data (L1-L6)
+            </h2>
+
+            <div class="space-y-4">
+                <!-- L1: Identity -->
+                <details class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden" open>
+                    <summary class="p-4 flex items-center justify-between hover:bg-slate-800/30">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-slate-600/30 flex items-center justify-center text-slate-400 font-mono text-sm">L1</span>
+                            <div>
+                                <span class="font-medium">Identita produktu</span>
+                                <span class="text-slate-500 text-sm ml-2">— Jedinečná identifikace</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-slate-700/50">
+                        <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                            <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                                <div><span class="text-slate-500">brand:</span> <span class="text-angry-accent">"Angry Beards"</span></div>
+                                <div><span class="text-slate-500">product_name:</span> <span class="text-white">"Pudr na kule SIT & CHILL"</span></div>
+                                <div><span class="text-slate-500">sku:</span> <span class="text-white">"AB-BL003-004OG-057-2310"</span></div>
+                                <div><span class="text-slate-500">ean:</span> <span class="text-white">"8594205590579"</span></div>
+                                <div><span class="text-slate-500">product_line:</span> <span class="text-outfindo">"kule"</span></div>
+                                <div><span class="text-slate-500">product_type:</span> <span class="text-outfindo">"pudr"</span></div>
+                                <div class="col-span-2"><span class="text-slate-500">category_path:</span> <span class="text-white">["Kosmetika", "Pánská kosmetika", "Intimní hygiena", "Pudry"]</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L2: Customer Goals - HIGHLIGHT -->
+                <details class="bg-gradient-to-r from-outfindo/10 to-transparent rounded-xl border border-outfindo/30 overflow-hidden" open>
+                    <summary class="p-4 flex items-center justify-between hover:bg-outfindo/10">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-mono text-sm">L2</span>
+                            <div>
+                                <span class="font-medium text-outfindo">Zákaznické cíle</span>
+                                <span class="text-outfindo/70 text-sm ml-2">— ⭐ OUTFINDO UNIQUE | NEW</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-outfindo chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-outfindo/20">
+                        <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="text-slate-500">primary_use:</span>
+                                    <span class="text-outfindo">"denní_hygiena"</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">problems_solved:</span>
+                                    <span class="text-outfindo">["pocení_bez_námahy", "vlhkost_rozkroku", "zápach", "diskomfort_při_sezení"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">target_user_types:</span>
+                                    <span class="text-outfindo">["citlivá_pokožka", "kancelářští_pracovníci", "řidiči", "muži_s_pocením"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">lifestyle_fit:</span>
+                                    <span class="text-outfindo">["kancelářský", "sedavý", "stresový", "cestovatel"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">skin_sensitivity_level:</span>
+                                    <span class="text-outfindo">"všechny_typy"</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">use_frequency:</span>
+                                    <span class="text-outfindo">"denně"</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">use_contexts:</span>
+                                    <span class="text-outfindo">["před_prací", "před_schůzkou", "cestování", "stresové_situace"]</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-outfindo/70 text-xs mt-3">💡 Tato data umožňují LLM matchovat dotazy typu "něco na mokrý pytel při práci v kanclu"</p>
+                    </div>
+                </details>
+
+                <!-- L3: Core Specs -->
+                <details class="bg-slate-900/50 rounded-xl border border-emerald-500/30 overflow-hidden" open>
+                    <summary class="p-4 flex items-center justify-between hover:bg-emerald-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono text-sm">L3</span>
+                            <div>
+                                <span class="font-medium text-emerald-400">Klíčové specifikace</span>
+                                <span class="text-slate-500 text-sm ml-2">— Výkon a účinnost</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-emerald-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-emerald-500/20">
+                        <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                            <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                                <div><span class="text-slate-500">effect_duration_hours:</span> <span class="text-emerald-400">8</span> <span class="text-slate-600">// NEW</span></div>
+                                <div><span class="text-slate-500">absorption_time:</span> <span class="text-emerald-400">"okamžitá"</span></div>
+                                <div><span class="text-slate-500">skin_sensation:</span> <span class="text-emerald-400">"svěží"</span></div>
+                                <div><span class="text-slate-500">scent_strength:</span> <span class="text-emerald-400">"jemná"</span></div>
+                                <div><span class="text-slate-500">scent_profile:</span> <span class="text-white">"pouštní_bouře"</span></div>
+                                <div><span class="text-slate-500">texture:</span> <span class="text-emerald-400">"pudr"</span></div>
+                                <div><span class="text-slate-500">residue_level:</span> <span class="text-emerald-400">"minimální"</span> <span class="text-slate-600">// NEW</span></div>
+                                <div><span class="text-slate-500">color:</span> <span class="text-white">"bílá"</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L4: Physical -->
+                <details class="bg-slate-900/50 rounded-xl border border-violet-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-violet-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 font-mono text-sm">L4</span>
+                            <div>
+                                <span class="font-medium text-violet-400">Fyzické parametry</span>
+                                <span class="text-slate-500 text-sm ml-2">— Balení a formát</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-violet-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-violet-500/20">
+                        <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                            <div class="grid grid-cols-2 gap-x-8 gap-y-2">
+                                <div><span class="text-slate-500">weight_g:</span> <span class="text-violet-400">57</span></div>
+                                <div><span class="text-slate-500">packaging_type:</span> <span class="text-violet-400">"puffer"</span></div>
+                                <div><span class="text-slate-500">packaging_material:</span> <span class="text-white">"plast"</span></div>
+                                <div><span class="text-slate-500">applications_per_pack:</span> <span class="text-violet-400">~60</span> <span class="text-slate-600">// NEW</span></div>
+                                <div><span class="text-slate-500">travel_friendly:</span> <span class="text-violet-400">true</span> <span class="text-slate-600">// NEW</span></div>
+                                <div><span class="text-slate-500">recyclable:</span> <span class="text-white">true</span></div>
+                                <div><span class="text-slate-500">dimensions_mm:</span> <span class="text-white">"75 × 75 × 95"</span></div>
+                                <div><span class="text-slate-500">country_of_origin:</span> <span class="text-white">"Česká republika"</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L5: Features -->
+                <details class="bg-slate-900/50 rounded-xl border border-amber-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-amber-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 font-mono text-sm">L5</span>
+                            <div>
+                                <span class="font-medium text-amber-400">Funkce & technologie</span>
+                                <span class="text-slate-500 text-sm ml-2">— Co to umí</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-amber-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-amber-500/20">
+                        <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                            <div class="space-y-2">
+                                <div><span class="text-slate-500">functions:</span> <span class="text-amber-400">["absorbuje_vlhkost", "neutralizuje_zápach", "zklidňuje_pokožku"]</span></div>
+                                <div><span class="text-slate-500">key_ingredients:</span> <span class="text-white">["talek", "kukuřičný_škrob", "oxid_zinečnatý"]</span></div>
+                                <div><span class="text-slate-500">active_ingredients:</span> <span class="text-white">["allantoín", "bisabolol"]</span></div>
+                                <div><span class="text-slate-500">certifications:</span> <span class="text-amber-400">["dermatologicky_testováno", "vegan", "cruelty_free"]</span></div>
+                                <div><span class="text-slate-500">skin_compatible:</span> <span class="text-amber-400">["všechny_typy", "citlivá"]</span></div>
+                                <div><span class="text-slate-500">ph_balanced:</span> <span class="text-amber-400">true</span> <span class="text-slate-600">// NEW</span></div>
+                                <div><span class="text-slate-500">alcohol_free:</span> <span class="text-amber-400">true</span></div>
+                                <div><span class="text-slate-500">aluminum_free:</span> <span class="text-amber-400">true</span></div>
+                                <div><span class="text-slate-500">paraben_free:</span> <span class="text-amber-400">true</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L6: Safety & Boundaries - CRITICAL NEW -->
+                <details class="bg-gradient-to-r from-rose-500/10 to-transparent rounded-xl border border-rose-500/30 overflow-hidden" open>
+                    <summary class="p-4 flex items-center justify-between hover:bg-rose-500/10">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400 font-mono text-sm">L6</span>
+                            <div>
+                                <span class="font-medium text-rose-400">Omezení & hranice</span>
+                                <span class="text-rose-400/70 text-sm ml-2">— ⚠️ KRITICKÉ PRO AI | NEW</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-rose-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-rose-500/20">
+                        <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="text-slate-500">suitable_for:</span>
+                                    <span class="text-outfindo">["denní_použití", "citlivá_pokožka", "před_prací", "cestování", "sport"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">not_suitable_for:</span>
+                                    <span class="text-rose-400">["otevřené_rány", "podrážděná_pokožka", "sliznice", "děti_pod_12_let"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">this_is_not:</span>
+                                    <span class="text-rose-400">["lubrikant", "antiperspirant", "lék", "dezinfekce"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">requires:</span>
+                                    <span class="text-amber-400">["čistá_pokožka", "suchá_pokožka"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">allergens:</span>
+                                    <span class="text-white">["parfém"]</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500">storage_conditions:</span>
+                                    <span class="text-white">"Skladujte v suchu při pokojové teplotě"</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-rose-400/70 text-xs mt-3">⚠️ Tato data zabraňují LLM doporučit produkt na špatné použití (např. jako lubrikant)</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Description Blocks Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-angry-accent/20 flex items-center justify-center text-angry-accent">📝</span>
+                Description Blocks (D1-D7)
+                <span class="text-sm font-normal text-slate-500">— Angry Beards Brand Voice 🇨🇿</span>
+            </h2>
+
+            <div class="space-y-4">
+                <!-- D1: Product Essence -->
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-angry-accent/20 text-angry-accent rounded text-xs font-mono font-bold">D1</span>
+                        <span class="font-medium">Esence produktu</span>
+                        <span class="text-slate-500 text-sm">— "Co to vlastně je?"</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-angry-accent">
+                        <p class="text-slate-200 leading-relaxed">
+                            <strong class="text-angry-accent">Pudr na kule, co ti vyřeší mokrý pytel bez fyzický námahy.</strong>
+                            Jedno puff a kulestroj máš komplet v suchu — ať už sedíš v kanclu, jedeš na rande, nebo se potíš ze stresu u šéfa.
+                            Puffer aplikátor dávkuje přesně tolik, kolik potřebuješ, bez bordelu v koupelně a bez bílých fleků na trenkách.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- D2: Ideal For - HIGHLIGHT -->
+                <div class="bg-gradient-to-r from-outfindo/5 to-transparent rounded-xl p-5 border border-outfindo/30">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs font-mono font-bold">D2</span>
+                        <span class="font-medium text-outfindo">Pro koho je to ideální</span>
+                        <span class="text-outfindo/70 text-sm">— ⭐ INTENT MATCHING</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-outfindo">
+                        <p class="text-slate-300 mb-3">Pudr SIT & CHILL je přesně pro tebe, když:</p>
+                        <ul class="space-y-2 text-slate-200">
+                            <li class="flex items-start gap-2">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <span><strong>Sedíš celej den v kanclu</strong> a pytel ti túruje potní žlázy, i když jediná námaha je refreshovat Outlook</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <span><strong>Máš citlivou kůži</strong> a běžný antiperspiranty ti dělaj víc škody než užitku</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <span><strong>Jedeš na schůzku nebo rande</strong> a nechceš řešit vlhkej rozkrok uprostřed konverzace</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <span><strong>Trávíš hodiny za volantem</strong> nebo v sedle a víš, co to udělá s pytlem</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <span><strong>Potíš se ze stresu</strong> — mentální námaha se počítá taky, e-sportovci a šachisti ví</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <span><strong>Chceš prevenci, ne řešení problému</strong> — aplikuješ ráno a máš klid celej den</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D3: How It Works -->
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-emerald-500/30">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs font-mono font-bold">D3</span>
+                        <span class="font-medium text-emerald-400">Jak to funguje</span>
+                        <span class="text-slate-500 text-sm">— "Jak to dělá, co dělá?"</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-emerald-500">
+                        <p class="text-slate-200 leading-relaxed mb-3">
+                            Pudr pohlcuje vlhkost dřív, než se stihne proměnit v kulepach. Tajemství je ve složení:
+                        </p>
+                        <ul class="space-y-2 text-slate-300 text-sm">
+                            <li><strong class="text-emerald-400">Talek a kukuřičný škrob</strong> — fungujou jako houba na pot, absorbujou vlhkost okamžitě</li>
+                            <li><strong class="text-emerald-400">Oxid zinečnatý</strong> — neutralizuje zápach u zdroje, ne jen překrývá parfémem</li>
+                            <li><strong class="text-emerald-400">Allantoín a bisabolol</strong> — zklidňujou pokožku a předcházej podráždění</li>
+                        </ul>
+                        <p class="text-slate-400 text-sm mt-3">
+                            Na rozdíl od antiperspirantů neblokuje potní žlázy — prostě absorbuje to, co vypotíš.
+                            Žádnej hliník, žádný riziko podráždění.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- D4: Specs in Context -->
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-violet-500/30">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-violet-500/20 text-violet-400 rounded text-xs font-mono font-bold">D4</span>
+                        <span class="font-medium text-violet-400">Co ta čísla znamenají</span>
+                        <span class="text-slate-500 text-sm">— "Specifikace v kontextu"</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-violet-500">
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl font-bold text-violet-400 shrink-0">57g</span>
+                                <div class="text-slate-300 text-sm">
+                                    Stačí na <strong class="text-white">~60 aplikací</strong>, což je zhruba <strong class="text-white">2 měsíce denního používání</strong>.
+                                    Při ceně 299 Kč vychází jedna aplikace na necelých 5 Kč.
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl font-bold text-violet-400 shrink-0">8h</span>
+                                <div class="text-slate-300 text-sm">
+                                    Efekt vydrží <strong class="text-white">celou pracovní směnu</strong>. Aplikuješ ráno po sprše,
+                                    a máš klid až do večera — i přes pohovory, prezentace a stresový meetingy.
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-xl font-bold text-violet-400 shrink-0">Puffer</span>
+                                <div class="text-slate-300 text-sm">
+                                    Jeden mačk = přesná dávka. Žádný sypání, žádný prasení, žádnej bordel v koupelně.
+                                    Na rozdíl od klasickýho pudru v dóze máš vždycky <strong class="text-white">konzistentní množství</strong>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D5: Why This Not That -->
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-amber-500/30">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-amber-500/20 text-amber-400 rounded text-xs font-mono font-bold">D5</span>
+                        <span class="font-medium text-amber-400">Proč tohle a ne jiné</span>
+                        <span class="text-slate-500 text-sm">— "X místo Y"</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-amber-500">
+                        <div class="space-y-3">
+                            <div>
+                                <div class="text-amber-400 font-medium mb-1">Proč Pudr SIT & CHILL místo Antisweat deodorantu?</div>
+                                <p class="text-slate-300 text-sm">
+                                    Antisweat je tekutej deodorant na aktivní pocení při fyzický námaze.
+                                    <strong class="text-white">SIT & CHILL je pudr na pasivní pocení</strong> — sedíš, ale pytel se potí.
+                                    Jinej problém, jiný řešení.
+                                </p>
+                            </div>
+                            <div>
+                                <div class="text-amber-400 font-medium mb-1">Proč Puffer místo sypkého pudru?</div>
+                                <p class="text-slate-300 text-sm">
+                                    Sypkej pudr = bordel v koupelně, nepřesná dávka, bílý fleky na oblečení.
+                                    <strong class="text-white">Puffer = jeden mačk, přesná dávka, čisto</strong>.
+                                    Navíc se líp bere na cesty.
+                                </p>
+                            </div>
+                            <div>
+                                <div class="text-amber-400 font-medium mb-1">Proč bez hliníku místo klasickýho antiperspirantu?</div>
+                                <p class="text-slate-300 text-sm">
+                                    Hliníkový soli blokujou potní žlázy, což může u citlivý pokožky způsobit podráždění.
+                                    <strong class="text-white">Pudr absorbuje pot místo blokování</strong> — přirozenější a šetrnější.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D6: Practical Tips -->
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-500/30">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-slate-500/20 text-slate-400 rounded text-xs font-mono font-bold">D6</span>
+                        <span class="font-medium">Praktické tipy</span>
+                        <span class="text-slate-500 text-sm">— "Zvládnu to?"</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-slate-500">
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-slate-300 font-medium mb-1 flex items-center gap-2">
+                                    <span class="text-lg">📍</span> Aplikace
+                                </div>
+                                <p class="text-slate-400 text-sm">
+                                    Na <strong class="text-white">suchou, čistou pokožku</strong> po sprše. Jeden puff, rozetři dlaní po celý oblasti.
+                                    Počkej pár sekund, než se pudr usadí.
+                                </p>
+                            </div>
+                            <div>
+                                <div class="text-slate-300 font-medium mb-1 flex items-center gap-2">
+                                    <span class="text-lg">⏰</span> Kdy aplikovat
+                                </div>
+                                <p class="text-slate-400 text-sm">
+                                    <strong class="text-white">Ráno po sprše</strong> jako součást ranní rutiny.
+                                    Můžeš i preventivně před náročným dnem, schůzkou, nebo randem.
+                                </p>
+                            </div>
+                            <div>
+                                <div class="text-slate-300 font-medium mb-1 flex items-center gap-2">
+                                    <span class="text-lg">💡</span> Pro-tipy
+                                </div>
+                                <ul class="text-slate-400 text-sm space-y-1">
+                                    <li>• Funguje i preventivně — nemusíš čekat, až budeš mokrej</li>
+                                    <li>• Na cesty si hoď do příručního zavazadla, projde bezpečnostní kontrolou</li>
+                                    <li>• Kombinuj s Antistickem na kritický dny (nejdřív Antistick, pak pudr)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D7: Cautions - CRITICAL -->
+                <div class="bg-gradient-to-r from-rose-500/10 to-transparent rounded-xl p-5 border border-rose-500/30">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-rose-500/20 text-rose-400 rounded text-xs font-mono font-bold">D7</span>
+                        <span class="font-medium text-rose-400">Na co si dát pozor</span>
+                        <span class="text-rose-400/70 text-sm">— ⚠️ SNIŽUJE VRATKY | ANTI-HALLUCINATION</span>
+                    </div>
+                    <div class="bg-angry-light/50 rounded-lg p-4 border-l-4 border-rose-500">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <div class="text-outfindo text-sm font-medium mb-2">✓ VHODNÉ PRO:</div>
+                                <ul class="space-y-1 text-slate-300 text-sm">
+                                    <li>• Denní použití</li>
+                                    <li>• Všechny typy pokožky včetně citlivé</li>
+                                    <li>• Kancelářskou práci, řízení, cestování</li>
+                                    <li>• Preventivní aplikaci před náročným dnem</li>
+                                    <li>• Použití po holení (počkej 30 min)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-rose-400 text-sm font-medium mb-2">✗ NEVHODNÉ PRO:</div>
+                                <ul class="space-y-1 text-slate-300 text-sm">
+                                    <li>• Otevřené rány nebo pořezání</li>
+                                    <li>• Akutně podrážděnou pokožku</li>
+                                    <li>• Sliznice</li>
+                                    <li>• Děti do 12 let</li>
+                                    <li>• Alergiky na parfém (obsahuje)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-slate-700/50">
+                            <div class="text-amber-400 text-sm font-medium mb-2">⚠️ TOHLE TO NENÍ:</div>
+                            <ul class="space-y-1 text-slate-300 text-sm">
+                                <li><strong class="text-rose-400">• Není to lubrikant</strong> — pro sex použij Antistick vazelínu, ne pudr</li>
+                                <li><strong class="text-rose-400">• Není to antiperspirant</strong> — neblokuje pocení, jen ho absorbuje</li>
+                                <li><strong class="text-rose-400">• Není to lék</strong> — při kožních problémech navštiv dermatologa</li>
+                                <li><strong class="text-rose-400">• Není to dezinfekce</strong> — nezabíjí bakterie, jen neutralizuje zápach</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-slate-700/50">
+                            <div class="text-slate-400 text-sm font-medium mb-2">📋 VYŽADUJE:</div>
+                            <ul class="space-y-1 text-slate-400 text-sm">
+                                <li>• Čistou pokožku (po sprše ideálně)</li>
+                                <li>• Suchou pokožku (na mokrou neaplikovat)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCL Data -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-slate-600/30 flex items-center justify-center">🏪</span>
+                MCL — Merchant Layer
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                <div class="bg-slate-800/50 rounded-lg p-4 font-mono text-sm">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <div class="text-slate-500 text-xs mb-2">Tier 1-2: Identita & Logistika</div>
+                            <div><span class="text-slate-500">merchant_name:</span> <span class="text-white">"Angry Beards s.r.o."</span></div>
+                            <div><span class="text-slate-500">official_store:</span> <span class="text-outfindo">true</span></div>
+                            <div><span class="text-slate-500">country:</span> <span class="text-white">"CZ"</span></div>
+                            <div><span class="text-slate-500">shipping_methods:</span> <span class="text-white">["PPL", "Zásilkovna", "DPD"]</span></div>
+                            <div><span class="text-slate-500">delivery_time_days:</span> <span class="text-outfindo">1-2</span></div>
+                            <div><span class="text-slate-500">free_shipping_threshold:</span> <span class="text-outfindo">1000</span></div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="text-slate-500 text-xs mb-2">Tier 3-4: Transakce & Trust</div>
+                            <div><span class="text-slate-500">return_policy_days:</span> <span class="text-outfindo">14</span></div>
+                            <div><span class="text-slate-500">return_policy_url:</span> <span class="text-white">"/reklamace/"</span></div>
+                            <div><span class="text-slate-500">payment_methods:</span> <span class="text-white">["card", "bank", "cod"]</span></div>
+                            <div><span class="text-slate-500">heureka_rating:</span> <span class="text-outfindo">4.9</span></div>
+                            <div><span class="text-slate-500">years_in_business:</span> <span class="text-white">8+</span></div>
+                            <div><span class="text-slate-500">verified_brand:</span> <span class="text-outfindo">true</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Stats -->
+        <section class="mb-12">
+            <div class="grid grid-cols-4 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">95%</div>
+                    <div class="text-xs text-slate-500">Blueprint Coverage</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">7/7</div>
+                    <div class="text-xs text-slate-500">Description Blocks</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">4/4</div>
+                    <div class="text-xs text-slate-500">L6 Safety Sections</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">A</div>
+                    <div class="text-xs text-slate-500">LLM Readiness</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LLM Query Test: NOW ANSWERABLE -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">🔍</span> LLM Query Test: Co TEĎ MŮŽEME zodpovědět
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-outfindo/30 overflow-hidden">
+                <div class="grid grid-cols-12 gap-4 p-4 bg-outfindo/10 text-sm font-medium">
+                    <div class="col-span-5">Zákaznický dotaz</div>
+                    <div class="col-span-2">Status</div>
+                    <div class="col-span-5">Zdroj odpovědi</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Něco na mokrý pytel při práci v kanclu"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-outfindo text-xs">L2: problems_solved + lifestyle_fit</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Můžu to použít jako lubrikant?"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-outfindo text-xs">L6: this_is_not + D7: explicitní varování</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Jak dlouho vydrží účinek?"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-outfindo text-xs">L3: effect_duration_hours + D4: kontext</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Proč pudr a ne deodorant?"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-outfindo text-xs">D5: diferenciace vs. Antisweat</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Kolik aplikací z jednoho balení?"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-outfindo text-xs">L4: applications_per_pack + D4: kontext</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Pro citlivou kůži na intimní partie"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-outfindo text-xs">L2: target_user_types + L6: suitable_for</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-angry-accent font-medium">Angry Beards</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Content System</p>
+            <p class="text-slate-600 text-xs mt-1">Document 3/3: PDP Example — Pudr na kule SIT & CHILL</p>
+        </footer>
+
+    </div>
+</body>
+</html>
