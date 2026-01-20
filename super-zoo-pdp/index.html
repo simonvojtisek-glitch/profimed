@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super zoo × Outfindo | PDP Content System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        superzoo: {
+                            DEFAULT: '#FFED00',
+                            light: '#FFF566',
+                            dark: '#E6D500',
+                            text: '#1a1a1a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .glow-outfindo { box-shadow: 0 0 20px rgba(0, 180, 161, 0.15); }
+        .glow-superzoo { box-shadow: 0 0 20px rgba(255, 237, 0, 0.1); }
+        .layer-card:hover { transform: translateY(-2px); transition: all 0.2s ease; }
+        details summary { cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111118] to-[#0a1a1a] text-white">
+    <div class="max-w-5xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="flex items-center gap-2 px-4 py-2 bg-superzoo/10 rounded-lg border border-superzoo/30">
+                    <span class="text-superzoo font-bold text-xl tracking-tight">Super zoo</span>
+                </div>
+                <span class="text-slate-600 text-2xl font-light">×</span>
+                <div class="flex items-center gap-2 px-4 py-2 bg-outfindo/5 rounded-lg border border-outfindo/20">
+                    <span class="text-outfindo font-bold text-xl tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-2">PDP Content System</h1>
+            <p class="text-xl text-slate-400">Consumer Conversion & LLM Discovery</p>
+            <div class="flex gap-2 mt-4">
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">🐕 Antiparazitika pro psy</span>
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Product Category Framework</span>
+            </div>
+        </div>
+
+        <!-- The Challenge -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-superzoo/20 flex items-center justify-center text-superzoo">!</span>
+                Výzva: Perplexity Paradox
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50">
+                <p class="text-slate-300 text-lg mb-4">
+                    LLM shopping agenti (ChatGPT Shopping, Google Gemini, Perplexity) potřebují <strong class="text-white">strukturovaná data</strong> pro filtrování a <strong class="text-white">sémantický kontext</strong> pro doporučování.
+                </p>
+                <div class="grid grid-cols-2 gap-6 mt-6">
+                    <div class="bg-red-500/5 rounded-xl p-5 border border-red-500/20">
+                        <h3 class="font-bold text-red-400 mb-3">❌ Problém</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li>• Super zoo má základní atributy (paraziti, doba účinnosti)</li>
+                            <li>• Ale chybí <span class="text-red-400">sémantická vrstva</span> (pro koho, proč)</li>
+                            <li>• Chybí <span class="text-red-400">L6 constraints</span> (anti-hallucination)</li>
+                            <li>• Popisy produktů jsou prázdné nebo minimální</li>
+                            <li>• LLM agenti nemohou produkty správně doporučit</li>
+                        </ul>
+                    </div>
+                    <div class="bg-outfindo/5 rounded-xl p-5 border border-outfindo/20">
+                        <h3 class="font-bold text-outfindo mb-3">✓ Řešení</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li>• <span class="text-outfindo">Blueprint</span>: 6-vrstvá strukturovaná data</li>
+                            <li>• <span class="text-outfindo">Description</span>: 7 sémantických bloků</li>
+                            <li>• <span class="text-outfindo">MCL</span>: Merchant trust layer</li>
+                            <li>• LLM agenti mohou najít, porovnat, doporučit</li>
+                            <li>• Zákazníci získají jasné odpovědi na své otázky</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two-Part Architecture -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">⚡</span>
+                Architektura: Blueprint + Description + MCL
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <!-- Blueprint -->
+                <div class="bg-gradient-to-br from-outfindo/10 to-outfindo-dark/10 rounded-2xl p-6 border border-outfindo/30 glow-outfindo">
+                    <div class="text-3xl mb-3">🗂</div>
+                    <h3 class="font-bold text-outfindo mb-2">Blueprint</h3>
+                    <p class="text-slate-400 text-sm mb-4">Strukturovaná data pro strojové zpracování</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                            <span class="text-slate-500">L1: Core Identity</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-outfindo"></span>
+                            <span class="text-outfindo">L2: Customer Goals ⭐</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="text-emerald-400">L3: Core Specifications</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+                            <span class="text-violet-400">L4: Physical Parameters</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            <span class="text-amber-400">L5: Features & Technology</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                            <span class="text-red-400">L6: Constraints & Boundaries ⚠️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-6 border border-slate-600/30">
+                    <div class="text-3xl mb-3">📝</div>
+                    <h3 class="font-bold text-slate-300 mb-2">Description</h3>
+                    <p class="text-slate-400 text-sm mb-4">Sémantický obsah pro porozumění</p>
+                    <div class="space-y-2 text-xs text-slate-500">
+                        <div>D1: Opening Hook</div>
+                        <div>D2: Pain Points Addressed</div>
+                        <div>D3: Specification Context</div>
+                        <div>D4: Experience Preview</div>
+                        <div>D5: Differentiators</div>
+                        <div>D6: Practical Guidance</div>
+                        <div>D7: Constraints & Expectations</div>
+                    </div>
+                </div>
+
+                <!-- MCL -->
+                <div class="bg-gradient-to-br from-amber-500/10 to-amber-600/5 rounded-2xl p-6 border border-amber-500/30">
+                    <div class="text-3xl mb-3">🏪</div>
+                    <h3 class="font-bold text-amber-400 mb-2">MCL</h3>
+                    <p class="text-slate-400 text-sm mb-4">Merchant trust pro nákupní rozhodnutí</p>
+                    <div class="space-y-2 text-xs text-slate-500">
+                        <div>Tier 1: Identity & Trust</div>
+                        <div>Tier 2: Live Logistics</div>
+                        <div>Tier 3: Transactional</div>
+                        <div>Tier 4: Consensus Scores</div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm mt-4 text-center">
+                LLM použije Blueprint k <strong class="text-white">nalezení</strong> produktu, Description k <strong class="text-white">ověření</strong> doporučení, MCL k <strong class="text-white">výběru</strong> prodejce.
+            </p>
+        </section>
+
+        <!-- Customer Research Foundation -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📊</span>
+                Základ: Outfindo Customer Research
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-outfindo/20">
+                <p class="text-slate-300 mb-4">Framework je postaven na výzkumu <strong class="text-white">18 zákaznických cílů</strong> a <strong class="text-white">9 profilů</strong> kupujících antiparazitik pro psy:</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium text-slate-400 mb-3 text-sm">Top 5 zákaznických cílů (podle priority)</h4>
+                        <ol class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-red-500/20 text-red-400 text-xs flex items-center justify-center font-bold">10</span>
+                                <span class="text-slate-300">Okamžitá úleva od parazitů</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-bold">9</span>
+                                <span class="text-slate-300">Celoroční ochrana bez starostí</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-bold">9</span>
+                                <span class="text-slate-300">Bezpečnost pro děti a další mazlíčky</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-amber-500/20 text-amber-400 text-xs flex items-center justify-center font-bold">8</span>
+                                <span class="text-slate-300">Jednoduchost v denní rutině</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded bg-amber-500/20 text-amber-400 text-xs flex items-center justify-center font-bold">8</span>
+                                <span class="text-slate-300">Řešení pro citlivé psy (štěňata, alergie)</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-slate-400 mb-3 text-sm">Zákaznické profily (podle velikosti segmentu)</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">Hassle-Free Protector 30-40%</span>
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">Safety-First Family 20-25%</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Sensitive Solutions Seeker</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Immediate Action Taker</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Multi-Pet Manager</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">First-Time Owner</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Custom-Fit Adventurer</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Eco-Minded Minimalist</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Sensory-Aware Aesthete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blueprint Layers Detail -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">🗂</span>
+                Blueprint Layers (L1-L6)
+            </h2>
+
+            <div class="space-y-4">
+                <!-- L1 -->
+                <details class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden layer-card">
+                    <summary class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-slate-500/20 flex items-center justify-center text-slate-400 font-bold text-sm">L1</span>
+                            <div>
+                                <h3 class="font-bold text-slate-300">Core Identity</h3>
+                                <p class="text-xs text-slate-500">Unikátní identifikace produktu</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-slate-700/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Parametry</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>brand: <span class="text-outfindo">"Foresto"</span></div>
+                                    <div>product_line: <span class="text-outfindo">"Antiparazitní obojky"</span></div>
+                                    <div>sku: <span class="text-outfindo">"FRS-70-DOG"</span></div>
+                                    <div>gtin: <span class="text-outfindo">"4007221038184"</span></div>
+                                    <div>category_path: <span class="text-outfindo">"Psi > Zdraví > Antiparazitika"</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Účel pro LLM</h4>
+                                <p class="text-xs text-slate-400">Entity resolution — umožňuje přesné rozpoznání produktu a porovnání napříč prodejci. Předchází záměně podobných modelů.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L2 -->
+                <details class="bg-outfindo/5 rounded-xl border border-outfindo/30 overflow-hidden layer-card glow-outfindo">
+                    <summary class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold text-sm">L2</span>
+                            <div>
+                                <h3 class="font-bold text-outfindo">Customer Goals ⭐ OUTFINDO UNIQUE</h3>
+                                <p class="text-xs text-slate-500">Mapování produktu na zákaznický záměr</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-outfindo chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-outfindo/20">
+                        <div class="bg-outfindo/10 rounded-lg p-3 mb-4">
+                            <p class="text-xs text-outfindo">🎯 Toto je klíčový diferenciátor. Konkurence má specifikace; my máme intent mapping. LLM může spárovat dotazy jako "obojek pro velkého psa co chodí do lesa" přímo se strukturovanými poli.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Parametry</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>target_user_types: <span class="text-outfindo">["hassle-free-protector", "safety-first-family"]</span></div>
+                                    <div>dog_profile_fit: <span class="text-outfindo">["adult", "senior", "large-breed"]</span></div>
+                                    <div>household_fit: <span class="text-outfindo">["with-children", "multi-pet"]</span></div>
+                                    <div>problems_solved: <span class="text-outfindo">["tick-prevention", "flea-control", "long-term-protection"]</span></div>
+                                    <div>lifestyle_fit: <span class="text-outfindo">["outdoor-active", "frequent-swimmer"]</span></div>
+                                    <div>primary_goal: <span class="text-outfindo">"continuous-worry-free-protection"</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Research Grounding</h4>
+                                <p class="text-xs text-slate-400 mb-2">Odvozeno z Customer Profiles a Goals reportů:</p>
+                                <ul class="text-xs text-slate-500 space-y-1">
+                                    <li>• Hassle-Free Protector (30-40%) → priority_goal: continuous protection</li>
+                                    <li>• Safety-First Family (20-25%) → household_fit: with-children</li>
+                                    <li>• Goal Priority 9: "Maintain worry-free protection"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L3 -->
+                <details class="bg-slate-900/50 rounded-xl border border-emerald-500/30 overflow-hidden layer-card">
+                    <summary class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm">L3</span>
+                            <div>
+                                <h3 class="font-bold text-emerald-400">Core Specifications</h3>
+                                <p class="text-xs text-slate-500">"Stačí mi to?" — klíčové metriky výkonu</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-emerald-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-emerald-500/20">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Parametry</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>duration_effectiveness_months: <span class="text-emerald-400">8</span></div>
+                                    <div>target_parasites: <span class="text-emerald-400">["fleas", "ticks", "lice"]</span></div>
+                                    <div>onset_of_action_hours: <span class="text-emerald-400">24</span></div>
+                                    <div>suitable_dog_weight_kg: <span class="text-emerald-400">{"min": 8, "max": null}</span></div>
+                                    <div>active_ingredient: <span class="text-emerald-400">"imidacloprid + flumethrin"</span></div>
+                                    <div>mode_of_action: <span class="text-emerald-400">["repellent", "insecticide"]</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Účel pro LLM</h4>
+                                <p class="text-xs text-slate-400">Umožňuje constraint-based filtering: "obojek s účinností alespoň 6 měsíců", "proti klíšťatům i blechám", "pro psa nad 25 kg".</p>
+                                <h4 class="text-xs font-medium text-slate-500 mt-3 mb-2">Pain Point Addressed</h4>
+                                <p class="text-xs text-red-400">• Gaps between treatments (0.82) → duration_effectiveness</p>
+                                <p class="text-xs text-red-400">• Incomplete parasite coverage (0.68) → target_parasites[]</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L4 -->
+                <details class="bg-slate-900/50 rounded-xl border border-violet-500/30 overflow-hidden layer-card">
+                    <summary class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 font-bold text-sm">L4</span>
+                            <div>
+                                <h3 class="font-bold text-violet-400">Physical Parameters</h3>
+                                <p class="text-xs text-slate-500">"Bude to pasovat?" — rozměry a fyzické vlastnosti</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-violet-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-violet-500/20">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Parametry</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>product_type: <span class="text-violet-400">"collar"</span></div>
+                                    <div>collar_length_cm: <span class="text-violet-400">70</span></div>
+                                    <div>adjustable: <span class="text-violet-400">true</span></div>
+                                    <div>color: <span class="text-violet-400">"grey"</span></div>
+                                    <div>units_per_pack: <span class="text-violet-400">1</span></div>
+                                    <div>formulation_type: <span class="text-violet-400">"impregnated-polymer"</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Varianta: Drops</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>product_type: <span class="text-violet-400">"spot-on-drops"</span></div>
+                                    <div>volume_per_pipette_ml: <span class="text-violet-400">3</span></div>
+                                    <div>pipettes_per_pack: <span class="text-violet-400">3</span></div>
+                                    <div>formulation_type: <span class="text-violet-400">"liquid"</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L5 -->
+                <details class="bg-slate-900/50 rounded-xl border border-amber-500/30 overflow-hidden layer-card">
+                    <summary class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">L5</span>
+                            <div>
+                                <h3 class="font-bold text-amber-400">Features & Technology</h3>
+                                <p class="text-xs text-slate-500">"Co to umí?" — funkce a technologie</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-amber-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-amber-500/20">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Parametry</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>water_resistant: <span class="text-amber-400">true</span></div>
+                                    <div>water_resistance_level: <span class="text-amber-400">"swimming-safe"</span></div>
+                                    <div>application_method: <span class="text-amber-400">"wearable"</span></div>
+                                    <div>release_technology: <span class="text-amber-400">"slow-release-polymer"</span></div>
+                                    <div>contains_natural_ingredients: <span class="text-amber-400">false</span></div>
+                                    <div>scent_profile: <span class="text-amber-400">"mild"</span></div>
+                                    <div>reflective_elements: <span class="text-amber-400">true</span></div>
+                                    <div>breakaway_safety: <span class="text-amber-400">true</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Desire Addressed</h4>
+                                <p class="text-xs text-slate-400 mb-2">Top customer desires (score):</p>
+                                <ul class="text-xs text-outfindo space-y-1">
+                                    <li>• Water-resistant protection (0.78) → water_resistant</li>
+                                    <li>• Discreet design (0.74) → scent_profile, color</li>
+                                    <li>• Fits into routines (0.72) → application_method</li>
+                                    <li>• Compatibility with accessories (0.66) → breakaway_safety</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L6 -->
+                <details class="bg-red-500/5 rounded-xl border border-red-500/30 overflow-hidden layer-card">
+                    <summary class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 font-bold text-sm">L6</span>
+                            <div>
+                                <h3 class="font-bold text-red-400">Constraints & Boundaries ⚠️ CRITICAL FOR AI</h3>
+                                <p class="text-xs text-slate-500">"Co by mě mohlo překvapit?" — anti-hallucination layer</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-red-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-red-500/20">
+                        <div class="bg-red-500/10 rounded-lg p-3 mb-4">
+                            <p class="text-xs text-red-400">🚨 Bez explicitních constraints může LLM doporučit produkt pro nevhodné případy. Tato vrstva umožňuje odpovědná doporučení a snižuje vratky.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Parametry</h4>
+                                <div class="font-mono text-xs text-slate-400 space-y-1">
+                                    <div>suitable_for: <span class="text-emerald-400">["dogs-over-8kg", "puppies-from-7-weeks", "outdoor-dogs", "swimming-dogs"]</span></div>
+                                    <div>not_suitable_for: <span class="text-red-400">["cats", "dogs-under-8kg", "puppies-under-7-weeks", "sick-dogs-without-vet-consult"]</span></div>
+                                    <div>this_is_not: <span class="text-red-400">["dewormer", "spray", "drops", "treatment-for-existing-worms"]</span></div>
+                                    <div>requires: <span class="text-amber-400">["vet-consult-if-pregnant", "vet-consult-if-sick"]</span></div>
+                                    <div>limitations: <span class="text-amber-400">["efficacy-may-reduce-after-frequent-bathing", "not-100%-tick-repellent"]</span></div>
+                                    <div>incompatible_with: <span class="text-red-400">["permethrin-products-near-cats"]</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-medium text-slate-500 mb-2">Pain Points Prevented</h4>
+                                <ul class="text-xs text-red-400 space-y-1">
+                                    <li>• Unsafe for puppies/small breeds (0.48)</li>
+                                    <li>• Toxicity to other pets (0.40)</li>
+                                    <li>• Misidentified parasite treatment (0.65)</li>
+                                    <li>• Reduced efficacy after bathing (0.89)</li>
+                                </ul>
+                                <h4 class="text-xs font-medium text-slate-500 mt-3 mb-2">Example LLM Query Handled</h4>
+                                <p class="text-xs text-slate-400 italic">"Mám malého čivavu 4 kg a kočku. Je Foresto vhodný?"</p>
+                                <p class="text-xs text-red-400 mt-1">→ L6 data: not_suitable_for contains "dogs-under-8kg" + "cats" → LLM correctly declines</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Description Blocks -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-slate-700 flex items-center justify-center">📝</span>
+                Description Blocks (D1-D7)
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-slate-700/50 overflow-hidden">
+                <div class="grid grid-cols-12 gap-4 p-4 bg-slate-800/50 text-xs font-medium text-slate-400">
+                    <div class="col-span-1">Block</div>
+                    <div class="col-span-3">Otázka zákazníka</div>
+                    <div class="col-span-4">Obsah</div>
+                    <div class="col-span-4">Research Grounding</div>
+                </div>
+
+                <!-- D1 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-slate-700 rounded text-xs">D1</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-slate-300">"Je tohle pro mého psa?"</div>
+                        <div class="text-xs text-slate-500">Opening Hook</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        Jednovětné shrnutí: pro koho je produkt ideální, jaký problém řeší. Navazuje na L2 data.
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-500">
+                        Customer Profiles → target audience match
+                    </div>
+                </div>
+
+                <!-- D2 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start bg-outfindo/5">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">D2</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-outfindo">"Proč to potřebuji?"</div>
+                        <div class="text-xs text-slate-500">Pain Points Addressed</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        3-5 bulletů adresujících konkrétní pain points: mezery v ochraně, reinfikace, obavy o bezpečnost dětí.
+                    </div>
+                    <div class="col-span-4 text-xs text-outfindo">
+                        Pain Points report → "Gaps between treatments" (0.82), "Safe for children" (0.90)
+                    </div>
+                </div>
+
+                <!-- D3 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-slate-700 rounded text-xs">D3</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-slate-300">"Co ta čísla znamenají?"</div>
+                        <div class="text-xs text-slate-500">Specification Context</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        Vysvětlení klíčových specifikací v kontextu: "8 měsíců = celá sezóna klíšťat bez výměny"
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-500">
+                        L3 specs + Expectations: "Continuous multi-month prevention" (0.97)
+                    </div>
+                </div>
+
+                <!-- D4 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-slate-700 rounded text-xs">D4</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-slate-300">"Jak to funguje?"</div>
+                        <div class="text-xs text-slate-500">Experience Preview</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        Den-po-dni popis: nasazení, kdy začíná účinkovat, co očekávat. Redukuje nejistotu.
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-500">
+                        Use Contexts: "Monitoring for adverse reactions" (0.92)
+                    </div>
+                </div>
+
+                <!-- D5 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-slate-700 rounded text-xs">D5</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-slate-300">"Proč právě toto?"</div>
+                        <div class="text-xs text-slate-500">Differentiators</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        "X místo Y" formát: "8 měsíců místo měsíčních kapek", "Voděodolný místo nutnosti sundávat"
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-500">
+                        Market Divisions + Desires: "Water-resistant" (0.78)
+                    </div>
+                </div>
+
+                <!-- D6 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-slate-700 rounded text-xs">D6</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-slate-300">"Zvládnu to?"</div>
+                        <div class="text-xs text-slate-500">Practical Guidance</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        Instalace, první použití, údržba. Pouze ne-zřejmé tipy. Ne "rozbalte obal".
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-500">
+                        Pain Points: "Complicated application" (0.61)
+                    </div>
+                </div>
+
+                <!-- D7 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start bg-red-500/5">
+                    <div class="col-span-1"><span class="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs">D7</span></div>
+                    <div class="col-span-3">
+                        <div class="font-medium text-red-400">"Co by mě mohlo překvapit?"</div>
+                        <div class="text-xs text-slate-500">Constraints & Expectations</div>
+                    </div>
+                    <div class="col-span-4 text-xs text-slate-400">
+                        ✓ Vhodné pro | ✗ Nevhodné pro | ⚠️ Tohle to NENÍ | 📋 Vyžaduje
+                    </div>
+                    <div class="col-span-4 text-xs text-red-400">
+                        L6 data → reduces returns, sets correct expectations
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCL Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400">🏪</span>
+                MCL — Merchant Consideration Layer
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-amber-500/20">
+                <p class="text-slate-300 mb-4">Per-offer, per-merchant data pro nákupní rozhodnutí. Na rozdíl od Blueprint (produktová data) je MCL o <strong class="text-white">nákupní zkušenosti u konkrétního prodejce</strong>.</p>
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                        <h4 class="font-bold text-amber-400 mb-2 text-sm">Tier 1: Identity</h4>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li>• Merchant name</li>
+                            <li>• Legal entity (IČO)</li>
+                            <li>• Trust badges</li>
+                            <li>• Heureka ověřeno</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                        <h4 class="font-bold text-amber-400 mb-2 text-sm">Tier 2: Logistics</h4>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li>• Shipping options</li>
+                            <li>• Delivery times</li>
+                            <li>• Stock availability</li>
+                            <li>• Click & collect</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                        <h4 class="font-bold text-amber-400 mb-2 text-sm">Tier 3: Transactional</h4>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li>• Return policy (14/30 days)</li>
+                            <li>• Warranty</li>
+                            <li>• Payment methods</li>
+                            <li>• Policy URLs</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                        <h4 class="font-bold text-amber-400 mb-2 text-sm">Tier 4: Consensus</h4>
+                        <ul class="text-xs text-slate-500 space-y-1">
+                            <li>• Trust scores</li>
+                            <li>• Review aggregation</li>
+                            <li>• Authorized dealer</li>
+                            <li>• MCS scoring</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-amber-500/10 rounded-lg">
+                    <p class="text-xs text-amber-400">📋 Schema.org compliance: MerchantReturnPolicy, OfferShippingDetails, Offer properties</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category-Specific Considerations -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-superzoo/20 flex items-center justify-center">🐕</span>
+                Specifika pro antiparazitika
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-bold text-slate-300 mb-3">L6: Critical Safety Layer</h3>
+                    <p class="text-slate-500 text-sm mb-3">Pro antiparazitika je L6 obzvláště kritická kvůli:</p>
+                    <ul class="space-y-1 text-slate-400 text-sm">
+                        <li>• 🐱 Toxicita pro kočky (permethrin)</li>
+                        <li>• 🐶 Věkové a váhové limity</li>
+                        <li>• 🤰 Březí a kojící feny</li>
+                        <li>• 💊 Interakce s léky</li>
+                        <li>• ⚠️ "Tohle NENÍ" — odčervovací přípravek</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-bold text-slate-300 mb-3">Key Market Divisions</h3>
+                    <p class="text-slate-500 text-sm mb-3">Hlavní osy segmentace produktů:</p>
+                    <ul class="space-y-1 text-slate-400 text-sm">
+                        <li>• 💧 Application method (collar vs drops vs spray)</li>
+                        <li>• ⏱️ Duration (1 month vs 8 months)</li>
+                        <li>• 🎯 Target parasites (fleas only vs broad-spectrum)</li>
+                        <li>• 🌿 Ingredient type (synthetic vs natural)</li>
+                        <li>• 📏 Dog size/age (puppy, small, large)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current vs Target -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">📉</span>
+                Současný stav vs. Cíl
+            </h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-red-500/5 rounded-2xl p-6 border border-red-500/20">
+                    <h3 class="font-bold text-red-400 mb-4">❌ Současný stav (Foresto collar)</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L1 (Identity)</span>
+                            <span class="text-emerald-400 text-sm">✓ Částečně</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L2 (Goals)</span>
+                            <span class="text-red-400 text-sm">✗ Chybí</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L3-L5 (Specs)</span>
+                            <span class="text-amber-400 text-sm">⚠️ Základní</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L6 (Constraints)</span>
+                            <span class="text-red-400 text-sm">✗ Chybí</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Description D1-D7</span>
+                            <span class="text-red-400 text-sm">✗ 0/7 bloků</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">MCL</span>
+                            <span class="text-red-400 text-sm">✗ Chybí</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-red-500/20">
+                            <div class="text-2xl font-bold text-red-400">~25%</div>
+                            <div class="text-xs text-slate-500">Estimated Blueprint Coverage</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-outfindo/5 rounded-2xl p-6 border border-outfindo/20">
+                    <h3 class="font-bold text-outfindo mb-4">✓ Cílový stav s Outfindo</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L1 (Identity)</span>
+                            <span class="text-outfindo text-sm">✓ Kompletní</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L2 (Goals)</span>
+                            <span class="text-outfindo text-sm">✓ Research-backed</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L3-L5 (Specs)</span>
+                            <span class="text-outfindo text-sm">✓ Enriched</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Blueprint L6 (Constraints)</span>
+                            <span class="text-outfindo text-sm">✓ Anti-hallucination</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">Description D1-D7</span>
+                            <span class="text-outfindo text-sm">✓ 7/7 bloků</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-sm">MCL</span>
+                            <span class="text-outfindo text-sm">✓ Schema.org ready</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-outfindo/20">
+                            <div class="text-2xl font-bold text-outfindo">95%+</div>
+                            <div class="text-xs text-slate-500">Target Blueprint Coverage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📦</span>
+                Co Outfindo dodá
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-outfindo/50 transition-colors">
+                    <div class="text-2xl mb-3">1️⃣</div>
+                    <h3 class="font-bold mb-2">Blueprint Schema</h3>
+                    <p class="text-slate-500 text-sm">Kompletní parametrový framework s enumy pro celou kategorii antiparazitik</p>
+                    <div class="mt-3 text-xs text-outfindo">~50+ parametrů × 6 vrstev</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-outfindo/50 transition-colors">
+                    <div class="text-2xl mb-3">2️⃣</div>
+                    <h3 class="font-bold mb-2">Description Content</h3>
+                    <p class="text-slate-500 text-sm">7-blokové popisy pro každý produkt, optimalizované pro LLM i zákazníky</p>
+                    <div class="mt-3 text-xs text-outfindo">D1-D7 × každý SKU</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-amber-500/50 transition-colors">
+                    <div class="text-2xl mb-3">3️⃣</div>
+                    <h3 class="font-bold mb-2">MCL Data Pack</h3>
+                    <p class="text-slate-500 text-sm">Merchant trust signály, policy URLs, MCS skóre pro agent readiness</p>
+                    <div class="mt-3 text-xs text-amber-400">4 tiers × Schema.org</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📈</span>
+                Research Foundation Stats
+            </h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-3xl font-bold text-outfindo">18</div>
+                    <div class="text-sm text-slate-400 mt-1">Customer Goals</div>
+                    <div class="text-xs text-slate-600">Priority 10→3</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-3xl font-bold text-outfindo">9</div>
+                    <div class="text-sm text-slate-400 mt-1">Customer Profiles</div>
+                    <div class="text-xs text-slate-600">Population-weighted</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-3xl font-bold text-red-400">22</div>
+                    <div class="text-sm text-slate-400 mt-1">Pain Points</div>
+                    <div class="text-xs text-slate-600">Score 0.98→0.23</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-3xl font-bold text-superzoo">7</div>
+                    <div class="text-sm text-slate-400 mt-1">Market Divisions</div>
+                    <div class="text-xs text-slate-600">Segmentation axes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-superzoo font-medium">Super zoo</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Content System for Antiparasitic Products</p>
+            <p class="text-slate-600 text-xs mt-1">Document 1/3: Framework Introduction</p>
+        </footer>
+
+    </div>
+</body>
+</html>
