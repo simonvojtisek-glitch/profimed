@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Beards × Outfindo | Gap Analysis: Pudr SIT & CHILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        angry: {
+                            DEFAULT: '#1a1a1a',
+                            accent: '#c9a227',
+                            gold: '#d4af37',
+                            light: '#333333'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .glow-gold { box-shadow: 0 0 20px rgba(201, 162, 39, 0.15); }
+        .glow-teal { box-shadow: 0 0 20px rgba(0, 180, 161, 0.15); }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#0d0d0d] text-white">
+    <div class="max-w-6xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-angry-accent/10 rounded-lg border border-angry-accent/30 glow-gold">
+                    <span class="text-angry-accent font-bold text-lg tracking-tight">Angry Beards</span>
+                </div>
+                <span class="text-slate-600 text-xl font-light">×</span>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-outfindo/5 rounded-lg border border-outfindo/20 glow-teal">
+                    <span class="text-outfindo font-bold text-lg tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold mb-1">Gap Analysis</h1>
+            <p class="text-slate-400">Pudr na kule SIT & CHILL 🎱 | SKU: AB-BL003-004OG-057-2310</p>
+        </div>
+
+        <!-- Product Reference -->
+        <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50 mb-8">
+            <div class="flex items-start gap-6">
+                <div class="w-24 h-24 bg-gradient-to-br from-angry-accent/20 to-angry-light rounded-xl flex items-center justify-center text-4xl shrink-0">🎱</div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h2 class="text-xl font-bold">Pudr na kule SIT & CHILL</h2>
+                        <span class="px-2 py-0.5 bg-angry-accent/10 text-angry-accent rounded text-xs">Kule Collection</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-400">Pudr</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-400">Puffer aplikátor</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-400">57g</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-400">Mentální zátěž</span>
+                    </div>
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-2xl font-bold">299 Kč</span>
+                        <span class="text-outfindo text-sm">⭐ 4.9/5 (143 recenzí)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall Readiness Score -->
+        <div class="grid grid-cols-4 gap-4 mb-8">
+            <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                <div class="text-3xl font-bold text-amber-400">58%</div>
+                <div class="text-xs text-slate-500 mt-1">Blueprint Coverage</div>
+                <div class="text-xs text-slate-600">Cíl: 90%+</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                <div class="text-3xl font-bold text-angry-accent">1/7</div>
+                <div class="text-xs text-slate-500 mt-1">Description Blocks</div>
+                <div class="text-xs text-slate-600">Cíl: 7/7</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                <div class="text-3xl font-bold text-angry-accent">0/4</div>
+                <div class="text-xs text-slate-500 mt-1">L6 Safety Sections</div>
+                <div class="text-xs text-slate-600">Cíl: 4/4</div>
+            </div>
+            <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                <div class="text-3xl font-bold text-angry-accent">C</div>
+                <div class="text-xs text-slate-500 mt-1">LLM Readiness</div>
+                <div class="text-xs text-slate-600">Cíl: A</div>
+            </div>
+        </div>
+
+        <!-- Blueprint Gap Analysis -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">🗂</span> Blueprint Gap Analysis
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-slate-700/50 overflow-hidden">
+                <!-- Header -->
+                <div class="grid grid-cols-12 gap-4 p-4 bg-slate-800/50 text-sm font-medium">
+                    <div class="col-span-2">Vrstva</div>
+                    <div class="col-span-3">Parametry dostupné</div>
+                    <div class="col-span-2">Formát</div>
+                    <div class="col-span-2">Kvalita</div>
+                    <div class="col-span-3">Gap</div>
+                </div>
+
+                <!-- L1 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-2 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-slate-500"></span>
+                        <span class="font-medium">L1: Identita</span>
+                    </div>
+                    <div class="col-span-3 text-slate-400 font-mono text-xs">brand, name, sku, ean, product_type</div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">Strukturovaný</span></div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ Dobrá</span></div>
+                    <div class="col-span-3 text-slate-500 text-xs">Chybí: product_line enum, category_path</div>
+                </div>
+
+                <!-- L2 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center bg-angry-accent/5">
+                    <div class="col-span-2 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-outfindo"></span>
+                        <span class="font-medium text-outfindo">L2: Cíle ⭐</span>
+                    </div>
+                    <div class="col-span-3 text-angry-accent font-mono text-xs">⌀ Žádné strukturované</div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-angry-accent/20 text-angry-accent rounded text-xs">Chybí</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Kritická</span></div>
+                    <div class="col-span-3 text-angry-accent text-xs font-medium">Chybí: primary_use, problems_solved, target_users, lifestyle_fit</div>
+                </div>
+
+                <!-- L3 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-2 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                        <span class="font-medium text-emerald-400">L3: Specifikace</span>
+                    </div>
+                    <div class="col-span-3 text-slate-400 font-mono text-xs">texture, absorption_time, skin_sensation, scent_strength</div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">Strukturovaný</span></div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ Dobrá</span></div>
+                    <div class="col-span-3 text-slate-500 text-xs">Chybí: effect_duration_hours, residue_level</div>
+                </div>
+
+                <!-- L4 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-2 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-violet-500"></span>
+                        <span class="font-medium text-violet-400">L4: Fyzické</span>
+                    </div>
+                    <div class="col-span-3 text-slate-400 font-mono text-xs">volume_ml, weight_g, packaging_type, packaging_material, dimensions</div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">Strukturovaný</span></div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ Dobrá</span></div>
+                    <div class="col-span-3 text-slate-500 text-xs">Chybí: travel_friendly, applications_per_pack</div>
+                </div>
+
+                <!-- L5 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-2 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="font-medium text-amber-400">L5: Funkce</span>
+                    </div>
+                    <div class="col-span-3 text-slate-400 font-mono text-xs">ingredients, active_ingredients, certifications, vegan, cruelty_free</div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">Strukturovaný</span></div>
+                    <div class="col-span-2"><span class="text-amber-400">◐ Částečná</span></div>
+                    <div class="col-span-3 text-slate-500 text-xs">Chybí: ph_balanced, aluminum_free jako boolean</div>
+                </div>
+
+                <!-- L6 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center bg-rose-500/5">
+                    <div class="col-span-2 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                        <span class="font-medium text-rose-400">L6: Omezení ⚠️</span>
+                    </div>
+                    <div class="col-span-3 text-angry-accent font-mono text-xs">⌀ Žádné strukturované</div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-angry-accent/20 text-angry-accent rounded text-xs">Chybí</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Kritická</span></div>
+                    <div class="col-span-3 text-rose-400 text-xs font-medium">Chybí: suitable_for[], not_suitable_for[], this_is_not[], requires[]</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Description Block Analysis -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-angry-accent">📝</span> Description Block Analysis
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-slate-700/50 overflow-hidden">
+                <!-- Header -->
+                <div class="grid grid-cols-12 gap-4 p-4 bg-slate-800/50 text-sm font-medium">
+                    <div class="col-span-2">Blok</div>
+                    <div class="col-span-4">Aktuální stav</div>
+                    <div class="col-span-2">Status</div>
+                    <div class="col-span-4">Co chybí</div>
+                </div>
+
+                <!-- D1 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs font-mono">D1</span>
+                        <div class="text-slate-500 text-xs mt-1">Esence</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono">
+                            "Nech kule okoštovat sílu pouštní bouře. Efektní PUFF a kulestroj bude komplet v suchu..."
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-amber-400">◐ Částečně</span></div>
+                    <div class="col-span-4 text-slate-500 text-xs">Existuje v prose, ale není strukturovaný jako D1 blok. Chybí jasná definice "co to je".</div>
+                </div>
+
+                <!-- D2 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start bg-angry-accent/5">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs font-mono">D2</span>
+                        <div class="text-outfindo text-xs mt-1">Pro koho ⭐</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono">
+                            Implicitně zmíněno: "šichta v kancelářským křesle, nedělní oběd u tchyně"
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Chybí</span></div>
+                    <div class="col-span-4 text-angry-accent text-xs font-medium">Chybí strukturovaný seznam use cases řazený podle populačního dopadu ze segmentace.</div>
+                </div>
+
+                <!-- D3 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-mono">D3</span>
+                        <div class="text-slate-500 text-xs mt-1">Jak funguje</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono">
+                            "Pudr na kule pohlcuje vlhkost a eliminuje kulepach"
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-amber-400">◐ Částečně</span></div>
+                    <div class="col-span-4 text-slate-500 text-xs">Základní mechanismus zmíněn, ale chybí detailnější vysvětlení složení a proč funguje.</div>
+                </div>
+
+                <!-- D4 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-violet-500/20 text-violet-400 rounded text-xs font-mono">D4</span>
+                        <div class="text-slate-500 text-xs mt-1">Čísla v kontextu</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono text-angry-accent">
+                            ⌀ Neexistuje
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Chybí</span></div>
+                    <div class="col-span-4 text-slate-500 text-xs">Chybí překlad specifikací do reálného přínosu (57g = kolik aplikací, jak dlouho vydrží).</div>
+                </div>
+
+                <!-- D5 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs font-mono">D5</span>
+                        <div class="text-slate-500 text-xs mt-1">Proč tohle</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono text-angry-accent">
+                            ⌀ Neexistuje
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Chybí</span></div>
+                    <div class="col-span-4 text-slate-500 text-xs">Chybí diferenciace "X místo Y" — proč puffer místo sypkého pudru, proč bez hliníku.</div>
+                </div>
+
+                <!-- D6 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-slate-500/20 text-slate-400 rounded text-xs font-mono">D6</span>
+                        <div class="text-slate-500 text-xs mt-1">Praktické tipy</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono text-angry-accent">
+                            ⌀ Neexistuje na PDP
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Chybí</span></div>
+                    <div class="col-span-4 text-slate-500 text-xs">Chybí návod na použití, kdy aplikovat, jak často, tipy pro maximální efekt.</div>
+                </div>
+
+                <!-- D7 -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-start bg-rose-500/5">
+                    <div class="col-span-2">
+                        <span class="px-2 py-0.5 bg-rose-500/20 text-rose-400 rounded text-xs font-mono">D7</span>
+                        <div class="text-rose-400 text-xs mt-1">Omezení ⚠️</div>
+                    </div>
+                    <div class="col-span-4 text-slate-400 text-xs">
+                        <div class="bg-slate-800/50 rounded p-2 font-mono text-angry-accent">
+                            ⌀ Neexistuje
+                        </div>
+                    </div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ Chybí</span></div>
+                    <div class="col-span-4 text-rose-400 text-xs font-medium">KRITICKÉ: Chybí strukturované varování — vhodné pro / nevhodné pro / tohle to NENÍ.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCL Gap Analysis -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-slate-400">🏪</span> MCL Gap Analysis
+            </h2>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                    <h3 class="font-medium text-slate-300 mb-3 text-sm">Tier 1-2: Identita & Logistika</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-slate-500">merchant_name</span><span class="text-outfindo">✓</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">shipping_methods</span><span class="text-outfindo">✓</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">delivery_time</span><span class="text-outfindo">✓</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">free_shipping_threshold</span><span class="text-outfindo">✓</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">stock_status</span><span class="text-outfindo">✓</span></div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-angry-accent/30">
+                    <h3 class="font-medium text-slate-300 mb-3 text-sm">Tier 3-4: Transakce & Trust</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-slate-500">return_policy_days</span><span class="text-amber-400">◐</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">return_policy_url</span><span class="text-angry-accent">✗</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">warranty_policy_url</span><span class="text-angry-accent">✗</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">trustpilot_rating</span><span class="text-angry-accent">✗</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">heureka_verified</span><span class="text-angry-accent">✗</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LLM Query Simulation -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">🔍</span> LLM Query Test: Co Angry Beards NEMŮŽE zodpovědět
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-slate-700/50 overflow-hidden">
+                <div class="grid grid-cols-12 gap-4 p-4 bg-slate-800/50 text-sm font-medium">
+                    <div class="col-span-5">Zákaznický dotaz</div>
+                    <div class="col-span-2">Odpověditelný?</div>
+                    <div class="col-span-5">Důvod</div>
+                </div>
+
+                <!-- Query 1 - YES -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Pudr na kule bez hliníku"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-slate-500">aluminum_free existuje v blueprintu</div>
+                </div>
+
+                <!-- Query 2 - NO -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-angry-accent/5">
+                    <div class="col-span-5 text-slate-300">"Něco pro citlivou kůži na intimní partie"</div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ NE</span></div>
+                    <div class="col-span-5 text-angry-accent">Chybí L2: target_user_types: [citlivá_pokožka]</div>
+                </div>
+
+                <!-- Query 3 - NO -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-angry-accent/5">
+                    <div class="col-span-5 text-slate-300">"Co použít na mokrý pytel při práci v kanclu?"</div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ NE</span></div>
+                    <div class="col-span-5 text-angry-accent">Chybí L2: problems_solved: [pocení], lifestyle_fit: [kancelářský]</div>
+                </div>
+
+                <!-- Query 4 - YES -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Veganský produkt na intimní hygienu"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-slate-500">vegan: true existuje v blueprintu</div>
+                </div>
+
+                <!-- Query 5 - NO CRITICAL -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-rose-500/5">
+                    <div class="col-span-5 text-slate-300">"Můžu tohle použít jako lubrikant před sexem?"</div>
+                    <div class="col-span-2"><span class="text-rose-400">⚠️ RIZIKO</span></div>
+                    <div class="col-span-5 text-rose-400 font-medium">KRITICKÉ: Chybí L6: this_is_not: [lubrikant] — LLM může špatně doporučit!</div>
+                </div>
+
+                <!-- Query 6 - NO -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-angry-accent/5">
+                    <div class="col-span-5 text-slate-300">"Jak dlouho vydrží účinek?"</div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ NE</span></div>
+                    <div class="col-span-5 text-angry-accent">Chybí L3: effect_duration_hours</div>
+                </div>
+
+                <!-- Query 7 - NO -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-angry-accent/5">
+                    <div class="col-span-5 text-slate-300">"Kolik aplikací z jednoho balení?"</div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ NE</span></div>
+                    <div class="col-span-5 text-angry-accent">Chybí L4: applications_per_pack</div>
+                </div>
+
+                <!-- Query 8 - NO -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-angry-accent/5">
+                    <div class="col-span-5 text-slate-300">"Proč pudr a ne deodorant?"</div>
+                    <div class="col-span-2"><span class="text-angry-accent">✗ NE</span></div>
+                    <div class="col-span-5 text-angry-accent">Chybí D5: diferenciace vs. alternativy</div>
+                </div>
+
+                <!-- Query 9 - YES -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm">
+                    <div class="col-span-5 text-slate-300">"Dermatologicky testovaný pudr"</div>
+                    <div class="col-span-2"><span class="text-outfindo">✓ ANO</span></div>
+                    <div class="col-span-5 text-slate-500">dermatologically_tested existuje</div>
+                </div>
+
+                <!-- Query 10 - NO CRITICAL -->
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm bg-rose-500/5">
+                    <div class="col-span-5 text-slate-300">"Můžu to použít na podrážděnou kůži?"</div>
+                    <div class="col-span-2"><span class="text-rose-400">⚠️ RIZIKO</span></div>
+                    <div class="col-span-5 text-rose-400 font-medium">KRITICKÉ: Chybí L6: not_suitable_for: [podrážděná_pokožka]</div>
+                </div>
+            </div>
+
+            <div class="mt-4 bg-rose-500/10 rounded-xl p-4 border border-rose-500/30">
+                <h3 class="font-medium text-rose-400 mb-2">⚠️ Riziko halucinace LLM</h3>
+                <p class="text-slate-400 text-sm">Bez strukturovaných omezení v L6 může LLM doporučit produkt na špatné použití. Příklady kritických chybějících dat:</p>
+                <ul class="mt-2 space-y-1 text-xs text-slate-500">
+                    <li>• <span class="text-rose-400">this_is_not: [lubrikant]</span> — Pudr NENÍ pro použití při sexu</li>
+                    <li>• <span class="text-rose-400">not_suitable_for: [otevřené_rány, sliznice]</span> — Bezpečnostní omezení</li>
+                    <li>• <span class="text-rose-400">requires: [suchá_pokožka]</span> — Podmínky použití</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Comparison: Current Blueprint vs Target -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">📊</span> Diver Blueprint vs. Outfindo Target
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-slate-700/50 p-6">
+                <div class="grid grid-cols-3 gap-6 mb-6">
+                    <div class="text-center">
+                        <div class="text-sm text-slate-500 mb-2">Aktuální Diver Blueprint</div>
+                        <div class="text-4xl font-bold text-amber-400">40</div>
+                        <div class="text-xs text-slate-600">polí definováno</div>
+                    </div>
+                    <div class="text-center border-x border-slate-700/50">
+                        <div class="text-sm text-slate-500 mb-2">Pokrytí L1-L6</div>
+                        <div class="text-4xl font-bold text-amber-400">58%</div>
+                        <div class="text-xs text-slate-600">z cílového stavu</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm text-slate-500 mb-2">Outfindo Target</div>
+                        <div class="text-4xl font-bold text-outfindo">~55</div>
+                        <div class="text-xs text-slate-600">polí + 7 description bloků</div>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-700/50 pt-4">
+                    <h4 class="text-sm font-medium text-slate-400 mb-3">Pokrytí podle vrstvy:</h4>
+                    <div class="space-y-3">
+                        <!-- L1 Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-500">L1: Identita</span>
+                                <span class="text-outfindo">85%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-outfindo rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <!-- L2 Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-outfindo font-medium">L2: Zákaznické cíle ⭐</span>
+                                <span class="text-angry-accent">0%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-angry-accent rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <!-- L3 Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-500">L3: Specifikace</span>
+                                <span class="text-outfindo">75%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-outfindo rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <!-- L4 Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-500">L4: Fyzické parametry</span>
+                                <span class="text-outfindo">80%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-outfindo rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <!-- L5 Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-500">L5: Funkce & technologie</span>
+                                <span class="text-amber-400">70%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-amber-400 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <!-- L6 Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-rose-400 font-medium">L6: Omezení & hranice ⚠️</span>
+                                <span class="text-angry-accent">0%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-angry-accent rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <!-- Description Progress -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-angry-accent font-medium">D1-D7: Description bloky</span>
+                                <span class="text-angry-accent">14%</span>
+                            </div>
+                            <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-angry-accent rounded-full" style="width: 14%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Priority Recommendations -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">✓</span> Prioritní doporučení
+            </h2>
+
+            <div class="space-y-3">
+                <!-- P0 -->
+                <div class="bg-rose-500/10 rounded-xl p-4 border border-rose-500/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-rose-500 text-white rounded text-xs font-bold shrink-0">P0</span>
+                    <div>
+                        <h3 class="font-medium text-rose-400">Přidat L6: Omezení & hranice</h3>
+                        <p class="text-slate-500 text-sm">suitable_for[], not_suitable_for[], this_is_not[], requires[] — kritické pro prevenci halucinace LLM a špatných doporučení.</p>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="px-2 py-0.5 bg-slate-800 rounded text-xs text-slate-400">this_is_not: [lubrikant]</span>
+                            <span class="px-2 py-0.5 bg-slate-800 rounded text-xs text-slate-400">not_suitable_for: [sliznice, rány]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-outfindo/10 rounded-xl p-4 border border-outfindo/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-outfindo text-white rounded text-xs font-bold shrink-0">P0</span>
+                    <div>
+                        <h3 class="font-medium text-outfindo">Přidat L2: Zákaznické cíle</h3>
+                        <p class="text-slate-500 text-sm">primary_use, problems_solved[], target_user_types[], lifestyle_fit — umožní LLM matchovat zákaznický záměr.</p>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="px-2 py-0.5 bg-slate-800 rounded text-xs text-slate-400">problems_solved: [pocení, zápach]</span>
+                            <span class="px-2 py-0.5 bg-slate-800 rounded text-xs text-slate-400">lifestyle_fit: [kancelářský, aktivní]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-angry-accent/10 rounded-xl p-4 border border-angry-accent/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-angry-accent text-white rounded text-xs font-bold shrink-0">P0</span>
+                    <div>
+                        <h3 class="font-medium text-angry-accent">Vytvořit D7: Na co si dát pozor</h3>
+                        <p class="text-slate-500 text-sm">Strukturovat varování — Vhodné pro / Nevhodné pro / Tohle to NENÍ / Vyžaduje. Kritické pro snížení vratek.</p>
+                    </div>
+                </div>
+
+                <!-- P1 -->
+                <div class="bg-amber-500/10 rounded-xl p-4 border border-amber-500/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-amber-500 text-white rounded text-xs font-bold shrink-0">P1</span>
+                    <div>
+                        <h3 class="font-medium text-amber-400">Vytvořit D2: Pro koho je to ideální</h3>
+                        <p class="text-slate-500 text-sm">4-6 konkrétních use cases řazených podle populačního dopadu ze segmentace. INTENT MATCH signály.</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-500/10 rounded-xl p-4 border border-amber-500/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-amber-500 text-white rounded text-xs font-bold shrink-0">P1</span>
+                    <div>
+                        <h3 class="font-medium text-amber-400">Doplnit L3: effect_duration_hours, applications_per_pack</h3>
+                        <p class="text-slate-500 text-sm">Zákazníci se ptají "jak dlouho vydrží" a "kolik aplikací" — tyto dotazy nelze bez dat zodpovědět.</p>
+                    </div>
+                </div>
+
+                <!-- P2 -->
+                <div class="bg-slate-600/10 rounded-xl p-4 border border-slate-600/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-slate-600 text-white rounded text-xs font-bold shrink-0">P2</span>
+                    <div>
+                        <h3 class="font-medium text-slate-400">Vytvořit D4, D5, D6</h3>
+                        <p class="text-slate-500 text-sm">Specifikace v kontextu, diferenciace vs. alternativy, praktické tipy — kompletní sémantická vrstva.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-600/10 rounded-xl p-4 border border-slate-600/30 flex items-start gap-4">
+                    <span class="px-2 py-1 bg-slate-600 text-white rounded text-xs font-bold shrink-0">P2</span>
+                    <div>
+                        <h3 class="font-medium text-slate-400">Strukturovat MCL policy URLs</h3>
+                        <p class="text-slate-500 text-sm">return_policy_url, warranty_policy_url, Schema.org MerchantReturnPolicy markup.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Projection -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">📈</span> Projekce dopadu
+            </h2>
+
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-sm text-slate-500 mb-2">Blueprint Coverage</div>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-2xl font-bold text-amber-400">58%</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="text-2xl font-bold text-outfindo">95%</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-sm text-slate-500 mb-2">LLM Readiness</div>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-2xl font-bold text-amber-400">C</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="text-2xl font-bold text-outfindo">A</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 text-center">
+                    <div class="text-sm text-slate-500 mb-2">Query Odpověditelnost</div>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-2xl font-bold text-amber-400">30%</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="text-2xl font-bold text-outfindo">90%+</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Products Quick Check -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-angry-accent">🎱</span> Quick Check: Další produkty
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl border border-slate-700/50 overflow-hidden">
+                <div class="grid grid-cols-12 gap-4 p-4 bg-slate-800/50 text-sm font-medium">
+                    <div class="col-span-4">Produkt</div>
+                    <div class="col-span-2">Blueprint</div>
+                    <div class="col-span-2">Description</div>
+                    <div class="col-span-2">L6 Safety</div>
+                    <div class="col-span-2">LLM Grade</div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-4">
+                        <div class="font-medium">Pudr SIT & CHILL</div>
+                        <div class="text-xs text-slate-500">AB-BL003-004OG-057-2310</div>
+                    </div>
+                    <div class="col-span-2"><span class="text-amber-400">58%</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">1/7</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">0/4</span></div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs">C</span></div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-4">
+                        <div class="font-medium">Antistick vazelína</div>
+                        <div class="text-xs text-slate-500">AB-BL005-023RP-055-2420</div>
+                    </div>
+                    <div class="col-span-2"><span class="text-amber-400">~55%</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">1/7</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">0/4</span></div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs">C</span></div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 p-4 border-t border-slate-700/50 text-sm items-center">
+                    <div class="col-span-4">
+                        <div class="font-medium">Antisweat Deodorant</div>
+                        <div class="text-xs text-slate-500">AB-BL010-004SCH-075-2411</div>
+                    </div>
+                    <div class="col-span-2"><span class="text-amber-400">~60%</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">1/7</span></div>
+                    <div class="col-span-2"><span class="text-angry-accent">0/4</span></div>
+                    <div class="col-span-2"><span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs">C</span></div>
+                </div>
+            </div>
+
+            <p class="text-slate-500 text-sm mt-3">
+                <strong class="text-slate-400">Poznámka:</strong> Všechny 3 produkty mají podobný gap pattern — silné v L1/L3/L4/L5, kompletně chybí L2 a L6.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-angry-accent font-medium">Angry Beards</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Content System</p>
+            <p class="text-slate-600 text-xs mt-1">Document 2/3: Gap Analysis — Pudr na kule SIT & CHILL</p>
+        </footer>
+
+    </div>
+</body>
+</html>
