@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super zoo × Outfindo | PDP Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        superzoo: {
+                            DEFAULT: '#FFED00',
+                            light: '#FFF566',
+                            dark: '#E6D500'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .glow-outfindo { box-shadow: 0 0 20px rgba(0, 180, 161, 0.15); }
+        .glow-superzoo { box-shadow: 0 0 20px rgba(255, 237, 0, 0.1); }
+        details summary { cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s ease; }
+        .json-key { color: #00B4A1; }
+        .json-string { color: #98c379; }
+        .json-number { color: #d19a66; }
+        .json-boolean { color: #c678dd; }
+        .json-bracket { color: #abb2bf; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111118] to-[#0a1a1a] text-white">
+    <div class="max-w-6xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="flex items-center gap-2 px-4 py-2 bg-superzoo/10 rounded-lg border border-superzoo/30">
+                    <span class="text-superzoo font-bold text-xl tracking-tight">Super zoo</span>
+                </div>
+                <span class="text-slate-600 text-2xl font-light">×</span>
+                <div class="flex items-center gap-2 px-4 py-2 bg-outfindo/5 rounded-lg border border-outfindo/20">
+                    <span class="text-outfindo font-bold text-xl tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-2">PDP Example: Fully Enriched</h1>
+            <p class="text-xl text-slate-400">Foresto Antiparazitní obojek pro psy 70 cm</p>
+            <div class="flex gap-2 mt-4">
+                <span class="px-3 py-1 bg-outfindo/20 text-outfindo rounded-full text-xs">✓ 95% Blueprint Coverage</span>
+                <span class="px-3 py-1 bg-outfindo/20 text-outfindo rounded-full text-xs">✓ 7/7 Description Blocks</span>
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Document 3/3</span>
+            </div>
+        </div>
+
+        <!-- Transformation Summary -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-red-500/10 via-slate-900/50 to-outfindo/10 rounded-2xl p-6 border border-slate-700/50">
+                <div class="flex items-center justify-between">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-red-400">18%</div>
+                        <div class="text-xs text-slate-500">Before</div>
+                    </div>
+                    <div class="flex-1 mx-8">
+                        <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-red-500 via-amber-500 to-outfindo rounded-full" style="width: 95%"></div>
+                        </div>
+                        <div class="text-center mt-2 text-slate-400 text-sm">→ Outfindo Enrichment →</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-outfindo">95%</div>
+                        <div class="text-xs text-slate-500">After</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blueprint Data (L1-L6) -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">🗂</span>
+                Blueprint Data (L1-L6)
+            </h2>
+
+            <div class="space-y-4">
+                <!-- L1: Core Identity -->
+                <details open class="bg-slate-900/50 rounded-xl border border-slate-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between bg-slate-800/30">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-slate-500/20 flex items-center justify-center text-slate-400 font-bold text-sm">L1</span>
+                            <div>
+                                <h3 class="font-bold text-slate-300">Core Identity</h3>
+                                <p class="text-xs text-slate-500">Unikátní identifikace produktu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                            <svg class="w-5 h-5 text-slate-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </summary>
+                    <div class="p-4 border-t border-slate-700/50">
+                        <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"brand"</span>: <span class="json-string">"Foresto"</span>,
+  <span class="json-key">"manufacturer"</span>: <span class="json-string">"Elanco (Bayer Animal Health)"</span>,
+  <span class="json-key">"product_line"</span>: <span class="json-string">"Foresto Antiparazitní obojky"</span>,
+  <span class="json-key">"sku"</span>: <span class="json-string">"344-7009"</span>,
+  <span class="json-key">"gtin"</span>: <span class="json-string">"4007221037880"</span>,
+  <span class="json-key">"gtin_type"</span>: <span class="json-string">"EAN-13"</span>,
+  <span class="json-key">"category_path"</span>: [<span class="json-string">"Psi"</span>, <span class="json-string">"Zdraví a péče"</span>, <span class="json-string">"Antiparazitika"</span>, <span class="json-string">"Obojky"</span>],
+  <span class="json-key">"product_url"</span>: <span class="json-string">"https://www.superzoo.cz/antiparazitni-obojek-foresto-pro-psy-70-cm/"</span>
+}</code></pre>
+                    </div>
+                </details>
+
+                <!-- L2: Customer Goals -->
+                <details open class="bg-outfindo/5 rounded-xl border border-outfindo/30 overflow-hidden glow-outfindo">
+                    <summary class="p-4 flex items-center justify-between bg-outfindo/10">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold text-sm">L2</span>
+                            <div>
+                                <h3 class="font-bold text-outfindo">Customer Goals ⭐ OUTFINDO UNIQUE</h3>
+                                <p class="text-xs text-slate-500">Mapování na zákaznický záměr</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                            <svg class="w-5 h-5 text-outfindo chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </summary>
+                    <div class="p-4 border-t border-outfindo/20">
+                        <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"primary_goal"</span>: <span class="json-string">"continuous-worry-free-protection"</span>,
+  <span class="json-key">"target_user_types"</span>: [
+    <span class="json-string">"hassle-free-protector"</span>,
+    <span class="json-string">"safety-first-family"</span>,
+    <span class="json-string">"custom-fit-adventurer"</span>
+  ],
+  <span class="json-key">"dog_profile_fit"</span>: [
+    <span class="json-string">"adult-dogs"</span>,
+    <span class="json-string">"senior-dogs"</span>,
+    <span class="json-string">"large-breed"</span>,
+    <span class="json-string">"giant-breed"</span>,
+    <span class="json-string">"outdoor-active"</span>
+  ],
+  <span class="json-key">"household_fit"</span>: [
+    <span class="json-string">"with-children"</span>,
+    <span class="json-string">"multi-dog"</span>,
+    <span class="json-string">"active-lifestyle"</span>
+  ],
+  <span class="json-key">"problems_solved"</span>: [
+    <span class="json-string">"tick-prevention"</span>,
+    <span class="json-string">"flea-control"</span>,
+    <span class="json-string">"lice-treatment"</span>,
+    <span class="json-string">"long-term-protection"</span>,
+    <span class="json-string">"gaps-between-treatments"</span>,
+    <span class="json-string">"frequent-reapplication"</span>
+  ],
+  <span class="json-key">"lifestyle_fit"</span>: [
+    <span class="json-string">"outdoor-hiking"</span>,
+    <span class="json-string">"frequent-swimmer"</span>,
+    <span class="json-string">"forest-walks"</span>,
+    <span class="json-string">"camping"</span>,
+    <span class="json-string">"hunting-dogs"</span>
+  ],
+  <span class="json-key">"ideal_for_scenarios"</span>: [
+    <span class="json-string">"busy-owners-low-maintenance"</span>,
+    <span class="json-string">"tick-endemic-areas"</span>,
+    <span class="json-string">"year-round-protection"</span>
+  ]
+}</code></pre>
+                        <div class="mt-4 p-3 bg-outfindo/10 rounded-lg">
+                            <p class="text-xs text-outfindo">🎯 <strong>LLM Query Match Examples:</strong></p>
+                            <ul class="text-xs text-slate-400 mt-2 space-y-1">
+                                <li>• "obojek pro velkého psa co chodí do lesa" → <code class="text-outfindo">dog_profile_fit: large-breed</code> + <code class="text-outfindo">lifestyle_fit: forest-walks</code></li>
+                                <li>• "ochrana bez starostí na celou sezónu" → <code class="text-outfindo">primary_goal: continuous-worry-free-protection</code></li>
+                                <li>• "antiparazitikum bezpečné pro domácnost s dětmi" → <code class="text-outfindo">household_fit: with-children</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L3: Core Specifications -->
+                <details open class="bg-slate-900/50 rounded-xl border border-emerald-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between bg-emerald-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm">L3</span>
+                            <div>
+                                <h3 class="font-bold text-emerald-400">Core Specifications</h3>
+                                <p class="text-xs text-slate-500">Klíčové metriky výkonu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                            <svg class="w-5 h-5 text-emerald-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </summary>
+                    <div class="p-4 border-t border-emerald-500/20">
+                        <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"duration_effectiveness"</span>: {
+    <span class="json-key">"ticks_months"</span>: <span class="json-number">8</span>,
+    <span class="json-key">"fleas_months"</span>: <span class="json-number">8</span>,
+    <span class="json-key">"flea_larvae_months"</span>: <span class="json-number">8</span>,
+    <span class="json-key">"lice_treatment"</span>: <span class="json-boolean">true</span>
+  },
+  <span class="json-key">"target_parasites"</span>: [
+    <span class="json-string">"ticks"</span>,
+    <span class="json-string">"fleas"</span>,
+    <span class="json-string">"flea-larvae"</span>,
+    <span class="json-string">"lice"</span>
+  ],
+  <span class="json-key">"mode_of_action"</span>: [
+    <span class="json-string">"acaricidal"</span>,
+    <span class="json-string">"insecticidal"</span>,
+    <span class="json-string">"repellent"</span>
+  ],
+  <span class="json-key">"onset_of_action"</span>: {
+    <span class="json-key">"fleas_hours"</span>: <span class="json-number">24</span>,
+    <span class="json-key">"ticks_hours"</span>: <span class="json-number">48</span>
+  },
+  <span class="json-key">"active_ingredients"</span>: [
+    {
+      <span class="json-key">"name"</span>: <span class="json-string">"Imidacloprid"</span>,
+      <span class="json-key">"concentration_mg"</span>: <span class="json-number">4500</span>,
+      <span class="json-key">"target"</span>: <span class="json-string">"fleas"</span>
+    },
+    {
+      <span class="json-key">"name"</span>: <span class="json-string">"Flumethrin"</span>,
+      <span class="json-key">"concentration_mg"</span>: <span class="json-number">2030</span>,
+      <span class="json-key">"target"</span>: <span class="json-string">"ticks"</span>
+    }
+  ],
+  <span class="json-key">"suitable_dog_weight"</span>: {
+    <span class="json-key">"min_kg"</span>: <span class="json-number">8</span>,
+    <span class="json-key">"max_kg"</span>: <span class="json-boolean">null</span>,
+    <span class="json-key">"label"</span>: <span class="json-string">"nad 8 kg"</span>
+  },
+  <span class="json-key">"minimum_age_weeks"</span>: <span class="json-number">7</span>,
+  <span class="json-key">"regulatory_status"</span>: <span class="json-string">"veterinary-medicinal-product"</span>
+}</code></pre>
+                    </div>
+                </details>
+
+                <!-- L4: Physical Parameters -->
+                <details class="bg-slate-900/50 rounded-xl border border-violet-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between bg-violet-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 font-bold text-sm">L4</span>
+                            <div>
+                                <h3 class="font-bold text-violet-400">Physical Parameters</h3>
+                                <p class="text-xs text-slate-500">Rozměry a fyzické vlastnosti</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                            <svg class="w-5 h-5 text-violet-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </summary>
+                    <div class="p-4 border-t border-violet-500/20">
+                        <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"product_type"</span>: <span class="json-string">"collar"</span>,
+  <span class="json-key">"collar_length_cm"</span>: <span class="json-number">70</span>,
+  <span class="json-key">"adjustable"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"color"</span>: <span class="json-string">"grey"</span>,
+  <span class="json-key">"material"</span>: <span class="json-string">"polymer-matrix"</span>,
+  <span class="json-key">"closure_type"</span>: <span class="json-string">"buckle-with-loop"</span>,
+  <span class="json-key">"units_per_pack"</span>: <span class="json-number">1</span>,
+  <span class="json-key">"weight_g"</span>: <span class="json-number">45</span>,
+  <span class="json-key">"size_variant"</span>: <span class="json-string">"large-dogs"</span>,
+  <span class="json-key">"available_sizes"</span>: [
+    { <span class="json-key">"length_cm"</span>: <span class="json-number">38</span>, <span class="json-key">"for"</span>: <span class="json-string">"small-dogs-cats"</span> },
+    { <span class="json-key">"length_cm"</span>: <span class="json-number">70</span>, <span class="json-key">"for"</span>: <span class="json-string">"large-dogs"</span> }
+  ]
+}</code></pre>
+                    </div>
+                </details>
+
+                <!-- L5: Features & Technology -->
+                <details class="bg-slate-900/50 rounded-xl border border-amber-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between bg-amber-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">L5</span>
+                            <div>
+                                <h3 class="font-bold text-amber-400">Features & Technology</h3>
+                                <p class="text-xs text-slate-500">Funkce a technologie</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                            <svg class="w-5 h-5 text-amber-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </summary>
+                    <div class="p-4 border-t border-amber-500/20">
+                        <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"water_resistant"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"water_resistance_level"</span>: <span class="json-string">"swimming-bathing-safe"</span>,
+  <span class="json-key">"water_resistance_note"</span>: <span class="json-string">"Účinnost přetrvává i po opakovaném namočení, koupání nebo dešti"</span>,
+  <span class="json-key">"release_technology"</span>: <span class="json-string">"slow-release-polymer-matrix"</span>,
+  <span class="json-key">"application_method"</span>: <span class="json-string">"wearable-continuous"</span>,
+  <span class="json-key">"scent_profile"</span>: <span class="json-string">"mild-low-odor"</span>,
+  <span class="json-key">"reflective_elements"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"breakaway_safety"</span>: <span class="json-boolean">false</span>,
+  <span class="json-key">"contains_natural_ingredients"</span>: <span class="json-boolean">false</span>,
+  <span class="json-key">"prescription_required"</span>: <span class="json-boolean">false</span>,
+  <span class="json-key">"special_features"</span>: [
+    <span class="json-string">"low-dust-release"</span>,
+    <span class="json-string">"no-greasy-residue"</span>,
+    <span class="json-string">"compatible-with-harness"</span>
+  ]
+}</code></pre>
+                    </div>
+                </details>
+
+                <!-- L6: Constraints & Boundaries -->
+                <details open class="bg-red-500/5 rounded-xl border border-red-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between bg-red-500/10">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 font-bold text-sm">L6</span>
+                            <div>
+                                <h3 class="font-bold text-red-400">Constraints & Boundaries ⚠️ ANTI-HALLUCINATION</h3>
+                                <p class="text-xs text-slate-500">Kritická vrstva pro bezpečná doporučení</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                            <svg class="w-5 h-5 text-red-400 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </summary>
+                    <div class="p-4 border-t border-red-500/20">
+                        <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"suitable_for"</span>: [
+    <span class="json-string">"dogs-over-8kg"</span>,
+    <span class="json-string">"puppies-from-7-weeks"</span>,
+    <span class="json-string">"outdoor-dogs"</span>,
+    <span class="json-string">"swimming-dogs"</span>,
+    <span class="json-string">"hunting-dogs"</span>,
+    <span class="json-string">"households-with-children"</span>
+  ],
+  <span class="json-key">"not_suitable_for"</span>: [
+    <span class="json-string">"cats"</span>,
+    <span class="json-string">"dogs-under-8kg"</span>,
+    <span class="json-string">"puppies-under-7-weeks"</span>,
+    <span class="json-string">"rabbits-ferrets-rodents"</span>,
+    <span class="json-string">"sick-debilitated-dogs-without-vet"</span>
+  ],
+  <span class="json-key">"this_is_not"</span>: [
+    <span class="json-string">"dewormer"</span>,
+    <span class="json-string">"internal-parasite-treatment"</span>,
+    <span class="json-string">"spot-on-drops"</span>,
+    <span class="json-string">"spray"</span>,
+    <span class="json-string">"shampoo"</span>,
+    <span class="json-string">"natural-herbal-product"</span>
+  ],
+  <span class="json-key">"requires"</span>: [
+    <span class="json-string">"vet-consult-if-pregnant-lactating"</span>,
+    <span class="json-string">"vet-consult-if-sick-debilitated"</span>,
+    <span class="json-string">"vet-consult-if-on-other-medication"</span>
+  ],
+  <span class="json-key">"limitations"</span>: [
+    <span class="json-string">"not-100-percent-tick-attachment-prevention"</span>,
+    <span class="json-string">"efficacy-may-vary-with-heavy-infestation"</span>,
+    <span class="json-string">"visible-collar-required-on-dog"</span>
+  ],
+  <span class="json-key">"incompatible_with"</span>: [
+    <span class="json-string">"cat-contact-permethrin-sensitivity"</span>,
+    <span class="json-string">"other-ectoparasiticide-collars"</span>
+  ],
+  <span class="json-key">"safety_warnings"</span>: [
+    <span class="json-string">"keep-away-from-cats-first-days"</span>,
+    <span class="json-string">"wash-hands-after-handling"</span>,
+    <span class="json-string">"do-not-allow-children-to-play-with-collar"</span>
+  ]
+}</code></pre>
+                        <div class="mt-4 p-3 bg-red-500/10 rounded-lg">
+                            <p class="text-xs text-red-400">🛡️ <strong>LLM Safety Examples:</strong></p>
+                            <ul class="text-xs text-slate-400 mt-2 space-y-1">
+                                <li>• "Mám čivavu 4 kg" → <code class="text-red-400">not_suitable_for: dogs-under-8kg</code> → LLM odmítne doporučit</li>
+                                <li>• "Potřebuji odčervit psa" → <code class="text-red-400">this_is_not: dewormer</code> → LLM vysvětlí rozdíl</li>
+                                <li>• "Mám doma i kočku" → <code class="text-red-400">incompatible_with: cat-contact</code> → LLM upozorní na riziko</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Description Blocks (D1-D7) -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-slate-700 flex items-center justify-center">📝</span>
+                Description Blocks (D1-D7)
+            </h2>
+
+            <div class="space-y-4">
+                <!-- D1: Opening Hook -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-slate-700 rounded text-xs font-bold">D1</span>
+                        <div>
+                            <h3 class="font-medium text-slate-300">Opening Hook</h3>
+                            <p class="text-xs text-slate-500">"Je tohle pro mého psa?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-slate-700/50">
+                        <p class="text-slate-300 leading-relaxed">
+                            Antiparazitní obojek Foresto 70 cm je určen pro <strong class="text-white">střední a velké psy nad 8 kg</strong>, kteří potřebují spolehlivou <strong class="text-white">celoroční ochranu</strong> proti klíšťatům a blechám — ideální pro aktivní psy, kteří tráví čas v přírodě, plavou nebo pravidelně chodí do lesa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- D2: Pain Points Addressed -->
+                <div class="bg-outfindo/5 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs font-bold">D2</span>
+                        <div>
+                            <h3 class="font-medium text-outfindo">Pain Points Addressed</h3>
+                            <p class="text-xs text-slate-500">"Proč to potřebuji?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-outfindo/20">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <div>
+                                    <strong class="text-white">Konec měsíčních kapek</strong>
+                                    <p class="text-slate-400 text-sm">8 měsíců nepřetržité ochrany eliminuje mezery mezi aplikacemi a riziko reinfekcí</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <div>
+                                    <strong class="text-white">Voděodolný i pro plavce</strong>
+                                    <p class="text-slate-400 text-sm">Účinnost přetrvává po koupání, dešti i plavání — žádné sundávání a nasazování</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <div>
+                                    <strong class="text-white">Bezpečný pro domácnosti s dětmi</strong>
+                                    <p class="text-slate-400 text-sm">Nízká prašnost a minimální přenos reziduí — veterinární lék s ověřeným bezpečnostním profilem</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-outfindo mt-1">✓</span>
+                                <div>
+                                    <strong class="text-white">Repelentní účinek proti klíšťatům</strong>
+                                    <p class="text-slate-400 text-sm">Nejen zabíjí, ale i odpuzuje — snižuje riziko přisátí a přenosu nemocí</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D3: Specification Context -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-slate-700 rounded text-xs font-bold">D3</span>
+                        <div>
+                            <h3 class="font-medium text-slate-300">Specification Context</h3>
+                            <p class="text-xs text-slate-500">"Co ta čísla znamenají?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-slate-700/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-800/30 rounded-lg p-3">
+                                <div class="text-2xl font-bold text-outfindo">8 měsíců</div>
+                                <p class="text-sm text-slate-400">= celá sezóna klíšťat (březen–říjen) + rezerva. Jeden obojek pokryje celý rok venkovních aktivit.</p>
+                            </div>
+                            <div class="bg-slate-800/30 rounded-lg p-3">
+                                <div class="text-2xl font-bold text-outfindo">70 cm</div>
+                                <p class="text-sm text-slate-400">= nastavitelná délka pro obvod krku cca 50–65 cm. Vhodné pro labradora, zlatého retrívra, německého ovčáka.</p>
+                            </div>
+                            <div class="bg-slate-800/30 rounded-lg p-3">
+                                <div class="text-2xl font-bold text-outfindo">24–48 h</div>
+                                <p class="text-sm text-slate-400">= začátek účinku. Blechy do 24 hodin, klíšťata do 48 hodin. Plná ochrana nastupuje postupně.</p>
+                            </div>
+                            <div class="bg-slate-800/30 rounded-lg p-3">
+                                <div class="text-2xl font-bold text-outfindo">od 8 kg</div>
+                                <p class="text-sm text-slate-400">= minimální hmotnost psa. Pro menší psy (pod 8 kg) je k dispozici varianta 38 cm.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D4: Experience Preview -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-slate-700 rounded text-xs font-bold">D4</span>
+                        <div>
+                            <h3 class="font-medium text-slate-300">Experience Preview</h3>
+                            <p class="text-xs text-slate-500">"Jak to funguje v praxi?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-slate-700/50">
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="w-16 h-16 rounded-full bg-outfindo/20 flex items-center justify-center text-outfindo font-bold shrink-0">Den 1</div>
+                                <div>
+                                    <h4 class="font-medium text-white">Nasazení obojku</h4>
+                                    <p class="text-sm text-slate-400">Protáhněte obojek sponou, nasaďte psovi tak, aby mezi obojkem a krkem byly 2 prsty. Odstřihněte přebytečnou délku.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-16 h-16 rounded-full bg-outfindo/20 flex items-center justify-center text-outfindo font-bold shrink-0">Den 2-3</div>
+                                <div>
+                                    <h4 class="font-medium text-white">Nástup účinku</h4>
+                                    <p class="text-sm text-slate-400">Účinné látky se postupně uvolňují a distribuují po srsti. Blechy začínají hynout do 24h, klíšťata do 48h.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-16 h-16 rounded-full bg-outfindo/20 flex items-center justify-center text-outfindo font-bold shrink-0">Měsíc 1-8</div>
+                                <div>
+                                    <h4 class="font-medium text-white">Kontinuální ochrana</h4>
+                                    <p class="text-sm text-slate-400">Obojek lze ponechat i při koupání a plavání. Není třeba nic dalšího aplikovat ani obojek sundávat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D5: Differentiators -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-slate-700 rounded text-xs font-bold">D5</span>
+                        <div>
+                            <h3 class="font-medium text-slate-300">Differentiators</h3>
+                            <p class="text-xs text-slate-500">"Proč právě Foresto?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-slate-700/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+                                <span class="text-outfindo text-xl">↔</span>
+                                <div>
+                                    <p class="text-sm"><strong class="text-outfindo">8 měsíců</strong> <span class="text-slate-500">místo</span> <span class="text-slate-400">1 měsíce (kapky)</span></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+                                <span class="text-outfindo text-xl">↔</span>
+                                <div>
+                                    <p class="text-sm"><strong class="text-outfindo">Voděodolný</strong> <span class="text-slate-500">místo</span> <span class="text-slate-400">sundávat před plaváním</span></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+                                <span class="text-outfindo text-xl">↔</span>
+                                <div>
+                                    <p class="text-sm"><strong class="text-outfindo">Repelentní + killing</strong> <span class="text-slate-500">místo</span> <span class="text-slate-400">jen killing efekt</span></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+                                <span class="text-outfindo text-xl">↔</span>
+                                <div>
+                                    <p class="text-sm"><strong class="text-outfindo">Nízká prašnost</strong> <span class="text-slate-500">místo</span> <span class="text-slate-400">viditelný bílý prášek</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D6: Practical Guidance -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-slate-700 rounded text-xs font-bold">D6</span>
+                        <div>
+                            <h3 class="font-medium text-slate-300">Practical Guidance</h3>
+                            <p class="text-xs text-slate-500">"Co bych měl vědět?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-slate-700/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-sm font-medium text-slate-300 mb-2">💡 Tipy pro použití</h4>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Nasaďte 1-2 dny před očekávaným výletem do přírody</li>
+                                    <li>• Obojek lze nosit společně s běžným obojkem nebo postrojem</li>
+                                    <li>• Po 8 měsících vyměňte za nový (účinnost klesá)</li>
+                                    <li>• Pravidelně kontrolujte přilnavost — pes roste, obojek povolte</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-slate-300 mb-2">⚡ Rychlé odpovědi</h4>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• <strong class="text-white">Může pes plavat?</strong> Ano, voděodolný</li>
+                                    <li>• <strong class="text-white">Sundávat při koupání?</strong> Ne, není třeba</li>
+                                    <li>• <strong class="text-white">Kombinovat s kapkami?</strong> Poraďte se s veterinářem</li>
+                                    <li>• <strong class="text-white">Ucítím zápach?</strong> Minimální, jen první dny</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D7: Constraints & Expectations -->
+                <div class="bg-red-500/5 rounded-xl border border-red-500/30 overflow-hidden">
+                    <div class="p-4 bg-red-500/10 flex items-center gap-3">
+                        <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs font-bold">D7</span>
+                        <div>
+                            <h3 class="font-medium text-red-400">Constraints & Expectations</h3>
+                            <p class="text-xs text-slate-500">"Co by mě mohlo překvapit?"</p>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-red-500/20">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-sm font-medium text-emerald-400 mb-2">✓ Vhodné pro</h4>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Psy nad 8 kg</li>
+                                    <li>• Štěňata od 7 týdnů</li>
+                                    <li>• Psy, kteří plavou</li>
+                                    <li>• Domácnosti s dětmi</li>
+                                    <li>• Lovecké a pracovní psy</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-red-400 mb-2">✗ Nevhodné pro</h4>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• <strong class="text-red-400">Kočky</strong> (toxické!)</li>
+                                    <li>• Psy pod 8 kg (použijte 38cm verzi)</li>
+                                    <li>• Štěňata do 7 týdnů</li>
+                                    <li>• Nemocné psy bez konzultace s veterinářem</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                            <h4 class="text-sm font-medium text-amber-400 mb-2">⚠️ Tohle to NENÍ</h4>
+                            <p class="text-sm text-slate-400">Foresto je <strong class="text-white">antiparazitní obojek proti vnějším parazitům</strong> (klíšťata, blechy). <strong class="text-amber-400">Nejedná se o odčervovací přípravek</strong> — na vnitřní parazity (škrkavky, tasemnice) potřebujete jiný produkt.</p>
+                        </div>
+                        <div class="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                            <h4 class="text-sm font-medium text-red-400 mb-2">🐱 Důležité upozornění pro domácnosti s kočkou</h4>
+                            <p class="text-sm text-slate-400">Pokud máte doma kočku, zajistěte, aby první dny po nasazení obojku nepřišla do těsného kontaktu se psem (společné spaní, lízání). Po zaschnutí obojku riziko klesá.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCL: Merchant Consideration Layer -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400">🏪</span>
+                MCL — Merchant Consideration Layer
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-xl border border-amber-500/30 overflow-hidden">
+                <div class="p-4 bg-amber-500/10">
+                    <h3 class="font-bold text-amber-400">Super zoo — Merchant Trust Data</h3>
+                    <p class="text-xs text-slate-500">Per-offer data pro nákupní rozhodnutí LLM agenta</p>
+                </div>
+                <div class="p-4 border-t border-amber-500/20">
+                    <pre class="font-mono text-xs leading-relaxed overflow-x-auto"><code>{
+  <span class="json-key">"merchant"</span>: {
+    <span class="json-key">"name"</span>: <span class="json-string">"Super zoo"</span>,
+    <span class="json-key">"legal_entity"</span>: <span class="json-string">"SUPER ZOO a.s."</span>,
+    <span class="json-key">"ico"</span>: <span class="json-string">"28168526"</span>,
+    <span class="json-key">"country"</span>: <span class="json-string">"CZ"</span>,
+    <span class="json-key">"trust_badges"</span>: [<span class="json-string">"Heureka Ověřeno zákazníky"</span>, <span class="json-string">"Zboží.cz Partner"</span>]
+  },
+  <span class="json-key">"offer"</span>: {
+    <span class="json-key">"price"</span>: {
+      <span class="json-key">"amount"</span>: <span class="json-number">899</span>,
+      <span class="json-key">"currency"</span>: <span class="json-string">"CZK"</span>,
+      <span class="json-key">"vat_included"</span>: <span class="json-boolean">true</span>
+    },
+    <span class="json-key">"availability"</span>: <span class="json-string">"in-stock"</span>,
+    <span class="json-key">"stock_quantity"</span>: <span class="json-number">47</span>
+  },
+  <span class="json-key">"shipping"</span>: {
+    <span class="json-key">"methods"</span>: [
+      {
+        <span class="json-key">"name"</span>: <span class="json-string">"Zásilkovna"</span>,
+        <span class="json-key">"price_czk"</span>: <span class="json-number">59</span>,
+        <span class="json-key">"delivery_days"</span>: <span class="json-string">"1-2"</span>
+      },
+      {
+        <span class="json-key">"name"</span>: <span class="json-string">"PPL"</span>,
+        <span class="json-key">"price_czk"</span>: <span class="json-number">89</span>,
+        <span class="json-key">"delivery_days"</span>: <span class="json-string">"1-2"</span>
+      },
+      {
+        <span class="json-key">"name"</span>: <span class="json-string">"Osobní odběr"</span>,
+        <span class="json-key">"price_czk"</span>: <span class="json-number">0</span>,
+        <span class="json-key">"locations"</span>: <span class="json-number">45</span>
+      }
+    ],
+    <span class="json-key">"free_shipping_threshold_czk"</span>: <span class="json-number">999</span>
+  },
+  <span class="json-key">"returns"</span>: {
+    <span class="json-key">"period_days"</span>: <span class="json-number">30</span>,
+    <span class="json-key">"policy_url"</span>: <span class="json-string">"https://www.superzoo.cz/reklamace-a-vraceni/"</span>,
+    <span class="json-key">"free_returns"</span>: <span class="json-boolean">true</span>
+  },
+  <span class="json-key">"warranty"</span>: {
+    <span class="json-key">"period_months"</span>: <span class="json-number">24</span>,
+    <span class="json-key">"policy_url"</span>: <span class="json-string">"https://www.superzoo.cz/obchodni-podminky/"</span>
+  },
+  <span class="json-key">"payment_methods"</span>: [
+    <span class="json-string">"card"</span>,
+    <span class="json-string">"bank-transfer"</span>,
+    <span class="json-string">"cash-on-delivery"</span>,
+    <span class="json-string">"gopay"</span>
+  ],
+  <span class="json-key">"mcs_scores"</span>: {
+    <span class="json-key">"value"</span>: <span class="json-number">0.85</span>,
+    <span class="json-key">"speed"</span>: <span class="json-number">0.90</span>,
+    <span class="json-key">"risk"</span>: <span class="json-number">0.15</span>,
+    <span class="json-key">"trust"</span>: <span class="json-number">0.92</span>
+  }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Coverage Summary -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📊</span>
+                Final Coverage Summary
+            </h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="bg-outfindo/10 rounded-xl p-5 border border-outfindo/30 text-center glow-outfindo">
+                    <div class="text-3xl font-bold text-outfindo">6/6</div>
+                    <div class="text-sm text-slate-400 mt-1">Blueprint Layers</div>
+                    <div class="text-xs text-outfindo">L1-L6 Complete</div>
+                </div>
+                <div class="bg-outfindo/10 rounded-xl p-5 border border-outfindo/30 text-center glow-outfindo">
+                    <div class="text-3xl font-bold text-outfindo">7/7</div>
+                    <div class="text-sm text-slate-400 mt-1">Description Blocks</div>
+                    <div class="text-xs text-outfindo">D1-D7 Complete</div>
+                </div>
+                <div class="bg-outfindo/10 rounded-xl p-5 border border-outfindo/30 text-center glow-outfindo">
+                    <div class="text-3xl font-bold text-outfindo">4/4</div>
+                    <div class="text-sm text-slate-400 mt-1">MCL Tiers</div>
+                    <div class="text-xs text-outfindo">Trust Layer Ready</div>
+                </div>
+                <div class="bg-outfindo/10 rounded-xl p-5 border border-outfindo/30 text-center glow-outfindo">
+                    <div class="text-3xl font-bold text-outfindo">95%</div>
+                    <div class="text-sm text-slate-400 mt-1">Total Coverage</div>
+                    <div class="text-xs text-outfindo">LLM Agent Ready</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LLM Query Examples -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">🤖</span>
+                LLM Agent Query Matching
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-medium text-slate-300 mb-3">✓ Queries that will FIND this product</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-outfindo">→</span>
+                            <span class="text-slate-400">"antiparazitní obojek pro velkého psa do lesa"</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-outfindo">→</span>
+                            <span class="text-slate-400">"ochrana proti klíšťatům na celou sezónu"</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-outfindo">→</span>
+                            <span class="text-slate-400">"voděodolný obojek pro psa co plave"</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-outfindo">→</span>
+                            <span class="text-slate-400">"bezpečné antiparazitikum pro domácnost s dětmi"</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-outfindo">→</span>
+                            <span class="text-slate-400">"dlouhodobá ochrana bez měsíčních kapek"</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-red-500/5 rounded-xl p-5 border border-red-500/30">
+                    <h3 class="font-medium text-red-400 mb-3">✗ Queries that will correctly EXCLUDE</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400">✗</span>
+                            <span class="text-slate-400">"obojek pro malého čivavu 3 kg" <span class="text-red-400 text-xs">→ not_suitable_for</span></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400">✗</span>
+                            <span class="text-slate-400">"antiparazitikum pro kočku" <span class="text-red-400 text-xs">→ not_suitable_for: cats</span></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400">✗</span>
+                            <span class="text-slate-400">"odčervení pro psa" <span class="text-red-400 text-xs">→ this_is_not: dewormer</span></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400">✗</span>
+                            <span class="text-slate-400">"přírodní bylinný obojek" <span class="text-red-400 text-xs">→ this_is_not: natural</span></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400">✗</span>
+                            <span class="text-slate-400">"štěně 5 týdnů staré" <span class="text-red-400 text-xs">→ minimum_age_weeks: 7</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-superzoo font-medium">Super zoo</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Example: Foresto Antiparazitní obojek 70 cm — Fully Enriched</p>
+            <p class="text-slate-600 text-xs mt-1">Document 3/3: Complete Transformation | 18% → 95% Coverage</p>
+        </footer>
+
+    </div>
+</body>
+</html>
