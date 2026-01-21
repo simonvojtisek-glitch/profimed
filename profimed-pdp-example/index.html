@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profimed × Outfindo | PDP Example: Philips Sonicare for Kids</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        profimed: {
+                            DEFAULT: '#0066CC',
+                            light: '#3399FF',
+                            dark: '#004C99',
+                            accent: '#00AEEF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .desc-block { transition: all 0.2s ease; }
+        .desc-block:hover { transform: translateX(4px); }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111118] to-[#0a1a1a] text-white">
+    <div class="max-w-6xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-profimed/5 rounded-lg border border-profimed/20">
+                    <span class="text-profimed font-bold text-lg tracking-tight">Profimed</span>
+                </div>
+                <span class="text-slate-600 text-xl font-light">×</span>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-outfindo/5 rounded-lg border border-outfindo/20">
+                    <span class="text-outfindo font-bold text-lg tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold mb-1">PDP Example: Kompletní obohacení</h1>
+            <p class="text-slate-400">Ukázka plně obohaceného produktu s Blueprint + Description bloky</p>
+        </div>
+
+        <!-- Product Hero -->
+        <div class="bg-gradient-to-br from-cyan-900/20 via-slate-900/50 to-slate-900/50 rounded-2xl p-8 border border-cyan-700/30 mb-8">
+            <div class="flex items-start gap-8">
+                <div class="w-32 h-32 bg-gradient-to-br from-cyan-800/50 to-cyan-900/50 rounded-2xl flex items-center justify-center text-6xl shrink-0 border border-cyan-700/30">
+                    🧒
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded text-xs font-medium">Dětský produkt</span>
+                        <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs font-medium">Sonický</span>
+                        <span class="px-2 py-1 bg-amber-500/20 text-amber-400 rounded text-xs font-medium">Bluetooth</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Philips Sonicare for Kids HX6322/04</h2>
+                    <p class="text-slate-400 mb-4">Dětský sonický zubní kartáček s Bluetooth připojením a herní aplikací Sparkly pro děti 3-9 let</p>
+                    <div class="flex items-center gap-6">
+                        <div>
+                            <div class="text-xs text-slate-500">Cena</div>
+                            <div class="text-xl font-bold text-white">1 890 Kč</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500">Dostupnost</div>
+                            <div class="text-outfindo font-medium">Skladem</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500">LLM Grade</div>
+                            <div class="text-outfindo font-bold text-xl">A</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Before/After Toggle Info -->
+        <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 mb-8">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-slate-600"></span>
+                    <span class="text-sm text-slate-400">Existující data</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-outfindo"></span>
+                    <span class="text-sm text-outfindo">Nově přidaná data (Outfindo)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                    <span class="text-sm text-amber-400">Doplněná data</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLUEPRINT DATA -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">🗂️</span> Blueprint Data (L1-L6)
+            </h2>
+
+            <div class="space-y-4">
+                <!-- L1: Identity -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-slate-500"></span>
+                            <span class="font-medium">L1: Identity</span>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                    </div>
+                    <div class="p-4 grid grid-cols-2 gap-4 text-sm">
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">name</span>
+                                <span class="text-slate-300">Philips Sonicare for Kids HX6322/04</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">brand</span>
+                                <span class="text-slate-300">Philips</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">product_line</span>
+                                <span class="text-slate-300">Sonicare for Kids</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-outfindo font-mono text-xs">GTIN ✨</span>
+                                <span class="text-outfindo">8710103770756</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-outfindo font-mono text-xs">SKU ✨</span>
+                                <span class="text-outfindo">HX6322/04</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">category</span>
+                                <span class="text-slate-300">Dětské elektrické kartáčky</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L2: Customer Goals - NEW -->
+                <div class="bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-outfindo"></span>
+                            <span class="font-medium text-outfindo">L2: Customer Goals ⭐ NOVÉ</span>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                    </div>
+                    <div class="p-4 space-y-4">
+                        <!-- Target User Types -->
+                        <div>
+                            <div class="text-outfindo font-mono text-xs mb-2">target_user_types[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded-lg text-sm">👨‍👩‍👧 Rodiče dětí 3-9 let</span>
+                                <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded-lg text-sm">🎮 Rodiče hledající gamifikaci</span>
+                                <span class="px-2 py-1 bg-outfindo/10 text-outfindo rounded-lg text-sm">🦷 Rodiče s obavami o dětskou hygienu</span>
+                            </div>
+                        </div>
+                        <!-- Problems Solved -->
+                        <div>
+                            <div class="text-outfindo font-mono text-xs mb-2">problems_solved[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Dítě nechce čistit zuby</span>
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Krátká doba čištění</span>
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Nedostatečná technika</span>
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Motivace k pravidelnosti</span>
+                            </div>
+                        </div>
+                        <!-- Suitable Contexts -->
+                        <div>
+                            <div class="text-outfindo font-mono text-xs mb-2">suitable_contexts[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">🏠 Domácí použití</span>
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">👨‍👩‍👧‍👦 Rodina s více dětmi</span>
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">📱 Tech-friendly domácnost</span>
+                            </div>
+                        </div>
+                        <!-- Primary Use Case -->
+                        <div>
+                            <div class="text-outfindo font-mono text-xs mb-2">primary_use_case ✨</div>
+                            <div class="bg-slate-800/50 rounded-lg p-3 text-slate-300 text-sm">
+                                Vytvoření pozitivního návyku čištění zubů u dětí prostřednictvím herní motivace a interaktivního coachingu s virtuální postavičkou Sparkly
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L3: Core Specs -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            <span class="font-medium">L3: Core Specifications</span>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">95%</span>
+                    </div>
+                    <div class="p-4 grid grid-cols-3 gap-4 text-sm">
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Počet pohybů/min</span>
+                                <span class="text-slate-300">62 000</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Počet režimů</span>
+                                <span class="text-slate-300">2</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Seznam režimů</span>
+                                <span class="text-slate-300">Jemný, Standardní</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-amber-400 font-mono text-xs">Výdrž baterie ⚡</span>
+                                <span class="text-amber-400">2 týdny</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Délka časovače</span>
+                                <span class="text-slate-300">2 minuty</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Quadpacer</span>
+                                <span class="text-slate-300">Ano (30s)</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Typ baterie</span>
+                                <span class="text-slate-300">Li-Ion</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Typ nabíjení</span>
+                                <span class="text-slate-300">Indukční</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-outfindo font-mono text-xs">noise_level ✨</span>
+                                <span class="text-outfindo">Tichý (&lt;60 dB)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L4: Physical -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-violet-500"></span>
+                            <span class="font-medium">L4: Physical Parameters</span>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">90%</span>
+                    </div>
+                    <div class="p-4 grid grid-cols-3 gap-4 text-sm">
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Počet hlavic</span>
+                                <span class="text-slate-300">2</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Typy hlavic</span>
+                                <span class="text-slate-300">Standardní, Kompaktní</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-outfindo font-mono text-xs">weight_g ✨</span>
+                                <span class="text-outfindo">110 g</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-outfindo font-mono text-xs">handle_length_mm ✨</span>
+                                <span class="text-outfindo">165 mm</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Odolnost proti vodě</span>
+                                <span class="text-slate-300">IPX7</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-outfindo font-mono text-xs">grip_type ✨</span>
+                                <span class="text-outfindo">Ergonomický dětský</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L5: Features -->
+                <div class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div class="p-4 bg-slate-800/30 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                            <span class="font-medium">L5: Features & Technology</span>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                    </div>
+                    <div class="p-4 grid grid-cols-2 gap-4 text-sm">
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Technologie čištění</span>
+                                <span class="text-slate-300">Sonická</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Typy připojení</span>
+                                <span class="text-slate-300">Bluetooth</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Mobilní aplikace</span>
+                                <span class="text-slate-300">Ano</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Funguje bez telefonu</span>
+                                <span class="text-slate-300">Aplikace je volitelná</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Zábavnost pro děti</span>
+                                <span class="text-slate-300">Vysoká (hry, odměny)</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Funkce aplikace</span>
+                                <span class="text-slate-300 text-xs">Koaching, Sparkly, odměny, statistiky</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">Samolepky v balení</span>
+                                <span class="text-slate-300">8 ks (personalizace)</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-slate-800">
+                                <span class="text-slate-500 font-mono text-xs">KidTimer</span>
+                                <span class="text-slate-300">Postupné prodlužování</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L6: Constraints - NEW & CRITICAL -->
+                <div class="bg-slate-900/50 rounded-xl border border-rose-500/30 overflow-hidden">
+                    <div class="p-4 bg-rose-950/30 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                            <span class="font-medium text-rose-400">L6: Constraints & Boundaries ⚠️ NOVÉ</span>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">100%</span>
+                    </div>
+                    <div class="p-4 space-y-4">
+                        <!-- Suitable For -->
+                        <div>
+                            <div class="text-outfindo font-mono text-xs mb-2">suitable_for[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Děti 3-9 let</span>
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Mléčné zuby</span>
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Směs mléčných a trvalých zubů</span>
+                                <span class="px-2 py-1 bg-emerald-900/30 text-emerald-400 rounded-lg text-sm">✓ Citlivé dětské dásně</span>
+                            </div>
+                        </div>
+                        <!-- NOT Suitable For -->
+                        <div>
+                            <div class="text-rose-400 font-mono text-xs mb-2">not_suitable_for[] ✨ KRITICKÉ</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-rose-900/30 text-rose-400 rounded-lg text-sm">✗ Batolata pod 3 roky</span>
+                                <span class="px-2 py-1 bg-rose-900/30 text-rose-400 rounded-lg text-sm">✗ Bez rodičovského dohledu (3-6 let)</span>
+                                <span class="px-2 py-1 bg-rose-900/30 text-rose-400 rounded-lg text-sm">✗ Dospělí (příliš malá hlavice)</span>
+                            </div>
+                        </div>
+                        <!-- This Is NOT -->
+                        <div>
+                            <div class="text-amber-400 font-mono text-xs mb-2">this_is_not[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-amber-900/30 text-amber-400 rounded-lg text-sm">⚠️ Náhrada za rodičovský dohled</span>
+                                <span class="px-2 py-1 bg-amber-900/30 text-amber-400 rounded-lg text-sm">⚠️ Náhrada za zubní nit</span>
+                                <span class="px-2 py-1 bg-amber-900/30 text-amber-400 rounded-lg text-sm">⚠️ Léčebný prostředek</span>
+                                <span class="px-2 py-1 bg-amber-900/30 text-amber-400 rounded-lg text-sm">⚠️ Vhodný pro dospělé</span>
+                            </div>
+                        </div>
+                        <!-- Requires -->
+                        <div>
+                            <div class="text-slate-400 font-mono text-xs mb-2">requires[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">📋 Dětská zubní pasta (s fluoridy dle věku)</span>
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">📋 Rodičovský dohled u dětí 3-6 let</span>
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">📋 Náhradní hlavice Philips Sonicare Kids</span>
+                            </div>
+                        </div>
+                        <!-- Incompatible With -->
+                        <div>
+                            <div class="text-slate-400 font-mono text-xs mb-2">incompatible_with[] ✨</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">🚫 Hlavice pro dospělé Sonicare</span>
+                                <span class="px-2 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm">🚫 Hlavice jiných značek</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESCRIPTION BLOCKS -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-outfindo">📝</span> Description Blocks (D1-D7)
+            </h2>
+
+            <div class="space-y-4">
+                <!-- D1: Product Identity -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold">D1</span>
+                            <div>
+                                <div class="font-medium text-outfindo">Co přesně kupuji?</div>
+                                <div class="text-xs text-slate-500">Product Identity Statement | 60-80 slov</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">NOVÉ ✨</span>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-slate-300 leading-relaxed">
+                            <strong class="text-white">Philips Sonicare for Kids HX6322/04</strong> je dětský sonický zubní kartáček navržený speciálně pro děti od 3 do 9 let. Kombinuje jemnou sonickou technologii s 62 000 pohyby za minutu s interaktivní Bluetooth aplikací a virtuální postavičkou Sparkly, která proměňuje čištění zubů v zábavnou hru. Díky funkci KidTimer postupně prodlužuje dobu čištění, až dítě dosáhne doporučených 2 minut. V balení najdete 2 velikosti hlavic a 8 samolepek pro personalizaci.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- D2: Intent Matching -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold">D2</span>
+                            <div>
+                                <div class="font-medium text-outfindo">Hodí se to na moji situaci? ⭐</div>
+                                <div class="text-xs text-slate-500">Intent Matching | 5-7 bullets s INTENT MATCH</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">KRITICKÉ ✨</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 p-3 bg-emerald-950/30 rounded-lg border border-emerald-700/30">
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium shrink-0">INTENT MATCH</span>
+                                <div>
+                                    <div class="text-white font-medium">Vaše dítě nechce čistit zuby</div>
+                                    <div class="text-slate-400 text-sm">→ Herní aplikace s postavičkou Sparkly motivuje děti sbíráním odměn a odemykáním nových úrovní za pravidelné čištění.</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-emerald-950/30 rounded-lg border border-emerald-700/30">
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium shrink-0">INTENT MATCH</span>
+                                <div>
+                                    <div class="text-white font-medium">Hledáte kartáček pro předškoláka (3-6 let)</div>
+                                    <div class="text-slate-400 text-sm">→ Kompaktní hlavice a jemný režim jsou navrženy pro mléčné zuby. Funkce KidTimer postupně prodlužuje čištění od 1 do 2 minut.</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-emerald-950/30 rounded-lg border border-emerald-700/30">
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium shrink-0">INTENT MATCH</span>
+                                <div>
+                                    <div class="text-white font-medium">Chcete sledovat, jak dobře si dítě čistí</div>
+                                    <div class="text-slate-400 text-sm">→ Bluetooth aplikace ukazuje statistiky čištění, oblasti které dítě vynechává, a umožňuje rodičům nastavit připomínky.</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-emerald-950/30 rounded-lg border border-emerald-700/30">
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium shrink-0">INTENT MATCH</span>
+                                <div>
+                                    <div class="text-white font-medium">Máte dítě s citlivými dásněmi</div>
+                                    <div class="text-slate-400 text-sm">→ Jemný režim a extra měkké štětiny jsou šetrné k dětským dásním. Sonická technologie nevyžaduje tlak při čištění.</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-emerald-950/30 rounded-lg border border-emerald-700/30">
+                                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium shrink-0">INTENT MATCH</span>
+                                <div>
+                                    <div class="text-white font-medium">Nechcete být závislí na aplikaci</div>
+                                    <div class="text-slate-400 text-sm">→ Kartáček funguje plně bez telefonu. Bluetooth připojení a aplikace Sparkly jsou volitelné — časovač a quadpacer fungují vždy.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D3: Mechanism -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold">D3</span>
+                            <div>
+                                <div class="font-medium text-outfindo">Proč je to lepší než alternativy?</div>
+                                <div class="text-xs text-slate-500">Mechanism / How It Works | 80-120 slov</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">NOVÉ ✨</span>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-slate-300 leading-relaxed mb-3">
+                            <strong class="text-white">Sonická technologie Philips</strong> generuje 62 000 jemných pohybů za minutu, které vytváří dynamický proud tekutiny mezi zuby. Na rozdíl od rotačních kartáčků nevyžaduje tlak — stačí přiložit hlavici k zubům a nechat technologii pracovat.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed mb-3">
+                            <strong class="text-white">Aplikace Sparkly</strong> využívá principy gamifikace: dítě pečuje o virtuální postavičku, která roste a odemyká nové předměty za každé dokončené čištění. Psychologické studie ukazují, že herní prvky zvyšují adherenci k rutinám u dětí až o 90%.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed">
+                            <strong class="text-white">KidTimer</strong> postupně prodlužuje dobu čištění z 1 minuty na doporučené 2 minuty během 90 dní, což pomáhá budovat návyk bez frustrace.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- D4: Specs in Context -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold">D4</span>
+                            <div>
+                                <div class="font-medium text-outfindo">Stačí mi ty parametry?</div>
+                                <div class="text-xs text-slate-500">Specs in Context | Překlad čísel do praxe</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">NOVÉ ✨</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <div class="text-xs text-slate-500 mb-1">62 000 pohybů/min</div>
+                                <div class="text-slate-300 text-sm">= Jemnější než dospělé modely (31k), ale stále 10× účinnější než manuální kartáček</div>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <div class="text-xs text-slate-500 mb-1">2 týdny výdrž baterie</div>
+                                <div class="text-slate-300 text-sm">= Při 2× denním čištění. Dostatečné pro rodinnou dovolenou bez nabíječky</div>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <div class="text-xs text-slate-500 mb-1">2 velikosti hlavic</div>
+                                <div class="text-slate-300 text-sm">= Kompaktní pro 3-6 let (mléčné zuby), standardní pro 6-9 let (směs zubů)</div>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <div class="text-xs text-slate-500 mb-1">IPX7 voděodolnost</div>
+                                <div class="text-slate-300 text-sm">= Bezpečné použití ve sprše, přežije pád do vany</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D5: Differentiation -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold">D5</span>
+                            <div>
+                                <div class="font-medium text-outfindo">Proč právě tento a ne jiný?</div>
+                                <div class="text-xs text-slate-500">Differentiation | "X místo Y" formát</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">NOVÉ ✨</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-outfindo">→</span>
+                                <div class="text-slate-300"><strong class="text-white">Sonický místo rotační:</strong> Jemnější k dásním, nevyžaduje tlak, méně hlučný — děti se nebojí vibrací</div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-outfindo">→</span>
+                                <div class="text-slate-300"><strong class="text-white">Gamifikace místo časovače:</strong> Sparkly motivuje děti odměnami, ne jen pípáním po 2 minutách</div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-outfindo">→</span>
+                                <div class="text-slate-300"><strong class="text-white">KidTimer místo pevných 2 minut:</strong> Postupné prodlužování nevytváří frustraci u menších dětí</div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-outfindo">→</span>
+                                <div class="text-slate-300"><strong class="text-white">Bluetooth volitelný:</strong> Na rozdíl od konkurence funguje plně i bez aplikace</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D6: Practical Guidance -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-outfindo/30 overflow-hidden">
+                    <div class="p-4 bg-outfindo/10 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-bold">D6</span>
+                            <div>
+                                <div class="font-medium text-outfindo">Zvládnu to? Co potřebuji vědět?</div>
+                                <div class="text-xs text-slate-500">Practical Guidance | Instalace, použití, údržba</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-outfindo/20 text-outfindo rounded text-xs">NOVÉ ✨</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <div class="text-outfindo font-medium mb-2">🚀 První použití</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Nabijte kartáček 24 hodin</li>
+                                    <li>• Nasaďte kompaktní hlavici pro mladší děti</li>
+                                    <li>• Nechte dítě vybrat samolepky</li>
+                                    <li>• Stáhněte aplikaci Sparkly (volitelné)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-outfindo font-medium mb-2">📅 Denní použití</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Naneste hrášek dětské pasty</li>
+                                    <li>• Přiložte hlavici pod úhlem 45°</li>
+                                    <li>• Netlačte — nechte kartáček pracovat</li>
+                                    <li>• Sledujte quadpacer (30s na kvadrant)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-outfindo font-medium mb-2">🔧 Údržba</div>
+                                <ul class="space-y-1 text-sm text-slate-400">
+                                    <li>• Opláchněte hlavici po každém použití</li>
+                                    <li>• Vyměňte hlavici každé 3 měsíce</li>
+                                    <li>• Čistěte rukojeť vlhkým hadříkem</li>
+                                    <li>• Neskladujte v uzavřeném pouzdře</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D7: Constraints & Expectations -->
+                <div class="desc-block bg-slate-900/50 rounded-xl border border-rose-500/30 overflow-hidden">
+                    <div class="p-4 bg-rose-950/30 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400 font-bold">D7</span>
+                            <div>
+                                <div class="font-medium text-rose-400">Co by mě mohlo překvapit? ⚠️</div>
+                                <div class="text-xs text-slate-500">Constraints & Expectations | Anti-halucinační vrstva</div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-rose-500/20 text-rose-400 rounded text-xs">KRITICKÉ ✨</span>
+                    </div>
+                    <div class="p-4 space-y-4">
+                        <!-- Suitable For -->
+                        <div>
+                            <div class="text-emerald-400 font-medium mb-2">✓ Vhodné pro:</div>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="text-slate-300">• Děti 3-9 let</div>
+                                <div class="text-slate-300">• Mléčné i směs mléčných/trvalých zubů</div>
+                                <div class="text-slate-300">• Děti s citlivými dásněmi</div>
+                                <div class="text-slate-300">• Děti, které nerady čistí zuby</div>
+                            </div>
+                        </div>
+                        <!-- NOT Suitable For -->
+                        <div>
+                            <div class="text-rose-400 font-medium mb-2">✗ Nevhodné pro:</div>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="text-slate-300">• Batolata pod 3 roky</div>
+                                <div class="text-slate-300">• Děti 3-6 let bez rodičovského dohledu</div>
+                                <div class="text-slate-300">• Dospělé (příliš malá hlavice a nízký výkon)</div>
+                                <div class="text-slate-300">• Použití s hlavicemi jiných značek</div>
+                            </div>
+                        </div>
+                        <!-- This is NOT -->
+                        <div>
+                            <div class="text-amber-400 font-medium mb-2">⚠️ Toto NENÍ:</div>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="text-slate-300">• Náhrada za rodičovský dohled při čištění</div>
+                                <div class="text-slate-300">• Náhrada za zubní nit nebo mezizubní kartáčky</div>
+                                <div class="text-slate-300">• Léčebný prostředek na zubní kazy</div>
+                                <div class="text-slate-300">• Kartáček vhodný pro celou rodinu</div>
+                            </div>
+                        </div>
+                        <!-- Important Notes -->
+                        <div class="bg-amber-950/30 rounded-lg p-3 border border-amber-700/30">
+                            <div class="text-amber-400 font-medium mb-2">📋 Důležité informace:</div>
+                            <ul class="space-y-1 text-sm text-slate-400">
+                                <li>• <strong class="text-white">Fluorid:</strong> Používejte dětskou zubní pastu s obsahem fluoridu odpovídajícím věku dítěte (do 6 let: 1000 ppm, 6+ let: 1450 ppm)</li>
+                                <li>• <strong class="text-white">Dohled:</strong> Děti do 6 let by měly čistit zuby vždy pod dohledem rodiče</li>
+                                <li>• <strong class="text-white">Hlavice:</strong> Používejte pouze originální hlavice Philips Sonicare for Kids — jiné nejsou kompatibilní</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCL Data -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-amber-400">🏪</span> MCL (Merchant Consideration Layer)
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-xl border border-amber-700/30 p-4">
+                <div class="grid grid-cols-4 gap-4">
+                    <div>
+                        <div class="text-amber-400 text-xs font-medium mb-2">Tier 1: Identity</div>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">Merchant</span><span class="text-slate-300">Profimed.cz</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Authorized</span><span class="text-outfindo">✓ Philips Partner</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-amber-400 text-xs font-medium mb-2">Tier 2: Logistics</div>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">Doprava</span><span class="text-slate-300">Zdarma od 1500 Kč</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Doručení</span><span class="text-slate-300">1-2 pracovní dny</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-amber-400 text-xs font-medium mb-2">Tier 3: Transactional</div>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">Vrácení</span><span class="text-slate-300">14 dní</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">Záruka</span><span class="text-slate-300">24 měsíců</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-amber-400 text-xs font-medium mb-2">Tier 4: Consensus</div>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between"><span class="text-slate-500">Heureka</span><span class="text-outfindo">4.8/5 ✓</span></div>
+                            <div class="flex justify-between"><span class="text-slate-500">MCS Score</span><span class="text-outfindo">92/100</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-emerald-400">📈</span> Souhrn obohacení
+            </h2>
+
+            <div class="bg-gradient-to-br from-outfindo/10 to-slate-900/50 rounded-xl p-6 border border-outfindo/30">
+                <div class="grid grid-cols-4 gap-6 text-center mb-6">
+                    <div>
+                        <div class="text-3xl font-bold text-slate-400">55%</div>
+                        <div class="text-xs text-slate-500">Před</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-outfindo">→</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-outfindo">98%</div>
+                        <div class="text-xs text-slate-500">Po</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-emerald-400">A</div>
+                        <div class="text-xs text-slate-500">LLM Grade</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 text-sm">
+                    <div class="bg-slate-800/50 rounded-lg p-3">
+                        <div class="text-outfindo font-medium mb-1">Blueprint</div>
+                        <div class="text-slate-400 text-xs">+12 nových polí v L2 a L6</div>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-3">
+                        <div class="text-outfindo font-medium mb-1">Description</div>
+                        <div class="text-slate-400 text-xs">7/7 bloků (~1200 slov)</div>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-3">
+                        <div class="text-outfindo font-medium mb-1">MCL</div>
+                        <div class="text-slate-400 text-xs">4/4 tierů kompletních</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-profimed font-medium">Profimed</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Example — Philips Sonicare for Kids HX6322/04</p>
+            <p class="text-slate-600 text-xs mt-1">Document 3/3: PDP Example</p>
+        </footer>
+
+    </div>
+</body>
+</html>
