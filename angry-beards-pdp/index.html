@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Beards × Outfindo | PDP Content System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        outfindo: {
+                            DEFAULT: '#00B4A1',
+                            light: '#00D9C0',
+                            dark: '#009688'
+                        },
+                        angry: {
+                            DEFAULT: '#1a1a1a',
+                            accent: '#c9a227',
+                            gold: '#d4af37',
+                            light: '#333333'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+        .glow-gold { box-shadow: 0 0 20px rgba(201, 162, 39, 0.15); }
+        .glow-teal { box-shadow: 0 0 20px rgba(0, 180, 161, 0.15); }
+        .layer-card:hover { transform: translateY(-2px); transition: all 0.2s ease; }
+        details summary { cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#0d0d0d] text-white">
+    <div class="max-w-5xl mx-auto p-8">
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="flex items-center gap-2 px-4 py-2 bg-angry-accent/10 rounded-lg border border-angry-accent/30 glow-gold">
+                    <span class="text-angry-accent font-bold text-xl tracking-tight">Angry Beards</span>
+                </div>
+                <span class="text-slate-600 text-2xl font-light">×</span>
+                <div class="flex items-center gap-2 px-4 py-2 bg-outfindo/5 rounded-lg border border-outfindo/20 glow-teal">
+                    <span class="text-outfindo font-bold text-xl tracking-tight">Outfindo</span>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-2">PDP Content System</h1>
+            <p class="text-xl text-slate-400">Consumer Conversion & LLM Discovery</p>
+            <div class="flex gap-2 mt-4">
+                <span class="px-3 py-1 bg-angry-light rounded-full text-xs text-angry-accent border border-angry-accent/20">🎱 Pánská intimní kosmetika</span>
+                <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Product Category Framework</span>
+            </div>
+        </div>
+
+        <!-- The Challenge -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-angry-accent/20 flex items-center justify-center text-angry-accent">!</span>
+                Výzva: Perplexity Paradox
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50">
+                <p class="text-slate-300 text-lg mb-4">
+                    LLM shopping agenti (ChatGPT Shopping, Google Gemini, Perplexity) potřebují <strong class="text-white">strukturovaná data</strong> pro filtrování a <strong class="text-white">sémantický kontext</strong> pro doporučování.
+                </p>
+                <div class="grid grid-cols-2 gap-6 mt-6">
+                    <div class="bg-angry-accent/5 rounded-xl p-5 border border-angry-accent/20">
+                        <h3 class="font-bold text-angry-accent mb-3">⌀ Současný stav</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li>• Angry Beards má skvělý <span class="text-angry-accent">brand voice</span></li>
+                            <li>• Ale data jsou primárně v <span class="text-angry-accent">marketingovém prose</span></li>
+                            <li>• Chybí <span class="text-angry-accent">strukturovaná vrstva</span> (pro koho, proč)</li>
+                            <li>• LLM agenti nemohou filtrovat ani porovnat</li>
+                        </ul>
+                    </div>
+                    <div class="bg-outfindo/5 rounded-xl p-5 border border-outfindo/20">
+                        <h3 class="font-bold text-outfindo mb-3">✓ Řešení</h3>
+                        <ul class="space-y-2 text-slate-400 text-sm">
+                            <li>• <span class="text-outfindo">Blueprint</span>: 6-vrstvá strukturovaná data</li>
+                            <li>• <span class="text-outfindo">Description</span>: 7 sémantických bloků</li>
+                            <li>• <span class="text-outfindo">MCL</span>: Merchant trust layer</li>
+                            <li>• LLM agenti mohou najít, porovnat, doporučit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two-Part Architecture -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">⚡</span>
+                Architektura: Blueprint + Description + MCL
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <!-- Blueprint -->
+                <div class="bg-gradient-to-br from-outfindo/10 to-outfindo-dark/10 rounded-2xl p-6 border border-outfindo/30 layer-card">
+                    <div class="text-3xl mb-3">🗂</div>
+                    <h3 class="font-bold text-outfindo mb-2">Blueprint (L1-L6)</h3>
+                    <p class="text-slate-400 text-sm mb-4">"CO a KOLIK" — Strukturovaná data pro strojové zpracování</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                            <span class="text-slate-500">L1: Identita produktu</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-outfindo"></span>
+                            <span class="text-outfindo">L2: Zákaznické cíle ⭐</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="text-emerald-400">L3: Klíčové specifikace</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+                            <span class="text-violet-400">L4: Fyzické parametry</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            <span class="text-amber-400">L5: Funkce & technologie</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                            <span class="text-rose-400">L6: Omezení & hranice</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="bg-gradient-to-br from-angry-accent/10 to-angry-accent/5 rounded-2xl p-6 border border-angry-accent/30 layer-card">
+                    <div class="text-3xl mb-3">📝</div>
+                    <h3 class="font-bold text-angry-accent mb-2">Description (D1-D7)</h3>
+                    <p class="text-slate-400 text-sm mb-4">"PROČ a PRO KOHO" — Sémantický obsah pro lidi i LLM</p>
+                    <div class="space-y-2 text-xs text-slate-500">
+                        <div>D1: Esence produktu</div>
+                        <div>D2: Pro koho je to ideální</div>
+                        <div>D3: Jak to funguje</div>
+                        <div>D4: Co ta čísla znamenají</div>
+                        <div>D5: Proč tohle a ne jiné</div>
+                        <div>D6: Praktické tipy</div>
+                        <div>D7: Na co si dát pozor</div>
+                    </div>
+                </div>
+
+                <!-- MCL -->
+                <div class="bg-gradient-to-br from-slate-700/20 to-slate-800/20 rounded-2xl p-6 border border-slate-600/30 layer-card">
+                    <div class="text-3xl mb-3">🏪</div>
+                    <h3 class="font-bold text-slate-300 mb-2">MCL (Merchant Layer)</h3>
+                    <p class="text-slate-400 text-sm mb-4">"KDE a JAK KOUPIT" — Trust signály pro nákupní rozhodnutí</p>
+                    <div class="space-y-2 text-xs text-slate-500">
+                        <div>Tier 1: Identita & důvěra</div>
+                        <div>Tier 2: Logistika & dostupnost</div>
+                        <div>Tier 3: Transakce & politiky</div>
+                        <div>Tier 4: Konsenzus & skóre</div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm mt-4 text-center">
+                LLM použije Blueprint k <strong class="text-white">nalezení</strong> produktu, Description k <strong class="text-white">ověření</strong> doporučení, MCL k <strong class="text-white">výběru</strong> prodejce.
+            </p>
+        </section>
+
+        <!-- Customer Research Foundation -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📊</span>
+                Základ: Outfindo Consumer Research
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-outfindo/20">
+                <p class="text-slate-300 mb-4">Framework je postaven na výzkumu <strong class="text-outfindo">18 zákaznických cílů</strong> a <strong class="text-outfindo">7 profilů</strong> kupujících pánské intimní kosmetiky:</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium text-slate-400 mb-3 text-sm">Top 5 zákaznických cílů (podle priority)</h4>
+                        <ol class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center font-bold">10</span>
+                                <span class="text-slate-300">Denní hygiena bez podráždění</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center font-bold">9</span>
+                                <span class="text-slate-300">Prevence podráždění a alergií</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center font-bold">9</span>
+                                <span class="text-slate-300">Celodenní kontrola pachu a vlhkosti</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center font-bold">8</span>
+                                <span class="text-slate-300">Hygiena před a po sexu</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded bg-outfindo/20 text-outfindo text-xs flex items-center justify-center font-bold">8</span>
+                                <span class="text-slate-300">Šetrná péče pro citlivou pokožku</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-slate-400 mb-3 text-sm">Zákaznické profily (% populace)</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-outfindo/10 text-outfindo border border-outfindo/30 rounded text-xs">Sensitive Skin Guardian (24-33%)</span>
+                            <span class="px-2 py-1 bg-outfindo/10 text-outfindo border border-outfindo/30 rounded text-xs">Odor Confidence Seeker (22-30%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Active Routine Optimizer (13-18%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Pre-&-Post Intimacy Hygienist (10-13%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Value Pragmatist (10-14%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Ethical Transparency Advocate (6-9%)</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs">Intimacy Confidence Maximizer (4-7%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Pain Points -->
+                <div class="mt-6 pt-6 border-t border-slate-700/50">
+                    <h4 class="font-medium text-angry-accent mb-3 text-sm">🔥 Top Pain Points (z výzkumu)</h4>
+                    <div class="grid grid-cols-3 gap-3 text-xs">
+                        <div class="bg-angry-accent/5 rounded-lg p-3 border border-angry-accent/20">
+                            <div class="text-angry-accent font-medium mb-1">pH disbalance</div>
+                            <div class="text-slate-500">Ženské/běžné mýdla narušují mužské pH</div>
+                        </div>
+                        <div class="bg-angry-accent/5 rounded-lg p-3 border border-angry-accent/20">
+                            <div class="text-angry-accent font-medium mb-1">Kontaktní dermatitida</div>
+                            <div class="text-slate-500">Deodoranty způsobují podráždění</div>
+                        </div>
+                        <div class="bg-angry-accent/5 rounded-lg p-3 border border-angry-accent/20">
+                            <div class="text-angry-accent font-medium mb-1">Mastná/lepivá textura</div>
+                            <div class="text-slate-500">Negativní pocit při aplikaci</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blueprint Layers Detail -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">🗂</span>
+                Blueprint Layers (L1-L6) — Detail
+            </h2>
+
+            <div class="space-y-4">
+                <!-- L1 -->
+                <details class="bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-slate-800/30">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-slate-600/30 flex items-center justify-center text-slate-400 font-mono text-sm">L1</span>
+                            <div>
+                                <span class="font-medium">Identita produktu</span>
+                                <span class="text-slate-500 text-sm ml-2">— Jedinečná identifikace</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-slate-700/50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">Parametry</h4>
+                                <div class="font-mono text-xs space-y-1 text-slate-500">
+                                    <div>brand: <span class="text-outfindo">"Angry Beards"</span></div>
+                                    <div>product_name: <span class="text-outfindo">string</span></div>
+                                    <div>sku: <span class="text-outfindo">string</span></div>
+                                    <div>ean: <span class="text-outfindo">string</span></div>
+                                    <div>product_line: <span class="text-outfindo">enum[kule, vousy, tělo, vlasy]</span></div>
+                                    <div>product_type: <span class="text-outfindo">enum[pudr, deodorant, vazelína, gel, ...]</span></div>
+                                    <div>category_path: <span class="text-outfindo">string[]</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">LLM využití</h4>
+                                <p class="text-slate-500 text-sm">Entity resolution — přesná identifikace produktu napříč platformami, prevence záměny podobných variant.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L2 -->
+                <details class="bg-gradient-to-r from-outfindo/5 to-transparent rounded-xl border border-outfindo/30 overflow-hidden" open>
+                    <summary class="p-4 flex items-center justify-between hover:bg-outfindo/10">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo font-mono text-sm">L2</span>
+                            <div>
+                                <span class="font-medium text-outfindo">Zákaznické cíle</span>
+                                <span class="text-outfindo/70 text-sm ml-2">— ⭐ OUTFINDO UNIQUE</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-outfindo chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-outfindo/20">
+                        <p class="text-slate-400 text-sm mb-4">Zákaznická otázka: <strong class="text-white">"Je to pro mě?"</strong></p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">Parametry</h4>
+                                <div class="font-mono text-xs space-y-1 text-slate-500">
+                                    <div>primary_use: <span class="text-outfindo">enum[denní_hygiena, sport, cestování, intimita]</span></div>
+                                    <div>problems_solved: <span class="text-outfindo">enum[pocení, zápach, podráždění, lepení, ...]</span></div>
+                                    <div>target_user_types: <span class="text-outfindo">enum[citlivá_pokožka, sportovci, cestovatelé, ...]</span></div>
+                                    <div>lifestyle_fit: <span class="text-outfindo">enum[aktivní, kancelářský, cestovatel]</span></div>
+                                    <div>skin_sensitivity_level: <span class="text-outfindo">enum[normální, citlivá, velmi_citlivá]</span></div>
+                                    <div>use_frequency: <span class="text-outfindo">enum[denně, při_aktivitě, příležitostně]</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">LLM využití — KEY DIFFERENTIATOR</h4>
+                                <p class="text-slate-500 text-sm mb-2">Konkurence má specifikace. My máme <strong class="text-outfindo">intent mapping</strong>.</p>
+                                <div class="bg-slate-800/50 rounded p-2 text-xs">
+                                    <div class="text-slate-400 mb-1">Query: "Něco na mokrý pytel při práci u počítače"</div>
+                                    <div class="text-outfindo">→ Match: problems_solved: [pocení], lifestyle_fit: [kancelářský]</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L3 -->
+                <details class="bg-slate-900/50 rounded-xl border border-emerald-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-emerald-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono text-sm">L3</span>
+                            <div>
+                                <span class="font-medium text-emerald-400">Klíčové specifikace</span>
+                                <span class="text-slate-500 text-sm ml-2">— Výkon a účinnost</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-emerald-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-emerald-500/20">
+                        <p class="text-slate-400 text-sm mb-4">Zákaznická otázka: <strong class="text-white">"Stačí mi to?"</strong></p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">Parametry</h4>
+                                <div class="font-mono text-xs space-y-1 text-slate-500">
+                                    <div>effect_duration_hours: <span class="text-emerald-400">integer</span></div>
+                                    <div>absorption_time: <span class="text-emerald-400">enum[rychlá, střední, pomalá]</span></div>
+                                    <div>skin_sensation: <span class="text-emerald-400">enum[chladivá, neutrální, hřejivá]</span></div>
+                                    <div>scent_strength: <span class="text-emerald-400">enum[bez_vůně, jemná, střední, výrazná]</span></div>
+                                    <div>texture: <span class="text-emerald-400">enum[pudr, gel, krém, tekutina, pěna]</span></div>
+                                    <div>residue_level: <span class="text-emerald-400">enum[žádné, minimální, viditelné]</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">LLM využití</h4>
+                                <p class="text-slate-500 text-sm">Constraint-based filtering: "antiperspirant s účinkem alespoň 8 hodin", "bez vůně", "rychle se vstřebává"</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L4 -->
+                <details class="bg-slate-900/50 rounded-xl border border-violet-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-violet-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 font-mono text-sm">L4</span>
+                            <div>
+                                <span class="font-medium text-violet-400">Fyzické parametry</span>
+                                <span class="text-slate-500 text-sm ml-2">— Balení a formát</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-violet-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-violet-500/20">
+                        <p class="text-slate-400 text-sm mb-4">Zákaznická otázka: <strong class="text-white">"Vezmu si to do tašky?"</strong></p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">Parametry</h4>
+                                <div class="font-mono text-xs space-y-1 text-slate-500">
+                                    <div>volume_ml: <span class="text-violet-400">integer</span></div>
+                                    <div>weight_g: <span class="text-violet-400">integer</span></div>
+                                    <div>packaging_type: <span class="text-violet-400">enum[tuba, dóza, sprej, puffer, sáček]</span></div>
+                                    <div>packaging_material: <span class="text-violet-400">enum[plast, sklo, kov]</span></div>
+                                    <div>travel_friendly: <span class="text-violet-400">boolean</span></div>
+                                    <div>applications_per_pack: <span class="text-violet-400">integer</span></div>
+                                    <div>recyclable: <span class="text-violet-400">boolean</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">LLM využití</h4>
+                                <p class="text-slate-500 text-sm">Spatial/travel constraints: "do příručního zavazadla", "cestovní balení", "vydržet na týden"</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L5 -->
+                <details class="bg-slate-900/50 rounded-xl border border-amber-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-amber-500/5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 font-mono text-sm">L5</span>
+                            <div>
+                                <span class="font-medium text-amber-400">Funkce & technologie</span>
+                                <span class="text-slate-500 text-sm ml-2">— Co to umí</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-amber-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-amber-500/20">
+                        <p class="text-slate-400 text-sm mb-4">Zákaznická otázka: <strong class="text-white">"Co to umí?"</strong></p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">Parametry</h4>
+                                <div class="font-mono text-xs space-y-1 text-slate-500">
+                                    <div>functions: <span class="text-amber-400">enum[antiperspirant, deodorant, lubrikant, ošetřující, ...]</span></div>
+                                    <div>key_ingredients: <span class="text-amber-400">string[]</span></div>
+                                    <div>active_ingredients: <span class="text-amber-400">string[]</span></div>
+                                    <div>certifications: <span class="text-amber-400">enum[vegan, cruelty_free, dermatologicky_testováno]</span></div>
+                                    <div>skin_compatible: <span class="text-amber-400">enum[všechny_typy, citlivá, suchá, mastná]</span></div>
+                                    <div>ph_balanced: <span class="text-amber-400">boolean</span></div>
+                                    <div>alcohol_free: <span class="text-amber-400">boolean</span></div>
+                                    <div>aluminum_free: <span class="text-amber-400">boolean</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">LLM využití</h4>
+                                <p class="text-slate-500 text-sm">Feature matching: "bez hliníku", "vegan", "s čajovníkem", "dermatologicky testováno"</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- L6 -->
+                <details class="bg-gradient-to-r from-rose-500/5 to-transparent rounded-xl border border-rose-500/30 overflow-hidden">
+                    <summary class="p-4 flex items-center justify-between hover:bg-rose-500/10">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400 font-mono text-sm">L6</span>
+                            <div>
+                                <span class="font-medium text-rose-400">Omezení & hranice</span>
+                                <span class="text-rose-400/70 text-sm ml-2">— ⚠️ KRITICKÉ PRO AI</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-rose-500 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="p-4 pt-0 border-t border-rose-500/20">
+                        <p class="text-slate-400 text-sm mb-4">Zákaznická otázka: <strong class="text-white">"Co by mě mohlo překvapit?"</strong></p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">Parametry</h4>
+                                <div class="font-mono text-xs space-y-1 text-slate-500">
+                                    <div>suitable_for: <span class="text-rose-400">enum[denní_použití, sport, před_sexem, ...]</span></div>
+                                    <div>not_suitable_for: <span class="text-rose-400">enum[otevřené_rány, sliznice, děti, ...]</span></div>
+                                    <div>this_is_not: <span class="text-rose-400">enum[lubrikant, lék, antiperspirant, ...]</span></div>
+                                    <div>requires: <span class="text-rose-400">enum[čistá_pokožka, suchá_pokožka, ...]</span></div>
+                                    <div>allergens: <span class="text-rose-400">string[]</span></div>
+                                    <div>interactions: <span class="text-rose-400">string[]</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-400 text-xs mb-2">LLM využití — ANTI-HALLUCINATION</h4>
+                                <p class="text-slate-500 text-sm mb-2">Bez explicitních omezení LLM může doporučit produkt na špatné použití.</p>
+                                <div class="bg-rose-500/10 rounded p-2 text-xs border border-rose-500/20">
+                                    <div class="text-rose-400">⚠️ Příklad: Pudr NENÍ lubrikant pro sex</div>
+                                    <div class="text-slate-500 mt-1">this_is_not: [lubrikant]</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Description Blocks Detail -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-angry-accent/20 flex items-center justify-center text-angry-accent">📝</span>
+                Description Blocks (D1-D7) — Detail
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-angry-accent/20 mb-4">
+                <p class="text-slate-400 mb-2">Každý blok odpovídá na <strong class="text-white">jednu konkrétní otázku zákazníka</strong> a je zakotven ve výzkumu.</p>
+                <p class="text-slate-500 text-sm">Jazyk: <span class="text-angry-accent">Angry Beards brand voice</span> — přímý, vtipný, bez cenzury, ale informativní.</p>
+            </div>
+
+            <div class="space-y-3">
+                <!-- D1 -->
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-angry-accent/20 text-angry-accent rounded text-xs font-mono">D1</span>
+                        <span class="font-medium">Esence produktu</span>
+                        <span class="text-slate-500 text-sm">— "Co to vlastně je?"</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: 2-3 věty, jasná definice produktu a jeho hlavního přínosu.</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-angry-accent">
+                        <strong class="text-angry-accent">Příklad (Pudr):</strong> Pudr na kule, co ti vyřeší mokrý pytel bez fyzický námahy. Jedno puff a máš sucho na celý den — ať už sedíš v kanclu, jedeš na rande, nebo řešíš stresovou šichtu.
+                    </div>
+                </div>
+
+                <!-- D2 -->
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-outfindo/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-outfindo/20 text-outfindo rounded text-xs font-mono">D2</span>
+                        <span class="font-medium text-outfindo">Pro koho je to ideální</span>
+                        <span class="text-slate-500 text-sm">— "Je to pro mě?" ⭐</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: 4-6 konkrétních use cases. Řazeno podle populačního dopadu ze segmentace.</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-outfindo">
+                        <strong class="text-outfindo">Příklad (Pudr):</strong>
+                        <ul class="mt-2 space-y-1 text-slate-400">
+                            <li>✓ Pro chlapy s citlivou kůží, co nesnášej podráždění</li>
+                            <li>✓ Pro kancelářský krysy, co maj pytel v permanentním stresu</li>
+                            <li>✓ Pro ty, co maj schůzku a nechtěj přemýšlet o vlhkým rozkroku</li>
+                            <li>✓ Pro všechny, kdo chtěj celodenní komfort bez mastný vrstvy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D3 -->
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs font-mono">D3</span>
+                        <span class="font-medium">Jak to funguje</span>
+                        <span class="text-slate-500 text-sm">— "Jak to dělá, co dělá?"</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: Mechanismus účinku v zákaznickém jazyce, ne INCI seznam.</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-emerald-500">
+                        <strong class="text-emerald-400">Příklad:</strong> Pudr pohlcuje vlhkost dřív, než se stihne proměnit v kulepach. Obsahuje talek a kukuřičný škrob, který fungujou jako houba na pot. Bez hliníku, bez blokování potních žláz — prostě sucho a svěžest.
+                    </div>
+                </div>
+
+                <!-- D4 -->
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-violet-500/20 text-violet-400 rounded text-xs font-mono">D4</span>
+                        <span class="font-medium">Co ta čísla znamenají</span>
+                        <span class="text-slate-500 text-sm">— "Specifikace v kontextu"</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: Překlad technických parametrů do reálného přínosu.</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-violet-500">
+                        <strong class="text-violet-400">Příklad:</strong>
+                        <ul class="mt-2 space-y-1 text-slate-400">
+                            <li><span class="text-white">57g</span> — Stačí na ~60 aplikací, což je 2 měsíce denního používání</li>
+                            <li><span class="text-white">Puffer aplikátor</span> — Jeden mačk = přesná dávka, žádnej bordel v koupelně</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D5 -->
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-amber-500/20 text-amber-400 rounded text-xs font-mono">D5</span>
+                        <span class="font-medium">Proč tohle a ne jiné</span>
+                        <span class="text-slate-500 text-sm">— "X místo Y"</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: Diferenciátory vs. typické alternativy bez jmenování konkurence.</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-amber-500">
+                        <strong class="text-amber-400">Příklad:</strong>
+                        <ul class="mt-2 space-y-1 text-slate-400">
+                            <li>• <strong class="text-white">Puffer</strong> místo sypkého pudru — přesná dávka, žádný prasení</li>
+                            <li>• <strong class="text-white">Bez hliníku</strong> místo antiperspirantů — žádný riziko podráždění</li>
+                            <li>• <strong class="text-white">Pro kule</strong> místo univerzálního pudru — pH a složení šitý na míru</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D6 -->
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-slate-500/20 text-slate-400 rounded text-xs font-mono">D6</span>
+                        <span class="font-medium">Praktické tipy</span>
+                        <span class="text-slate-500 text-sm">— "Zvládnu to?"</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: Fáze použití — aplikace, denní rutina, údržba. Jen neočividné tipy.</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-slate-500">
+                        <strong class="text-slate-400">Příklad:</strong>
+                        <ul class="mt-2 space-y-1 text-slate-400">
+                            <li>📍 <strong>Aplikace:</strong> Na suchou, čistou kůži. Jeden puff, rozetři dlaní.</li>
+                            <li>📍 <strong>Kdy:</strong> Ráno po sprše, před náročným dnem, před randem.</li>
+                            <li>📍 <strong>Pro-tip:</strong> Funguje i preventivně — nemusíš čekat, až budeš mokrej.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D7 -->
+                <div class="bg-gradient-to-r from-rose-500/5 to-transparent rounded-xl p-4 border border-rose-500/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 bg-rose-500/20 text-rose-400 rounded text-xs font-mono">D7</span>
+                        <span class="font-medium text-rose-400">Na co si dát pozor</span>
+                        <span class="text-rose-400/70 text-sm">— ⚠️ SNIŽUJE VRATKY</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-2">Formát: Strukturované sekce — Vhodné pro / Nevhodné pro / Tohle to NENÍ / Vyžaduje</p>
+                    <div class="bg-angry-light/50 rounded p-3 text-sm text-slate-300 border-l-2 border-rose-500">
+                        <strong class="text-rose-400">Příklad (Pudr):</strong>
+                        <div class="mt-2 grid grid-cols-2 gap-4 text-slate-400">
+                            <div>
+                                <div class="text-outfindo text-xs mb-1">✓ VHODNÉ PRO:</div>
+                                <ul class="space-y-0.5 text-xs">
+                                    <li>• Denní použití</li>
+                                    <li>• Citlivou pokožku</li>
+                                    <li>• Kancelářskou práci</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-rose-400 text-xs mb-1">✗ NEVHODNÉ PRO:</div>
+                                <ul class="space-y-0.5 text-xs">
+                                    <li>• Otevřené rány</li>
+                                    <li>• Podrážděnou pokožku</li>
+                                    <li>• Jako lubrikant při sexu</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-700/50">
+                            <div class="text-amber-400 text-xs mb-1">⚠️ TOHLE TO NENÍ:</div>
+                            <ul class="space-y-0.5 text-xs text-slate-400">
+                                <li>• Není to antiperspirant — neblokuje pocení, jen ho absorbuje</li>
+                                <li>• Není to lubrikant — pro sex použij Antistick</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCL Layer -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-slate-600/30 flex items-center justify-center">🏪</span>
+                MCL — Merchant Consideration Layer
+            </h2>
+
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50">
+                <p class="text-slate-400 mb-4">Per-offer, per-merchant data pro nákupní rozhodnutí. Pro Angry Beards jako D2C brand jde primárně o vlastní e-shop.</p>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-3">
+                        <div class="bg-slate-800/50 rounded-lg p-3">
+                            <div class="text-xs text-slate-500 mb-1">Tier 1: Identita & důvěra</div>
+                            <div class="font-mono text-xs space-y-1 text-slate-400">
+                                <div>merchant_name: <span class="text-white">"Angry Beards s.r.o."</span></div>
+                                <div>country: <span class="text-white">"CZ"</span></div>
+                                <div>trustpilot_rating: <span class="text-outfindo">4.8</span></div>
+                                <div>heureka_rating: <span class="text-outfindo">4.9</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-3">
+                            <div class="text-xs text-slate-500 mb-1">Tier 2: Logistika</div>
+                            <div class="font-mono text-xs space-y-1 text-slate-400">
+                                <div>shipping_methods: <span class="text-white">["PPL", "Zásilkovna", "DPD"]</span></div>
+                                <div>free_shipping_threshold: <span class="text-outfindo">1000 CZK</span></div>
+                                <div>delivery_time_days: <span class="text-outfindo">1-2</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-slate-800/50 rounded-lg p-3">
+                            <div class="text-xs text-slate-500 mb-1">Tier 3: Transakce & politiky</div>
+                            <div class="font-mono text-xs space-y-1 text-slate-400">
+                                <div>return_policy_days: <span class="text-outfindo">14</span></div>
+                                <div>return_policy_url: <span class="text-white">"/reklamace/"</span></div>
+                                <div>payment_methods: <span class="text-white">["card", "bank", "cod"]</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-3">
+                            <div class="text-xs text-slate-500 mb-1">Tier 4: Trust signály</div>
+                            <div class="font-mono text-xs space-y-1 text-slate-400">
+                                <div>verified_brand: <span class="text-outfindo">true</span></div>
+                                <div>official_store: <span class="text-outfindo">true</span></div>
+                                <div>years_in_business: <span class="text-white">8+</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category-Specific Considerations -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-angry-accent/20 flex items-center justify-center">🎱</span>
+                Specifika pro intimní kosmetiku
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-bold text-slate-300 mb-3">L6: Safety je KRITICKÁ</h3>
+                    <p class="text-slate-500 text-sm mb-3">Intimní kosmetika má vysoké riziko halucinace LLM — špatná doporučení mohou vést k:</p>
+                    <ul class="space-y-1 text-slate-400 text-sm">
+                        <li>• Alergickým reakcím</li>
+                        <li>• pH disbalanci</li>
+                        <li>• Použití na špatnou oblast</li>
+                        <li>• Záměně účelu (pudr vs. lubrikant)</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+                    <h3 class="font-bold text-slate-300 mb-3">D7: Transparentnost = důvěra</h3>
+                    <p class="text-slate-500 text-sm mb-3">Z výzkumu: zákazníci oceňují přímé sdělení limitací:</p>
+                    <ul class="space-y-1 text-slate-400 text-sm">
+                        <li>• 🔬 "Dermatologicky testováno" — validace</li>
+                        <li>• ⚠️ "Není pro sliznice" — jasné hranice</li>
+                        <li>• 🧪 "Bez hliníku" — adresuje pain point</li>
+                        <li>• ❌ "Tohle to NENÍ" — prevence zklamání</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current vs Target Gap Overview -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-angry-accent/20 flex items-center justify-center text-angry-accent">📊</span>
+                Aktuální stav vs. Cílový stav
+            </h2>
+            <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700/50">
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-angry-accent mb-2">~40</div>
+                        <div class="text-slate-400 text-sm">Aktuálních polí v Diver blueprint</div>
+                        <div class="text-slate-600 text-xs mt-1">Primárně L1, L3, L4, L5</div>
+                    </div>
+                    <div class="text-center border-x border-slate-700/50">
+                        <div class="text-4xl font-bold text-amber-400 mb-2">→</div>
+                        <div class="text-slate-400 text-sm">Transformace</div>
+                        <div class="text-slate-600 text-xs mt-1">+L2 Goals, +L6 Safety</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-outfindo mb-2">~55</div>
+                        <div class="text-slate-400 text-sm">Cílových polí v Blueprint</div>
+                        <div class="text-slate-600 text-xs mt-1">Kompletní L1-L6 + D1-D7</div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-slate-700/50">
+                    <h4 class="text-slate-400 text-sm mb-3">Hlavní gapy k doplnění:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-outfindo/10 text-outfindo border border-outfindo/30 rounded-full text-xs">L2: Zákaznické cíle ⭐</span>
+                        <span class="px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/30 rounded-full text-xs">L6: Omezení & hranice ⚠️</span>
+                        <span class="px-3 py-1 bg-angry-accent/10 text-angry-accent border border-angry-accent/30 rounded-full text-xs">D1-D7: Sémantické bloky</span>
+                        <span class="px-3 py-1 bg-slate-600/30 text-slate-400 rounded-full text-xs">MCL: Merchant trust layer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-outfindo/20 flex items-center justify-center text-outfindo">📦</span>
+                Co Outfindo dodá
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-outfindo/50 transition-colors layer-card">
+                    <div class="text-2xl mb-3">1️⃣</div>
+                    <h3 class="font-bold mb-2">Blueprint Schema</h3>
+                    <p class="text-slate-500 text-sm">Kompletní L1-L6 parametrový framework s enumy pro celou kategorii intimní kosmetiky</p>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-angry-accent/50 transition-colors layer-card">
+                    <div class="text-2xl mb-3">2️⃣</div>
+                    <h3 class="font-bold mb-2">Description Content</h3>
+                    <p class="text-slate-500 text-sm">7-blokové popisy v Angry Beards brand voice, optimalizované pro LLM i zákazníky</p>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50 hover:border-slate-500/50 transition-colors layer-card">
+                    <div class="text-2xl mb-3">3️⃣</div>
+                    <h3 class="font-bold mb-2">MCL Data Pack</h3>
+                    <p class="text-slate-500 text-sm">Merchant trust signály, policy URLs, Schema.org markup pro agent readiness</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="mb-12">
+            <div class="grid grid-cols-4 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">18</div>
+                    <div class="text-xs text-slate-500">Zákaznických cílů</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">7</div>
+                    <div class="text-xs text-slate-500">Zákaznických profilů</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">6</div>
+                    <div class="text-xs text-slate-500">Blueprint vrstev</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 text-center">
+                    <div class="text-2xl font-bold text-outfindo">7</div>
+                    <div class="text-xs text-slate-500">Description bloků</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-slate-800 text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-angry-accent font-medium">Angry Beards</span>
+                <span class="text-slate-600">×</span>
+                <span class="text-outfindo font-medium">Outfindo</span>
+            </div>
+            <p class="text-slate-500 text-sm">PDP Content System</p>
+            <p class="text-slate-600 text-xs mt-1">Document 1/3: Framework Introduction</p>
+        </footer>
+
+    </div>
+</body>
+</html>
